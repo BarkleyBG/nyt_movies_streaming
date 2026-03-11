@@ -1,0 +1,13 @@
+# Environment variables (contains API keys)
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+
+# Claude local settings
+.claude/settings.local.json
