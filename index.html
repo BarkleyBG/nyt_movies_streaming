@@ -26,6 +26,9 @@
       --tag-peacock: #000000;
       --tag-hbo: #b829d7;
       --tag-apple: #555555;
+      --tag-paramount: #0064ff;
+      --tag-tubi: #fa382f;
+      --tag-starz: #1a1a2e;
       --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
       --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
       --radius: 10px;
@@ -285,6 +288,9 @@
     .stream-tag.peacock   { background: var(--tag-peacock); }
     .stream-tag.hbo       { background: var(--tag-hbo); }
     .stream-tag.apple     { background: var(--tag-apple); }
+    .stream-tag.paramount { background: var(--tag-paramount); }
+    .stream-tag.tubi      { background: var(--tag-tubi); }
+    .stream-tag.starz     { background: var(--tag-starz); }
 
     /* Actions */
     .movie-actions {
@@ -333,6 +339,32 @@
     .empty-state .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
     .empty-state p { font-size: 0.95rem; }
 
+    /* ─── Info Section ─── */
+    .info-section {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .info-section h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .info-section p, .info-section li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .info-section ul {
+      margin: 0.5rem 0 0 1.25rem;
+    }
+    .info-section ul li { margin-bottom: 0.25rem; }
+    .info-section + .info-section { margin-top: 0.75rem; }
+
     /* ─── Footer ─── */
     footer {
       text-align: center;
@@ -340,7 +372,10 @@
       font-size: 0.8rem;
       color: var(--text-muted);
       border-top: 1px solid var(--border);
+      margin-top: 2rem;
     }
+    footer p { margin-bottom: 0.4rem; }
+    footer p:last-child { margin-bottom: 0; }
 
     /* ─── Responsive ─── */
     @media (max-width: 700px) {
@@ -410,6 +445,9 @@
   <button class="pill" data-service="peacock">Peacock</button>
   <button class="pill" data-service="hbo">Max</button>
   <button class="pill" data-service="apple">Apple TV+</button>
+  <button class="pill" data-service="paramount">Paramount+</button>
+  <button class="pill" data-service="tubi">Tubi</button>
+  <button class="pill" data-service="starz">Starz</button>
 </div>
 
 <div class="show-filters">
@@ -422,8 +460,28 @@
 
 <div class="movie-list" id="movie-list"></div>
 
+<div class="info-section">
+  <h2>About This Site</h2>
+  <p>This site helps you find where to stream the movies from The New York Times' "Best Movies of the 21st Century" list. Filter by streaming service, track which films you've seen, and build your watchlist &mdash; all in one place.</p>
+</div>
+
+<div class="info-section">
+  <h2>How to Use</h2>
+  <ul>
+    <li><strong>Filter by service:</strong> Click a streaming service pill (Netflix, Hulu, etc.) to see only movies available on that platform.</li>
+    <li><strong>Mark as seen:</strong> Click "Seen" on any movie to track your progress. Click again to undo.</li>
+    <li><strong>Want to see:</strong> Click "Want to See" to build your personal watchlist.</li>
+    <li><strong>Search:</strong> Type a title, director, or year into the search box to narrow results.</li>
+    <li><strong>Sort:</strong> Use the dropdown to sort by rank, title, or release year.</li>
+    <li><strong>Show filters:</strong> Toggle between All, Unseen Only, Want to See, or Already Seen.</li>
+  </ul>
+  <p style="margin-top: 0.5rem;">Your seen/watchlist data is saved locally in your browser and will persist between visits.</p>
+</div>
+
 <footer>
-  Data based on The New York Times' "100 Best Movies of the 21st Century" list. Streaming availability is simulated &amp; not real-time.
+  <p><strong>Disclaimer:</strong> This is an unofficial, independent project. It is not affiliated with, endorsed by, or connected to The New York Times in any way.</p>
+  <p>Streaming availability data provided by the <a href="https://www.movieofthenight.com/" style="color: var(--primary);">Streaming Availability API</a> (Movie of the Night) via RapidAPI.</p>
+  <p>Data last updated: <span id="data-updated-date">unknown</span>. Availability may change &mdash; check your streaming service to confirm.</p>
 </footer>
 
 <script>
@@ -533,13 +591,16 @@ const MOVIES = [
 
 // ─── Streaming Services ───
 const SERVICES = [
-  { id: "netflix", name: "Netflix" },
-  { id: "disney",  name: "Disney+" },
-  { id: "hulu",    name: "Hulu" },
-  { id: "prime",   name: "Prime Video" },
-  { id: "peacock", name: "Peacock" },
-  { id: "hbo",     name: "Max" },
-  { id: "apple",   name: "Apple TV+" }
+  { id: "netflix",   name: "Netflix" },
+  { id: "disney",    name: "Disney+" },
+  { id: "hulu",      name: "Hulu" },
+  { id: "prime",     name: "Prime Video" },
+  { id: "peacock",   name: "Peacock" },
+  { id: "hbo",       name: "Max" },
+  { id: "apple",     name: "Apple TV+" },
+  { id: "paramount", name: "Paramount+" },
+  { id: "tubi",      name: "Tubi" },
+  { id: "starz",     name: "Starz" }
 ];
 
 // Load real streaming data from JSON (generated by fetch_streaming.py)
@@ -552,6 +613,10 @@ async function loadStreamingData() {
       const entry = data[String(m.rank)];
       m.streaming = entry ? (entry.services || []) : [];
     });
+    // Show last-updated date from the file's metadata or fallback
+    if (data._updated) {
+      document.getElementById("data-updated-date").textContent = data._updated;
+    }
     console.log("Loaded real streaming data for", Object.keys(data).length, "movies");
   } catch (e) {
     // Fallback: no streaming data available yet (script hasn't been run)

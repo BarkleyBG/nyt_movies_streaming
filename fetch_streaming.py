@@ -11,6 +11,7 @@ Usage:
 Free plan: 100 requests/day — exactly enough for 100 movies.
 """
 
+import datetime
 import json
 import os
 import sys
@@ -26,7 +27,7 @@ SEARCH_ENDPOINT = "/shows/search/title"
 COUNTRY = "us"
 
 # Services we care about (US-based)
-US_SERVICES = {"netflix", "disney", "hulu", "prime", "peacock", "hbo", "apple"}
+US_SERVICES = {"netflix", "disney", "hulu", "prime", "peacock", "hbo", "apple", "paramount", "tubi", "starz"}
 
 # Streaming types that count as "available with subscription or free"
 INCLUDED_TYPES = {"subscription", "free"}
@@ -261,8 +262,8 @@ def main():
     for i, movie in enumerate(MOVIES):
         rank_key = str(movie["rank"])
 
-        # Skip if we already have data for this movie
-        if rank_key in existing_data:
+        # Skip if we already have data for this movie (not the _updated metadata key)
+        if rank_key in existing_data and rank_key != "_updated":
             skipped += 1
             services = existing_data[rank_key].get("services", [])
             print(f"[{i+1:3d}/{total}] (cached)  #{movie['rank']:3d} {movie['title']} -> {services or 'none'}")
@@ -297,6 +298,11 @@ def main():
         # Be polite — don't hammer the API
         if i < total - 1:
             time.sleep(DELAY_BETWEEN_REQUESTS)
+
+    # Add timestamp for the website footer
+    results["_updated"] = datetime.date.today().strftime("%B %d, %Y")
+    with open(OUTPUT_FILE, "w") as f:
+        json.dump(results, f, indent=2)
 
     print("=" * 60)
     print(f"Done! Fetched: {fetched}, Cached: {skipped}, Total: {total}")
