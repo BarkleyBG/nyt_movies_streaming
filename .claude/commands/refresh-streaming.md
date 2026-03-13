@@ -1,0 +1,15 @@
+# Refresh streaming data
+
+Fetches current US streaming availability for all 100 movies from the Streaming Availability API and updates `streaming_data.json`.
+
+**Requires:** `RAPIDAPI_KEY` set in `.env`
+**Quota:** 100 API requests — uses the full free-tier daily allowance. Confirm with the user before running.
+
+## Steps
+
+1. Confirm the user wants to refresh (this costs API quota).
+2. Check that `.env` exists and contains `RAPIDAPI_KEY`.
+3. Run: `C:/Python314/python.exe fetch_streaming.py`
+4. Watch for errors — HTTP 429 means rate limit hit, HTTP 401/403 means bad key.
+5. After completion, report: total fetched, total cached, movies with streaming availability, and service breakdown.
+6. Note: `streaming_data.json` is updated incrementally during the run, so partial runs are safe to resume.
