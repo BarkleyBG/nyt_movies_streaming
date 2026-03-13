@@ -140,12 +140,26 @@ class TestExtractStreaming(unittest.TestCase):
         show = _make_show(us_options=[])
         self.assertEqual(fetch_streaming.extract_streaming(show), [])
 
-    def test_all_seven_supported_services(self):
-        """All seven services in US_SERVICES can be extracted."""
-        services = ["netflix", "disney", "hulu", "prime", "peacock", "hbo", "apple"]
+    def test_all_supported_services_can_be_extracted(self):
+        """All 12 services in US_SERVICES can be extracted."""
+        services = [
+            "netflix", "disney", "hulu", "prime", "peacock",
+            "hbo", "apple", "paramount", "tubi", "starz",
+            "plutotv", "criterion",
+        ]
         show = _make_show(us_options=[_make_us_option(s) for s in services])
         result = fetch_streaming.extract_streaming(show)
         self.assertEqual(set(result), set(services))
+
+    def test_new_services_plutotv_and_criterion_are_recognized(self):
+        """Pluto TV and Criterion (added in streaming update) are valid services."""
+        show = _make_show(us_options=[
+            _make_us_option("plutotv", "free"),
+            _make_us_option("criterion", "subscription"),
+        ])
+        result = fetch_streaming.extract_streaming(show)
+        self.assertIn("plutotv", result)
+        self.assertIn("criterion", result)
 
 
 # ─── load_api_key() ───────────────────────────────────────────────────────────

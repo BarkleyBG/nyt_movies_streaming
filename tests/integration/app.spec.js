@@ -232,6 +232,20 @@ test.describe("Streaming Service Filter Pills", () => {
     await page.click('[data-service="netflix"]'); // toggle off
     await expect(page.locator(".movie-card")).toHaveCount(100);
   });
+
+  test("service pills show a movie count badge after data loads", async ({ page }) => {
+    // After loadStreamingData() runs, pills with at least one movie get a
+    // .pill-count child span. Check that at least one pill has a count > 0.
+    const countBadge = page.locator(".filter-pills .pill-count").first();
+    await expect(countBadge).toBeVisible();
+    const text = await countBadge.textContent();
+    expect(parseInt(text ?? "0")).toBeGreaterThan(0);
+  });
+
+  test("Pluto TV and Criterion pills are present", async ({ page }) => {
+    await expect(page.locator('[data-service="plutotv"]')).toBeVisible();
+    await expect(page.locator('[data-service="criterion"]')).toBeVisible();
+  });
 });
 
 // ─── Show Filter Pills ────────────────────────────────────────────────────────
