@@ -27,7 +27,7 @@ SEARCH_ENDPOINT = "/shows/search/title"
 COUNTRY = "us"
 
 # Services we care about (US-based)
-US_SERVICES = {"netflix", "disney", "hulu", "prime", "peacock", "hbo", "apple", "paramount", "tubi", "starz"}
+US_SERVICES = {"netflix", "disney", "hulu", "prime", "peacock", "hbo", "apple", "paramount", "tubi", "starz", "plutotv", "criterion"}
 
 # Streaming types that count as "available with subscription or free"
 INCLUDED_TYPES = {"subscription", "free"}
