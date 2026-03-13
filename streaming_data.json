@@ -67,7 +67,9 @@
   "2": {
     "title": "Mulholland Drive",
     "year": 2001,
-    "services": [],
+    "services": [
+      "tubi"
+    ],
     "raw": {
       "id": "1025",
       "imdbId": "tt0166924",
@@ -109,7 +111,10 @@
   "3": {
     "title": "There Will Be Blood",
     "year": 2007,
-    "services": [],
+    "services": [
+      "paramount",
+      "plutotv"
+    ],
     "raw": {
       "id": "488",
       "imdbId": "tt0469494",
@@ -209,6 +214,7 @@
     "title": "In the Mood for Love",
     "year": 2000,
     "services": [
+      "criterion",
       "hbo"
     ],
     "raw": {
@@ -270,6 +276,7 @@
     "title": "Moonlight",
     "year": 2016,
     "services": [
+      "tubi",
       "hbo"
     ],
     "raw": {
@@ -402,7 +409,11 @@
   "6": {
     "title": "No Country for Old Men",
     "year": 2007,
-    "services": [],
+    "services": [
+      "plutotv",
+      "paramount",
+      "tubi"
+    ],
     "raw": {
       "id": "200",
       "imdbId": "tt0477348",
@@ -1209,7 +1220,9 @@
   "12": {
     "title": "The Zone of Interest",
     "year": 2023,
-    "services": [],
+    "services": [
+      "plutotv"
+    ],
     "raw": {
       "id": "2699752",
       "imdbId": "tt7160372",
@@ -1244,7 +1257,9 @@
   "13": {
     "title": "Children of Men",
     "year": 2006,
-    "services": [],
+    "services": [
+      "criterion"
+    ],
     "raw": {
       "id": "619",
       "imdbId": "tt0206634",
@@ -1478,7 +1493,9 @@
   "19": {
     "title": "Zodiac",
     "year": 2007,
-    "services": [],
+    "services": [
+      "paramount"
+    ],
     "raw": {
       "id": "556",
       "imdbId": "tt0443706",
@@ -1513,7 +1530,12 @@
   "20": {
     "title": "The Wolf of Wall Street",
     "year": 2013,
-    "services": [],
+    "services": [
+      "plutotv",
+      "starz",
+      "tubi",
+      "paramount"
+    ],
     "raw": {
       "id": "104",
       "imdbId": "tt0993846",
@@ -1817,6 +1839,8 @@
     "title": "Boyhood",
     "year": 2014,
     "services": [
+      "plutotv",
+      "criterion",
       "netflix",
       "hulu"
     ],
@@ -2261,7 +2285,9 @@
   "25": {
     "title": "Phantom Thread",
     "year": 2017,
-    "services": [],
+    "services": [
+      "criterion"
+    ],
     "raw": {
       "id": "3433",
       "imdbId": "tt5776858",
@@ -2438,7 +2464,9 @@
   "27": {
     "title": "Adaptation",
     "year": 2002,
-    "services": [],
+    "services": [
+      "plutotv"
+    ],
     "raw": {
       "id": "2311",
       "imdbId": "tt0268126",
@@ -2474,6 +2502,7 @@
     "title": "The Dark Knight",
     "year": 2008,
     "services": [
+      "tubi",
       "hbo"
     ],
     "raw": {
@@ -2619,7 +2648,9 @@
   "29": {
     "title": "Arrival",
     "year": 2016,
-    "services": [],
+    "services": [
+      "tubi"
+    ],
     "raw": {
       "id": "352",
       "imdbId": "tt2543164",
@@ -2757,7 +2788,9 @@
   "30": {
     "title": "Lost in Translation",
     "year": 2003,
-    "services": [],
+    "services": [
+      "criterion"
+    ],
     "raw": {
       "id": "718",
       "imdbId": "tt0335266",
@@ -2803,7 +2836,9 @@
   "32": {
     "title": "Bridesmaids",
     "year": 2011,
-    "services": [],
+    "services": [
+      "starz"
+    ],
     "raw": {
       "id": "1349",
       "imdbId": "tt1478338",
@@ -3370,6 +3405,7 @@
     "title": "Call Me by Your Name",
     "year": 2017,
     "services": [
+      "tubi",
       "hbo"
     ],
     "raw": {
@@ -3782,7 +3818,9 @@
   "40": {
     "title": "Yi Yi",
     "year": 2000,
-    "services": [],
+    "services": [
+      "criterion"
+    ],
     "raw": {
       "id": "12408",
       "imdbId": "tt0244316",
@@ -4022,7 +4060,10 @@
   "42": {
     "title": "The Master",
     "year": 2012,
-    "services": [],
+    "services": [
+      "tubi",
+      "plutotv"
+    ],
     "raw": {
       "id": "2601",
       "imdbId": "tt1560747",
@@ -4294,7 +4335,10 @@
   "47": {
     "title": "Almost Famous",
     "year": 2000,
-    "services": [],
+    "services": [
+      "paramount",
+      "plutotv"
+    ],
     "raw": {
       "id": "1430",
       "imdbId": "tt0181875",
@@ -5836,7 +5880,9 @@
     "year": 2000,
     "services": [
       "peacock",
-      "hbo"
+      "tubi",
+      "hbo",
+      "plutotv"
     ],
     "raw": {
       "id": "130",
@@ -6203,7 +6249,9 @@
   "66": {
     "title": "Spotlight",
     "year": 2015,
-    "services": [],
+    "services": [
+      "tubi"
+    ],
     "raw": {
       "id": "684",
       "imdbId": "tt1895587",
@@ -6530,7 +6578,10 @@
   "70": {
     "title": "Let the Right One In",
     "year": 2008,
-    "services": [],
+    "services": [
+      "tubi",
+      "plutotv"
+    ],
     "raw": {
       "id": "2029",
       "imdbId": "tt1139797",
@@ -7458,7 +7509,9 @@
   "78": {
     "title": "Aftersun",
     "year": 2022,
-    "services": [],
+    "services": [
+      "tubi"
+    ],
     "raw": {
       "id": "13398",
       "imdbId": "tt19770238",
@@ -7746,7 +7799,9 @@
   "82": {
     "title": "The Act of Killing",
     "year": 2012,
-    "services": [],
+    "services": [
+      "tubi"
+    ],
     "raw": {
       "id": "9498",
       "imdbId": "tt2375605",
@@ -8052,7 +8107,9 @@
   "84": {
     "title": "Melancholia",
     "year": 2011,
-    "services": [],
+    "services": [
+      "tubi"
+    ],
     "raw": {
       "id": "2466",
       "imdbId": "tt1527186",
@@ -8188,7 +8245,10 @@
   "85": {
     "title": "Anchorman: The Legend of Ron Burgundy",
     "year": 2004,
-    "services": [],
+    "services": [
+      "paramount",
+      "plutotv"
+    ],
     "raw": {
       "id": "1019",
       "imdbId": "tt0357413",
@@ -8628,7 +8688,9 @@
   "88": {
     "title": "The Gleaners and I",
     "year": 2000,
-    "services": [],
+    "services": [
+      "criterion"
+    ],
     "raw": {
       "id": "25405",
       "imdbId": "tt0247380",
@@ -8662,7 +8724,9 @@
   "89": {
     "title": "Interstellar",
     "year": 2014,
-    "services": [],
+    "services": [
+      "paramount"
+    ],
     "raw": {
       "id": "86",
       "imdbId": "tt0816692",
@@ -8790,7 +8854,9 @@
     "title": "Frances Ha",
     "year": 2012,
     "services": [
-      "netflix"
+      "tubi",
+      "netflix",
+      "criterion"
     ],
     "raw": {
       "id": "5260",
@@ -9034,7 +9100,10 @@
   "91": {
     "title": "Fish Tank",
     "year": 2009,
-    "services": [],
+    "services": [
+      "plutotv",
+      "tubi"
+    ],
     "raw": {
       "id": "6680",
       "imdbId": "tt1232776",
@@ -9326,7 +9395,9 @@
     "title": "Gladiator",
     "year": 2000,
     "services": [
-      "peacock"
+      "tubi",
+      "peacock",
+      "paramount"
     ],
     "raw": {
       "id": "96",
@@ -9491,7 +9562,11 @@
   "94": {
     "title": "Minority Report",
     "year": 2002,
-    "services": [],
+    "services": [
+      "plutotv",
+      "tubi",
+      "paramount"
+    ],
     "raw": {
       "id": "532",
       "imdbId": "tt0181689",
@@ -9593,7 +9668,9 @@
   "95": {
     "title": "The Worst Person in the World",
     "year": 2021,
-    "services": [],
+    "services": [
+      "tubi"
+    ],
     "raw": {
       "id": "6077",
       "imdbId": "tt10370710",
@@ -10330,7 +10407,11 @@
   "98": {
     "title": "Grizzly Man",
     "year": 2005,
-    "services": [],
+    "services": [
+      "tubi",
+      "plutotv",
+      "criterion"
+    ],
     "raw": {
       "id": "7118",
       "imdbId": "tt0427312",
@@ -10486,7 +10567,9 @@
   "99": {
     "title": "Memories of Murder",
     "year": 2003,
-    "services": [],
+    "services": [
+      "tubi"
+    ],
     "raw": {
       "id": "2421",
       "imdbId": "tt0353969",
