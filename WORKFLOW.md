@@ -31,6 +31,14 @@ graph TD
 
 ## Data refresh flow
 
+`fetch_streaming.py` supports three modes:
+
+| Command | What it does |
+|---------|-------------|
+| `python fetch_streaming.py` | Fetch all 100 movies **and** write clean output (default) |
+| `python fetch_streaming.py --fetch-only` | Fetch raw data only; skip writing `streaming_data.json` |
+| `python fetch_streaming.py --clean-only` | Re-generate `streaming_data.json` from existing raw cache; no API calls |
+
 ```mermaid
 sequenceDiagram
     participant Dev as Developer
@@ -41,16 +49,24 @@ sequenceDiagram
     participant JSON as streaming_data.json
 
     Dev->>Env: set RAPIDAPI_KEY
-    Dev->>PY: python fetch_streaming.py
-    PY->>RAW: load existing raw data (resume support)
-    loop For each of 100 movies
-        PY->>API: GET /shows/search/title?title=...&country=us
-        API-->>PY: show + streamingOptions
-        PY->>RAW: write full result immediately
-        PY->>PY: sleep 0.6s
+    Dev->>PY: python fetch_streaming.py [--fetch-only | --clean-only]
+
+    alt --clean-only (no API key needed)
+        PY->>RAW: load existing raw data
+        PY->>JSON: generate clean output (services + fetched_at per movie)
+    else fetch (default or --fetch-only)
+        PY->>RAW: load existing raw data (resume support)
+        loop For each of 100 movies
+            PY->>API: GET /shows/search/title?title=...&country=us
+            API-->>PY: show + streamingOptions
+            PY->>RAW: write full result + fetched_at immediately
+            PY->>PY: sleep 0.6s
+        end
+        PY->>RAW: write _updated timestamp
+        opt default (not --fetch-only)
+            PY->>JSON: generate clean output (services + fetched_at per movie)
+        end
     end
-    PY->>RAW: write _updated timestamp
-    PY->>JSON: generate clean output (services only)
 ```
 
 ---

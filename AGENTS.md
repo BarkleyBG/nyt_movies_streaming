@@ -22,7 +22,7 @@ JavaScript functions in `index.html` are **not exported** (no ES modules, no Com
 The file `.env` contains `RAPIDAPI_KEY` and is gitignored. Never include API keys in committed files.
 
 ### Do not commit raw API data
-`streaming_data.json` is committed (it's the clean data the app needs) and should only contain service ID arrays and the `_updated` date. Full API responses live in `streaming_data_raw.json`, which is gitignored. Do not commit the raw file or add extra fields to the clean file.
+`streaming_data.json` is committed (it's the clean data the app needs) and should only contain service ID arrays, a `fetched_at` date per record, and the top-level `_updated` date. Full API responses live in `streaming_data_raw.json`, which is gitignored. Do not commit the raw file.
 
 ---
 

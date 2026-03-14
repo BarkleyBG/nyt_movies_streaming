@@ -1,9 +1,17 @@
 # Refresh streaming data
 
-Fetches current US streaming availability for all 100 movies from the Streaming Availability API. Saves full API responses to `streaming_data_raw.json` (gitignored) and generates a clean `streaming_data.json` (committed) with only service IDs and the query date.
+Fetches current US streaming availability for all 100 movies from the Streaming Availability API. Saves full API responses to `streaming_data_raw.json` (gitignored) and generates a clean `streaming_data.json` (committed) with service IDs and a per-movie `fetched_at` date.
 
-**Requires:** `RAPIDAPI_KEY` set in `.env`
+**Requires:** `RAPIDAPI_KEY` set in `.env` (not needed for `--clean-only`)
 **Quota:** 100 API requests — uses the full free-tier daily allowance. Confirm with the user before running.
+
+## CLI modes
+
+| Flag | Behavior |
+|------|----------|
+| *(none)* | Fetch all movies **and** write clean output |
+| `--fetch-only` | Fetch raw data only; skip writing `streaming_data.json` |
+| `--clean-only` | Re-generate `streaming_data.json` from existing raw cache; no API calls |
 
 ## Steps
 
