@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Streaming the Top 100 | NYT Best Movies of the 21st Century</title>
+  <meta name="description" content="Find where to stream the NYT's 100 Best Movies of the 21st Century. Filter by Netflix, Hulu, Prime Video, and more. Track what you've seen and build your watchlist.">
+  <meta property="og:title" content="Streaming the Top 100 | NYT Best Movies of the 21st Century">
+  <meta property="og:description" content="Find where to stream the NYT's 100 Best Movies of the 21st Century. Filter by service, track what you've seen, and build your watchlist.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Streaming the Top 100 | NYT Best Movies of the 21st Century">
+  <meta name="twitter:description" content="Find where to stream the NYT's 100 Best Movies of the 21st Century. Filter by service, track what you've seen, and build your watchlist.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -26,6 +34,11 @@
       --tag-peacock: #000000;
       --tag-hbo: #b829d7;
       --tag-apple: #555555;
+      --tag-paramount: #0064ff;
+      --tag-tubi: #fa382f;
+      --tag-starz: #1a1a2e;
+      --tag-plutotv: #0b0c1d;
+      --tag-criterion: #c41230;
       --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
       --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
       --radius: 10px;
@@ -70,6 +83,18 @@
       position: relative;
       z-index: 1;
     }
+    .header-disclaimer {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 20px;
+      padding: 0.2rem 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
 
     /* ─── Stats Bar ─── */
     .stats-bar {
@@ -96,11 +121,53 @@
       color: var(--text-muted);
     }
 
+    /* ─── Progress Bar ─── */
+    .progress-bar-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 0.75rem;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #2563eb, #60a5fa);
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+    .progress-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 0.2rem;
+    }
+
+    /* ─── Sticky Filter Panel ─── */
+    .filter-panel {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      padding-bottom: 0.75rem;
+    }
+    .filter-panel-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 0.75rem;
+      background: var(--surface);
+      border: 1px solid #dce5ef;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.05);
+    }
+
     /* ─── Controls ─── */
     .controls {
-      max-width: 1100px;
-      margin: 1.5rem auto 0;
-      padding: 0 1.5rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
@@ -141,13 +208,11 @@
 
     /* ─── Streaming Filter Pills ─── */
     .filter-pills {
-      max-width: 1100px;
-      margin: 0.75rem auto 0;
-      padding: 0 1.5rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
       align-items: center;
+      margin-top: 0.6rem;
     }
     .filter-pills .pill-label {
       font-size: 0.8rem;
@@ -170,21 +235,44 @@
       color: var(--text-muted);
     }
     .pill:hover { border-color: var(--primary); color: var(--primary); }
+    .pill-count {
+      display: inline-block;
+      margin-left: 0.3rem;
+      font-size: 0.72rem;
+      opacity: 0.6;
+    }
     .pill.active {
       background: var(--primary);
       border-color: var(--primary);
       color: white;
     }
+    /* Brand-colored active pills for streaming services */
+    .pill.active[data-service="netflix"]   { background: var(--tag-netflix);   border-color: var(--tag-netflix); }
+    .pill.active[data-service="disney"]    { background: var(--tag-disney);    border-color: var(--tag-disney); }
+    .pill.active[data-service="hulu"]      { background: var(--tag-hulu);      border-color: var(--tag-hulu); color: #000; }
+    .pill.active[data-service="prime"]     { background: var(--tag-prime);     border-color: var(--tag-prime); }
+    .pill.active[data-service="peacock"]   { background: var(--tag-peacock);   border-color: var(--tag-peacock); }
+    .pill.active[data-service="hbo"]       { background: var(--tag-hbo);       border-color: var(--tag-hbo); }
+    .pill.active[data-service="apple"]     { background: var(--tag-apple);     border-color: var(--tag-apple); }
+    .pill.active[data-service="paramount"] { background: var(--tag-paramount); border-color: var(--tag-paramount); }
+    .pill.active[data-service="tubi"]      { background: var(--tag-tubi);      border-color: var(--tag-tubi); }
+    .pill.active[data-service="starz"]     { background: var(--tag-starz);     border-color: var(--tag-starz); }
+    .pill.active[data-service="plutotv"]   { background: var(--tag-plutotv);   border-color: var(--tag-plutotv); }
+    .pill.active[data-service="criterion"] { background: var(--tag-criterion); border-color: var(--tag-criterion); }
+    .us-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-left: auto;
+      white-space: nowrap;
+    }
 
     /* ─── Show Filter Toggles ─── */
     .show-filters {
-      max-width: 1100px;
-      margin: 0.75rem auto 0;
-      padding: 0 1.5rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
       align-items: center;
+      margin-top: 0.6rem;
     }
     .show-filters .pill-label {
       font-size: 0.8rem;
@@ -202,7 +290,7 @@
       padding: 0 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     .movie-card {
@@ -211,19 +299,29 @@
       align-items: center;
       gap: 1rem;
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1px solid #dce5ef;
       border-radius: var(--radius);
       padding: 0.85rem 1.1rem;
-      transition: box-shadow 0.15s, border-color 0.15s;
+      transition: box-shadow 0.15s, border-color 0.15s, opacity 0.4s, transform 0.4s;
+      border-left: 3px solid var(--rank-color, #1e3a5f);
     }
     .movie-card:hover {
       box-shadow: var(--shadow-md);
       border-color: #b0c4de;
+      border-left-color: var(--rank-color, #1e3a5f);
     }
     .movie-card.is-seen {
       background: var(--seen-bg);
       border-color: #93c5fd;
+      border-left-color: var(--rank-color, #94a3b8);
     }
+
+    /* Card entrance animation */
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .movie-card { animation: cardFadeIn 0.35s ease-out both; }
 
     /* Rank badge */
     .rank-badge {
@@ -285,6 +383,11 @@
     .stream-tag.peacock   { background: var(--tag-peacock); }
     .stream-tag.hbo       { background: var(--tag-hbo); }
     .stream-tag.apple     { background: var(--tag-apple); }
+    .stream-tag.paramount { background: var(--tag-paramount); }
+    .stream-tag.tubi      { background: var(--tag-tubi); }
+    .stream-tag.starz     { background: var(--tag-starz); }
+    .stream-tag.plutotv   { background: var(--tag-plutotv); }
+    .stream-tag.criterion { background: var(--tag-criterion); }
 
     /* Actions */
     .movie-actions {
@@ -324,6 +427,38 @@
     }
     .action-btn .icon { font-size: 1rem; line-height: 1; }
 
+    /* ─── Back to Top Button ─── */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(37,99,235,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s, background 0.15s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .back-to-top:hover {
+      background: var(--primary-dark);
+    }
+
     /* ─── Empty State ─── */
     .empty-state {
       text-align: center;
@@ -333,6 +468,32 @@
     .empty-state .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
     .empty-state p { font-size: 0.95rem; }
 
+    /* ─── Info Section ─── */
+    .info-section {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .info-section h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .info-section p, .info-section li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .info-section ul {
+      margin: 0.5rem 0 0 1.25rem;
+    }
+    .info-section ul li { margin-bottom: 0.25rem; }
+    .info-section + .info-section { margin-top: 0.75rem; }
+
     /* ─── Footer ─── */
     footer {
       text-align: center;
@@ -340,12 +501,16 @@
       font-size: 0.8rem;
       color: var(--text-muted);
       border-top: 1px solid var(--border);
+      margin-top: 2rem;
     }
+    footer p { margin-bottom: 0.4rem; }
+    footer p:last-child { margin-bottom: 0; }
 
     /* ─── Responsive ─── */
     @media (max-width: 700px) {
       header h1 { font-size: 1.6rem; }
       .stats-bar { gap: 1rem; }
+      .filter-panel-inner { padding: 0.75rem 1rem 0.6rem; }
       .movie-card {
         grid-template-columns: 40px 1fr;
         gap: 0.75rem;
@@ -356,6 +521,7 @@
       }
       .rank-badge { width: 36px; height: 36px; font-size: 0.8rem; }
       .search-input { width: 150px; }
+      .back-to-top { bottom: 1.25rem; right: 1.25rem; width: 40px; height: 40px; font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -364,6 +530,7 @@
 <header>
   <h1>Streaming the <span>Top 100</span></h1>
   <p>NYT's Best Movies of the 21st Century &mdash; Track, filter &amp; find where to stream</p>
+  <p class="header-disclaimer">Unofficial fan project &mdash; not affiliated with or endorsed by The New York Times</p>
 </header>
 
 <div class="stats-bar">
@@ -385,45 +552,84 @@
   </div>
 </div>
 
-<div class="controls">
-  <div class="control-group">
-    <label for="sort-select">Sort</label>
-    <select id="sort-select">
-      <option value="rank">Rank</option>
-      <option value="alpha">A &ndash; Z</option>
-      <option value="year">Year Released</option>
-    </select>
+<div class="filter-panel">
+  <div class="filter-panel-inner">
+    <div class="controls">
+      <div class="control-group">
+        <label for="sort-select">Sort</label>
+        <select id="sort-select">
+          <option value="rank">Rank</option>
+          <option value="alpha">A &ndash; Z</option>
+          <option value="year">Year Released</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="search-box">Search</label>
+        <input type="text" id="search-box" class="search-input" placeholder="Title, director...">
+      </div>
+      <span class="spacer"></span>
+    </div>
+
+    <div class="filter-pills">
+      <span class="pill-label">Streaming On</span>
+      <button class="pill" data-service="netflix">Netflix</button>
+      <button class="pill" data-service="disney">Disney+</button>
+      <button class="pill" data-service="hulu">Hulu</button>
+      <button class="pill" data-service="prime">Prime Video</button>
+      <button class="pill" data-service="peacock">Peacock</button>
+      <button class="pill" data-service="hbo">Max</button>
+      <button class="pill" data-service="apple">Apple TV+</button>
+      <button class="pill" data-service="paramount">Paramount+</button>
+      <button class="pill" data-service="tubi">Tubi</button>
+      <button class="pill" data-service="starz">Starz</button>
+      <button class="pill" data-service="plutotv">Pluto TV</button>
+      <button class="pill" data-service="criterion">Criterion</button>
+      <span class="us-note">🇺🇸 US availability only</span>
+    </div>
+
+    <div class="show-filters">
+      <span class="pill-label">Show</span>
+      <button class="pill active" data-show="all">All</button>
+      <button class="pill" data-show="unseen">Unseen Only</button>
+      <button class="pill" data-show="want">Want to See</button>
+      <button class="pill" data-show="seen">Already Seen</button>
+    </div>
   </div>
-  <div class="control-group">
-    <label for="search-box">Search</label>
-    <input type="text" id="search-box" class="search-input" placeholder="Title, director...">
-  </div>
-  <span class="spacer"></span>
 </div>
 
-<div class="filter-pills">
-  <span class="pill-label">Streaming On</span>
-  <button class="pill" data-service="netflix">Netflix</button>
-  <button class="pill" data-service="disney">Disney+</button>
-  <button class="pill" data-service="hulu">Hulu</button>
-  <button class="pill" data-service="prime">Prime Video</button>
-  <button class="pill" data-service="peacock">Peacock</button>
-  <button class="pill" data-service="hbo">Max</button>
-  <button class="pill" data-service="apple">Apple TV+</button>
-</div>
-
-<div class="show-filters">
-  <span class="pill-label">Show</span>
-  <button class="pill active" data-show="all">All</button>
-  <button class="pill" data-show="unseen">Unseen Only</button>
-  <button class="pill" data-show="want">Want to See</button>
-  <button class="pill" data-show="seen">Already Seen</button>
+<div class="progress-bar-container">
+  <div class="progress-bar"><div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div></div>
+  <div class="progress-label" id="progress-label">0 of 100 seen</div>
 </div>
 
 <div class="movie-list" id="movie-list"></div>
 
+<div class="info-section">
+  <h2>About This Site</h2>
+  <p>This site helps you find where to stream the movies from The New York Times' "Best Movies of the 21st Century" list. Filter by streaming service, track which films you've seen, and build your watchlist &mdash; all in one place.</p>
+</div>
+
+<div class="info-section">
+  <h2>How to Use</h2>
+  <ul>
+    <li><strong>Filter by service:</strong> Click a streaming service pill (Netflix, Hulu, etc.) to see only movies available on that platform.</li>
+    <li><strong>Mark as seen:</strong> Click "Seen" on any movie to track your progress. Click again to undo.</li>
+    <li><strong>Want to see:</strong> Click "Want to See" to build your personal watchlist.</li>
+    <li><strong>Search:</strong> Type a title, director, or year into the search box to narrow results.</li>
+    <li><strong>Sort:</strong> Use the dropdown to sort by rank, title, or release year.</li>
+    <li><strong>Show filters:</strong> Toggle between All, Unseen Only, Want to See, or Already Seen.</li>
+  </ul>
+  <p style="margin-top: 0.5rem;">Your seen/watchlist data is saved locally in your browser and will persist between visits.</p>
+</div>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
 <footer>
-  Data based on The New York Times' "100 Best Movies of the 21st Century" list. Streaming availability is simulated &amp; not real-time.
+  <p><strong>Disclaimer:</strong> This is an unofficial, independent project. It is not affiliated with, endorsed by, or connected to The New York Times in any way.</p>
+  <p>Streaming availability data provided by the <a href="https://www.movieofthenight.com/" style="color: var(--primary);">Streaming Availability API</a> (Movie of the Night) via RapidAPI.</p>
+  <p>Streaming data fetched: <span id="data-updated-date">unknown</span>. Availability may change &mdash; check your streaming service to confirm.</p>
+  <p>Site last updated: March 14, 2026.</p>
+  <p>Found a bug or missing a movie? <a href="https://github.com/BarkleyBG/nyt_movies_streaming/issues" style="color: var(--primary);">Submit feedback on GitHub</a>.</p>
 </footer>
 
 <script>
@@ -533,34 +739,47 @@ const MOVIES = [
 
 // ─── Streaming Services ───
 const SERVICES = [
-  { id: "netflix", name: "Netflix" },
-  { id: "disney",  name: "Disney+" },
-  { id: "hulu",    name: "Hulu" },
-  { id: "prime",   name: "Prime Video" },
-  { id: "peacock", name: "Peacock" },
-  { id: "hbo",     name: "Max" },
-  { id: "apple",   name: "Apple TV+" }
+  { id: "netflix",   name: "Netflix" },
+  { id: "disney",    name: "Disney+" },
+  { id: "hulu",      name: "Hulu" },
+  { id: "prime",     name: "Prime Video" },
+  { id: "peacock",   name: "Peacock" },
+  { id: "hbo",       name: "Max" },
+  { id: "apple",     name: "Apple TV+" },
+  { id: "paramount", name: "Paramount+" },
+  { id: "tubi",      name: "Tubi" },
+  { id: "starz",     name: "Starz" },
+  { id: "plutotv",   name: "Pluto TV" },
+  { id: "criterion", name: "Criterion" }
 ];
 
-// Deterministic seeded random so streaming assignments don't shuffle on reload
-function seededRandom(seed) {
-  let s = seed;
-  return function() {
-    s = (s * 16807 + 0) % 2147483647;
-    return (s - 1) / 2147483646;
-  };
+// Load real streaming data from JSON (generated by fetch_streaming.py)
+async function loadStreamingData() {
+  try {
+    const resp = await fetch("streaming_data.json");
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    MOVIES.forEach(m => {
+      const entry = data[String(m.rank)];
+      m.streaming = entry ? (entry.services || []) : [];
+      m.streamingFetchedAt = entry ? (entry.fetched_at || null) : null;
+    });
+    // Show last-updated date from the file's metadata or fallback
+    if (data._updated) {
+      document.getElementById("data-updated-date").textContent = data._updated;
+      window._streamingDataDate = data._updated;
+    }
+    // Update pill counts
+    document.querySelectorAll(".filter-pills .pill").forEach(pill => {
+      const svc = pill.dataset.service;
+      const count = MOVIES.filter(m => m.streaming.includes(svc)).length;
+      pill.innerHTML = pill.textContent.trim() + (count > 0 ? `<span class="pill-count">${count}</span>` : '');
+    });
+  } catch (e) {
+    // Fallback: no streaming data available yet (script hasn't been run)
+    MOVIES.forEach(m => { m.streaming = []; });
+  }
 }
-
-// Assign random streaming services (0, 1, or 2 per movie)
-function assignStreaming() {
-  const rng = seededRandom(42);
-  MOVIES.forEach(m => {
-    const count = Math.floor(rng() * 3); // 0, 1, or 2
-    const shuffled = [...SERVICES].sort(() => rng() - 0.5);
-    m.streaming = shuffled.slice(0, count).map(s => s.id);
-  });
-}
-assignStreaming();
 
 // ─── State ───
 const STORAGE_KEY = "nyt100_user_data";
@@ -645,7 +864,7 @@ function render() {
     return;
   }
 
-  listEl.innerHTML = movies.map(m => {
+  listEl.innerHTML = movies.map((m, i) => {
     const s = userState[m.rank] || {};
     const seenClass = s.seen ? "is-seen" : "";
     const seenActive = s.seen ? "active-seen" : "";
@@ -655,13 +874,21 @@ function render() {
       return `<span class="stream-tag ${svc}">${sObj.name}</span>`;
     }).join("");
 
+    // Rank gradient: navy (#30, #58, #95) → light blue (#147, #197, #253)
+    const t = (m.rank - 1) / 99;
+    const r = Math.round(30 + t * 117);
+    const g = Math.round(58 + t * 139);
+    const b = Math.round(149 + t * 104);
+    const rankColor = `rgb(${r},${g},${b})`;
+    const delay = Math.min(i * 0.03, 0.6);
+
     return `
-      <div class="movie-card ${seenClass}" data-rank="${m.rank}">
-        <div class="rank-badge">${m.rank}</div>
+      <div class="movie-card ${seenClass}" data-rank="${m.rank}" style="--rank-color:${rankColor}; animation-delay:${delay}s">
+        <div class="rank-badge" style="background:linear-gradient(135deg, ${rankColor}, ${rankColor}dd)">${m.rank}</div>
         <div class="movie-info">
           <div class="movie-title">${m.title}</div>
           <div class="movie-meta">${m.year} &middot; ${m.director}</div>
-          ${tags ? `<div class="movie-tags">${tags}</div>` : ""}
+          ${tags ? `<div class="movie-tags" title="Streaming availability as of ${m.streamingFetchedAt || window._streamingDataDate || 'unknown'}">${tags}</div>` : ""}
         </div>
         <div class="movie-actions">
           <button class="action-btn ${seenActive}" data-action="seen" data-rank="${m.rank}">
@@ -673,6 +900,10 @@ function render() {
         </div>
       </div>`;
   }).join("");
+
+  // Update progress bar
+  document.getElementById("progress-fill").style.width = `${seenCount}%`;
+  document.getElementById("progress-label").textContent = `${seenCount} of 100 seen`;
 }
 
 // ─── Event Listeners ───
@@ -727,9 +958,24 @@ document.querySelectorAll(".show-filters .pill").forEach(pill => {
   });
 });
 
+// ─── Back to Top Button ───
+const backToTopBtn = document.getElementById("back-to-top");
+window.addEventListener("scroll", () => {
+  backToTopBtn.classList.toggle("visible", window.scrollY > 400);
+}, { passive: true });
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
 // ─── Initial render ───
-render();
+(async () => {
+  await loadStreamingData();
+  render();
+})();
 </script>
+
+<!-- Analytics: replace the data-domain value with your site's domain after setting up at https://plausible.io -->
+<script defer data-domain="barkleybg.github.io/nyt_movies_streaming" src="https://plausible.io/js/script.js"></script>
 
 </body>
 </html>
