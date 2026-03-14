@@ -83,6 +83,18 @@
       position: relative;
       z-index: 1;
     }
+    .header-disclaimer {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 20px;
+      padding: 0.2rem 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
 
     /* ─── Stats Bar ─── */
     .stats-bar {
@@ -423,6 +435,7 @@
 <header>
   <h1>Streaming the <span>Top 100</span></h1>
   <p>NYT's Best Movies of the 21st Century &mdash; Track, filter &amp; find where to stream</p>
+  <p class="header-disclaimer">Unofficial fan project &mdash; not affiliated with or endorsed by The New York Times</p>
 </header>
 
 <div class="stats-bar">
@@ -508,7 +521,8 @@
 <footer>
   <p><strong>Disclaimer:</strong> This is an unofficial, independent project. It is not affiliated with, endorsed by, or connected to The New York Times in any way.</p>
   <p>Streaming availability data provided by the <a href="https://www.movieofthenight.com/" style="color: var(--primary);">Streaming Availability API</a> (Movie of the Night) via RapidAPI.</p>
-  <p>Data last updated: <span id="data-updated-date">unknown</span>. Availability may change &mdash; check your streaming service to confirm.</p>
+  <p>Streaming data fetched: <span id="data-updated-date">unknown</span>. Availability may change &mdash; check your streaming service to confirm.</p>
+  <p>Site last updated: March 14, 2026.</p>
   <p>Found a bug or missing a movie? <a href="https://github.com/BarkleyBG/nyt_movies_streaming/issues" style="color: var(--primary);">Submit feedback on GitHub</a>.</p>
 </footer>
 
@@ -646,6 +660,7 @@ async function loadStreamingData() {
     // Show last-updated date from the file's metadata or fallback
     if (data._updated) {
       document.getElementById("data-updated-date").textContent = data._updated;
+      window._streamingDataDate = data._updated;
     }
     // Update pill counts
     document.querySelectorAll(".filter-pills .pill").forEach(pill => {
@@ -758,7 +773,7 @@ function render() {
         <div class="movie-info">
           <div class="movie-title">${m.title}</div>
           <div class="movie-meta">${m.year} &middot; ${m.director}</div>
-          ${tags ? `<div class="movie-tags">${tags}</div>` : ""}
+          ${tags ? `<div class="movie-tags" title="Streaming availability as of ${window._streamingDataDate || 'unknown'}">${tags}</div>` : ""}
         </div>
         <div class="movie-actions">
           <button class="action-btn ${seenActive}" data-action="seen" data-rank="${m.rank}">
