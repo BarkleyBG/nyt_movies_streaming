@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Streaming the Top 100 | NYT Best Movies of the 21st Century</title>
-  <meta name="description" content="Find where to stream the NYT's 100 Best Movies of the 21st Century. Filter by Netflix, Hulu, Prime Video, and more. Track what you've seen and build your watchlist.">
-  <meta property="og:title" content="Streaming the Top 100 | NYT Best Movies of the 21st Century">
-  <meta property="og:description" content="Find where to stream the NYT's 100 Best Movies of the 21st Century. Filter by service, track what you've seen, and build your watchlist.">
+  <title>Where to Stream the New York Times 100 Best Movies of the 21st Century</title>
+  <meta name="description" content="Find where to stream the New York Times' 100 Best Movies of the 21st Century. Filter by Netflix, Hulu, Prime Video, and more. Track what you've seen and build your watchlist.">
+  <meta property="og:title" content="Where to Stream the New York Times 100 Best Movies of the 21st Century">
+  <meta property="og:description" content="Find where to stream the New York Times' 100 Best Movies of the 21st Century. Filter by service, track what you've seen, and build your watchlist.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Streaming the Top 100 | NYT Best Movies of the 21st Century">
-  <meta name="twitter:description" content="Find where to stream the NYT's 100 Best Movies of the 21st Century. Filter by service, track what you've seen, and build your watchlist.">
+  <meta name="twitter:title" content="Where to Stream the New York Times 100 Best Movies of the 21st Century">
+  <meta name="twitter:description" content="Find where to stream the New York Times' 100 Best Movies of the 21st Century. Filter by service, track what you've seen, and build your watchlist.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
     <!-- Privacy-friendly analytics by Plausible -->
   <script async src="https://plausible.io/js/pa-T_VrUgi5cuKnLCtLgE0_0.js"></script>
@@ -82,10 +82,26 @@
       z-index: 1;
     }
     header h1 span { color: #60a5fa; }
+    .header-link {
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-link:hover span { text-decoration: underline; text-decoration-color: #60a5fa; }
     header p {
       margin-top: 0.4rem;
       color: #94a3b8;
       font-size: 0.95rem;
+      position: relative;
+      z-index: 1;
+    }
+    .header-tagline {
+      margin-top: 0.6rem;
+      color: #cbd5e1;
+      font-size: 0.88rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.55;
       position: relative;
       z-index: 1;
     }
@@ -271,6 +287,33 @@
       margin-left: auto;
       white-space: nowrap;
     }
+
+    /* ─── Panel Toggle Button ─── */
+    .panel-toggle-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      padding: 0;
+      margin-bottom: 0.6rem;
+      user-select: none;
+    }
+    .panel-toggle-btn:hover { color: var(--primary); }
+    .panel-toggle-btn .toggle-arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+      font-size: 0.7rem;
+    }
+    .filter-panel.panel-collapsed .toggle-arrow { transform: rotate(-90deg); }
+    .filter-panel.panel-collapsed .filter-panel-body { display: none; }
+    .filter-panel.panel-collapsed .filter-panel-inner { padding-bottom: 0.5rem; }
 
     /* ─── Show Filter Toggles ─── */
     .show-filters {
@@ -514,7 +557,7 @@
 
     /* ─── Responsive ─── */
     @media (max-width: 700px) {
-      header h1 { font-size: 1.6rem; }
+      header h1 { font-size: 1.4rem; }
       .stats-bar { gap: 1rem; }
       .filter-panel-inner { padding: 0.75rem 1rem 0.6rem; }
       .movie-card {
@@ -534,8 +577,9 @@
 <body>
 
 <header>
-  <h1>Streaming the <span>Top 100</span></h1>
-  <p>NYT's Best Movies of the 21st Century &mdash; Track, filter &amp; find where to stream</p>
+  <h1><a href="https://www.nytimes.com/interactive/2025/movies/best-movies-21st-century.html" target="_blank" rel="noopener" class="header-link">Where to Stream the <span>New York Times 100 Best Movies</span> of the 21st Century</a></h1>
+  <p>New York Times' Best Movies of the 21st Century &mdash; Track, filter &amp; find where to stream</p>
+  <p class="header-tagline">In 2025, the <em>New York Times</em> polled 500+ filmmakers and critics to crown the 100 greatest films of the 21st century. This site shows you exactly where to stream each one &mdash; filter by service, track what you've seen, and build your watchlist.</p>
   <p class="header-disclaimer">Unofficial fan project &mdash; not affiliated with or endorsed by The New York Times</p>
 </header>
 
@@ -558,47 +602,53 @@
   </div>
 </div>
 
-<div class="filter-panel">
+<div class="filter-panel" id="filter-panel">
   <div class="filter-panel-inner">
-    <div class="controls">
-      <div class="control-group">
-        <label for="sort-select">Sort</label>
-        <select id="sort-select">
-          <option value="rank">Rank</option>
-          <option value="alpha">A &ndash; Z</option>
-          <option value="year">Year Released</option>
-        </select>
+    <button class="panel-toggle-btn" id="panel-toggle" aria-expanded="true" aria-controls="filter-panel-body">
+      <span class="toggle-arrow">▼</span> Filters
+    </button>
+    <div class="filter-panel-body" id="filter-panel-body">
+      <div class="controls">
+        <div class="control-group">
+          <label for="sort-select">Sort</label>
+          <select id="sort-select">
+            <option value="rank">Rank</option>
+            <option value="alpha">A &ndash; Z</option>
+            <option value="year">Year Released</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label for="search-box">Search</label>
+          <input type="text" id="search-box" class="search-input" placeholder="Title, director...">
+        </div>
+        <span class="spacer"></span>
       </div>
-      <div class="control-group">
-        <label for="search-box">Search</label>
-        <input type="text" id="search-box" class="search-input" placeholder="Title, director...">
+
+      <div class="filter-pills">
+        <span class="pill-label">Streaming On</span>
+        <button class="pill active" id="pill-all-services">All</button>
+        <button class="pill" data-service="netflix">Netflix</button>
+        <button class="pill" data-service="disney">Disney+</button>
+        <button class="pill" data-service="hulu">Hulu</button>
+        <button class="pill" data-service="prime">Prime Video</button>
+        <button class="pill" data-service="peacock">Peacock</button>
+        <button class="pill" data-service="hbo">Max</button>
+        <button class="pill" data-service="apple">Apple TV+</button>
+        <button class="pill" data-service="paramount">Paramount+</button>
+        <button class="pill" data-service="tubi">Tubi</button>
+        <button class="pill" data-service="starz">Starz</button>
+        <button class="pill" data-service="plutotv">Pluto TV</button>
+        <button class="pill" data-service="criterion">Criterion</button>
+        <span class="us-note">🇺🇸 US availability only</span>
       </div>
-      <span class="spacer"></span>
-    </div>
 
-    <div class="filter-pills">
-      <span class="pill-label">Streaming On</span>
-      <button class="pill" data-service="netflix">Netflix</button>
-      <button class="pill" data-service="disney">Disney+</button>
-      <button class="pill" data-service="hulu">Hulu</button>
-      <button class="pill" data-service="prime">Prime Video</button>
-      <button class="pill" data-service="peacock">Peacock</button>
-      <button class="pill" data-service="hbo">Max</button>
-      <button class="pill" data-service="apple">Apple TV+</button>
-      <button class="pill" data-service="paramount">Paramount+</button>
-      <button class="pill" data-service="tubi">Tubi</button>
-      <button class="pill" data-service="starz">Starz</button>
-      <button class="pill" data-service="plutotv">Pluto TV</button>
-      <button class="pill" data-service="criterion">Criterion</button>
-      <span class="us-note">🇺🇸 US availability only</span>
-    </div>
-
-    <div class="show-filters">
-      <span class="pill-label">Show</span>
-      <button class="pill active" data-show="all">All</button>
-      <button class="pill" data-show="unseen">Unseen Only</button>
-      <button class="pill" data-show="want">Want to See</button>
-      <button class="pill" data-show="seen">Already Seen</button>
+      <div class="show-filters">
+        <span class="pill-label">Show</span>
+        <button class="pill active" data-show="all">All</button>
+        <button class="pill" data-show="unseen">Unseen Only</button>
+        <button class="pill" data-show="want">Want to See</button>
+        <button class="pill" data-show="seen">Already Seen</button>
+      </div>
     </div>
   </div>
 </div>
@@ -618,7 +668,7 @@
 <div class="info-section">
   <h2>How to Use</h2>
   <ul>
-    <li><strong>Filter by service:</strong> Click a streaming service pill (Netflix, Hulu, etc.) to see only movies available on that platform.</li>
+    <li><strong>Filter by service:</strong> Click one or more streaming service pills (Netflix, Hulu, etc.) to see movies available on those platforms. Click <em>All</em> to clear the selection.</li>
     <li><strong>Mark as seen:</strong> Click "Seen" on any movie to track your progress. Click again to undo.</li>
     <li><strong>Want to see:</strong> Click "Want to See" to build your personal watchlist.</li>
     <li><strong>Search:</strong> Type a title, director, or year into the search box to narrow results.</li>
@@ -803,7 +853,7 @@ function saveState(state) {
 }
 
 let userState = loadState();          // { [rank]: { seen: bool, want: bool } }
-let activeService = null;             // streaming filter
+let activeServices = new Set();       // streaming filter (multi-select)
 let activeShow = "all";               // show filter
 let sortMode = "rank";
 let searchQuery = "";
@@ -824,9 +874,9 @@ function getFiltered() {
     );
   }
 
-  // Streaming filter
-  if (activeService) {
-    list = list.filter(m => m.streaming.includes(activeService));
+  // Streaming filter (multi-select: show movies on any selected service)
+  if (activeServices.size > 0) {
+    list = list.filter(m => m.streaming.some(s => activeServices.has(s)));
   }
 
   // Show filter
@@ -938,18 +988,30 @@ document.getElementById("search-box").addEventListener("input", e => {
   render();
 });
 
-// Streaming filter pills
-document.querySelectorAll(".filter-pills .pill").forEach(pill => {
+// Streaming filter pills (multi-select)
+function updateAllServicesPill() {
+  const allPill = document.getElementById("pill-all-services");
+  allPill.classList.toggle("active", activeServices.size === 0);
+}
+
+document.getElementById("pill-all-services").addEventListener("click", () => {
+  activeServices.clear();
+  document.querySelectorAll(".filter-pills .pill[data-service]").forEach(p => p.classList.remove("active"));
+  updateAllServicesPill();
+  render();
+});
+
+document.querySelectorAll(".filter-pills .pill[data-service]").forEach(pill => {
   pill.addEventListener("click", () => {
     const svc = pill.dataset.service;
-    if (activeService === svc) {
-      activeService = null;
+    if (activeServices.has(svc)) {
+      activeServices.delete(svc);
       pill.classList.remove("active");
     } else {
-      document.querySelectorAll(".filter-pills .pill").forEach(p => p.classList.remove("active"));
-      activeService = svc;
+      activeServices.add(svc);
       pill.classList.add("active");
     }
+    updateAllServicesPill();
     render();
   });
 });
@@ -962,6 +1024,14 @@ document.querySelectorAll(".show-filters .pill").forEach(pill => {
     pill.classList.add("active");
     render();
   });
+});
+
+// ─── Filter Panel Toggle ───
+document.getElementById("panel-toggle").addEventListener("click", () => {
+  const panel = document.getElementById("filter-panel");
+  const btn = document.getElementById("panel-toggle");
+  const collapsed = panel.classList.toggle("panel-collapsed");
+  btn.setAttribute("aria-expanded", String(!collapsed));
 });
 
 // ─── Back to Top Button ───

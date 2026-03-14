@@ -32,7 +32,7 @@ const MOVIES = [
 function getFiltered(
   movies,
   userState,
-  { searchQuery = "", activeService = null, activeShow = "all", sortMode = "rank" } = {}
+  { searchQuery = "", activeServices = new Set(), activeShow = "all", sortMode = "rank" } = {}
 ) {
   let list = [...movies];
 
@@ -47,9 +47,9 @@ function getFiltered(
     );
   }
 
-  // Streaming service filter (single active service)
-  if (activeService) {
-    list = list.filter((m) => m.streaming.includes(activeService));
+  // Streaming service filter (multi-select: show movies on any selected service)
+  if (activeServices.size > 0) {
+    list = list.filter((m) => m.streaming.some((s) => activeServices.has(s)));
   }
 
   // Watch-status filter
@@ -122,36 +122,52 @@ describe("getFiltered — search", () => {
 describe("getFiltered — streaming service filter", () => {
   test("filters by single service (netflix)", () => {
     // Mulholland Drive (netflix) and Moonlight (netflix + prime)
-    const result = getFiltered(MOVIES, {}, { activeService: "netflix" });
+    const result = getFiltered(MOVIES, {}, { activeServices: new Set(["netflix"]) });
     expect(result).toHaveLength(2);
     expect(result.map((m) => m.title)).toContain("Mulholland Drive");
     expect(result.map((m) => m.title)).toContain("Moonlight");
   });
 
   test("returns empty array when no movies on a service", () => {
-    expect(getFiltered(MOVIES, {}, { activeService: "disney" })).toHaveLength(0);
+    expect(getFiltered(MOVIES, {}, { activeServices: new Set(["disney"]) })).toHaveLength(0);
   });
 
   test("handles movies on multiple streaming services", () => {
     // Prime: There Will Be Blood + Moonlight
-    const result = getFiltered(MOVIES, {}, { activeService: "prime" });
+    const result = getFiltered(MOVIES, {}, { activeServices: new Set(["prime"]) });
     expect(result).toHaveLength(2);
   });
 
-  test("null activeService returns all movies", () => {
-    expect(getFiltered(MOVIES, {}, { activeService: null })).toHaveLength(5);
+  test("empty activeServices set returns all movies", () => {
+    expect(getFiltered(MOVIES, {}, { activeServices: new Set() })).toHaveLength(5);
   });
 
   test("hbo filter returns Parasite only", () => {
-    const result = getFiltered(MOVIES, {}, { activeService: "hbo" });
+    const result = getFiltered(MOVIES, {}, { activeServices: new Set(["hbo"]) });
     expect(result).toHaveLength(1);
     expect(result[0].title).toBe("Parasite");
   });
 
   test("movies with empty streaming array are excluded by any service filter", () => {
     // In the Mood for Love has streaming: []
-    const result = getFiltered(MOVIES, {}, { activeService: "prime" });
+    const result = getFiltered(MOVIES, {}, { activeServices: new Set(["prime"]) });
     expect(result.map((m) => m.title)).not.toContain("In the Mood for Love");
+  });
+
+  test("multi-select: netflix + prime returns union of results", () => {
+    // netflix: Mulholland Drive, Moonlight; prime: There Will Be Blood, Moonlight
+    // union: Mulholland Drive, There Will Be Blood, Moonlight (3 unique)
+    const result = getFiltered(MOVIES, {}, { activeServices: new Set(["netflix", "prime"]) });
+    expect(result).toHaveLength(3);
+    expect(result.map((m) => m.title)).toContain("Mulholland Drive");
+    expect(result.map((m) => m.title)).toContain("There Will Be Blood");
+    expect(result.map((m) => m.title)).toContain("Moonlight");
+  });
+
+  test("multi-select: netflix + hbo returns 3 movies", () => {
+    // netflix: Mulholland Drive, Moonlight; hbo: Parasite
+    const result = getFiltered(MOVIES, {}, { activeServices: new Set(["netflix", "hbo"]) });
+    expect(result).toHaveLength(3);
   });
 });
 
@@ -251,7 +267,7 @@ describe("getFiltered — combined filters", () => {
     // 'light' matches Moonlight (netflix); only 1 result
     const result = getFiltered(MOVIES, {}, {
       searchQuery: "light",
-      activeService: "netflix",
+      activeServices: new Set(["netflix"]),
     });
     expect(result).toHaveLength(1);
     expect(result[0].title).toBe("Moonlight");
@@ -261,7 +277,7 @@ describe("getFiltered — combined filters", () => {
     // Moonlight is on netflix and marked seen
     const userState = { 5: { seen: true } };
     const result = getFiltered(MOVIES, userState, {
-      activeService: "netflix",
+      activeServices: new Set(["netflix"]),
       activeShow: "unseen",
     });
     // Only Mulholland Drive (netflix, not seen) remains
@@ -274,7 +290,7 @@ describe("getFiltered — combined filters", () => {
     const userState = {}; // Moonlight unseen
     const result = getFiltered(MOVIES, userState, {
       searchQuery: "moon",
-      activeService: "prime",
+      activeServices: new Set(["prime"]),
       activeShow: "unseen",
       sortMode: "alpha",
     });
