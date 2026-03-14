@@ -46,12 +46,12 @@ async function freshLoad({ page }) {
 test.describe("Page Load", () => {
   test("has the correct page title", async ({ page }) => {
     await loadApp({ page });
-    await expect(page).toHaveTitle(/Streaming the Top 100/);
+    await expect(page).toHaveTitle(/New York Times 100 Best Movies/);
   });
 
-  test("header contains 'Top 100' text", async ({ page }) => {
+  test("header contains 'New York Times' text", async ({ page }) => {
     await loadApp({ page });
-    await expect(page.locator("header h1")).toContainText("Top 100");
+    await expect(page.locator("header h1")).toContainText("New York Times");
   });
 
   test("renders exactly 100 movie cards", async ({ page }) => {
@@ -204,8 +204,8 @@ test.describe("Sort", () => {
 test.describe("Streaming Service Filter Pills", () => {
   test.beforeEach(loadApp);
 
-  test("no streaming pill is active on load", async ({ page }) => {
-    await expect(page.locator(".filter-pills .pill.active")).toHaveCount(0);
+  test("no service-specific streaming pill is active on load", async ({ page }) => {
+    await expect(page.locator(".filter-pills .pill[data-service].active")).toHaveCount(0);
   });
 
   test("clicking a pill activates it", async ({ page }) => {
@@ -219,11 +219,11 @@ test.describe("Streaming Service Filter Pills", () => {
     await expect(page.locator('[data-service="netflix"]')).not.toHaveClass(/active/);
   });
 
-  test("only one streaming pill can be active at a time", async ({ page }) => {
+  test("multiple streaming pills can be active at once (multi-select)", async ({ page }) => {
     await page.click('[data-service="netflix"]');
     await page.click('[data-service="hbo"]');
-    await expect(page.locator(".filter-pills .pill.active")).toHaveCount(1);
-    await expect(page.locator('[data-service="netflix"]')).not.toHaveClass(/active/);
+    await expect(page.locator(".filter-pills .pill[data-service].active")).toHaveCount(2);
+    await expect(page.locator('[data-service="netflix"]')).toHaveClass(/active/);
     await expect(page.locator('[data-service="hbo"]')).toHaveClass(/active/);
   });
 
