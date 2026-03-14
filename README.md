@@ -1,8 +1,8 @@
 # Streaming the Top 100
 
-**Which of the NYT's 100 best movies of the 21st century can you stream right now?**
+**Which of the New York Times' (NYT) 100 best movies of the 21st century can you stream right now?**
 
-A single-page tracker that overlays real-time US streaming availability on the [New York Times' 2025 Best Movies of the 21st Century](https://www.nytimes.com/interactive/2025/movies/best-movies-21st-century.html) list. Mark films as seen or want-to-watch; everything saves locally in your browser.
+A single-page tracker that overlays real-time US streaming availability on the [NYT's 2025 Best Movies of the 21st Century](https://www.nytimes.com/interactive/2025/movies/best-movies-21st-century.html) list. Mark films as seen or want-to-watch; everything saves locally in your browser.
 
 ---
 
@@ -20,8 +20,8 @@ A single-page tracker that overlays real-time US streaming availability on the [
 
 ```bash
 # 1. Clone
-git clone https://github.com/your-username/nyt-movies.git
-cd nyt-movies
+git clone https://github.com/BarkleyBG/nyt_movies_streaming.git
+cd nyt_movies_streaming
 
 # 2. Serve (any static server works)
 python3 -m http.server 3001
@@ -131,4 +131,4 @@ npm run test:all
 
 - Streaming availability data is US-only and may lag reality by days or weeks.
 - The NYT list is used for personal, non-commercial reference only.
-- This project is not affiliated with the New York Times.
+- This project is not affiliated with the NYT.
