@@ -131,4 +131,4 @@ npm run test:all
 
 - Streaming availability data is US-only and may lag reality by days or weeks.
 - The NYT list is used for personal, non-commercial reference only.
-- This project is not affiliated with the NYT.
+- This project is not affiliated with the New York Times.
