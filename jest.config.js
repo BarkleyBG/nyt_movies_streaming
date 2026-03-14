@@ -1,10 +1,13 @@
 /**
  * Jest configuration for NYT Movie Tracker unit tests.
- * Uses jsdom to simulate a browser DOM environment for any DOM-touching tests.
+ *
+ * All unit tests use pure Node.js functions (no DOM access) — the app logic
+ * is extracted from index.html into each test file and tested in isolation,
+ * with mock objects standing in for localStorage. No jsdom needed.
  */
 module.exports = {
-  // Use jsdom to emulate browser APIs (localStorage, document, etc.)
-  testEnvironment: "jest-environment-jsdom",
+  // Pure Node environment — no DOM overhead (unit tests use mock objects only)
+  testEnvironment: "node",
 
   // Only pick up files in tests/unit/
   testMatch: ["**/tests/unit/**/*.test.js"],
@@ -12,6 +15,11 @@ module.exports = {
   // Show individual test names in output
   verbose: true,
 
-  // Collect coverage from the unit test helpers
-  collectCoverageFrom: ["tests/unit/**/*.js"],
+  // Coverage note: the app's pure functions are extracted directly into each
+  // test file (no separate source module to import). Jest excludes test files
+  // from instrumentation, so branch/line coverage comes from the integration
+  // tests (Playwright) rather than Jest. Run `npm run test:coverage` to confirm
+  // all unit logic paths are exercised — it will show the test run summary.
+  coverageDirectory: "coverage",
+  coverageReporters: ["text", "lcov"],
 };

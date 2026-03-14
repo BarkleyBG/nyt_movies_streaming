@@ -26,12 +26,12 @@ Or manually: `python -m http.server 3000`
 npx jest --testPathPattern="tests/unit"
 
 # Python tests
-C:/Python314/python.exe -m pytest tests/python/ -v
+python -m pytest tests/python/ -v
 
 # Integration tests
 npx playwright test tests/integration/app.spec.js
 
-# All 205 tests
+# All tests
 npm run test:all
 ```
 
@@ -49,6 +49,31 @@ npm run test:all
 ## localStorage
 
 Key: `nyt100_user_data` — do not rename without a migration.
+
+## Streaming services (12 total)
+
+`netflix` · `disney` · `hulu` · `prime` · `peacock` · `hbo` · `apple` ·
+`paramount` · `tubi` · `starz` · `plutotv` · `criterion`
+
+Defined in two places that **must stay in sync**:
+- `fetch_streaming.py` → `US_SERVICES` set
+- `index.html` → `SERVICES` array + HTML pills + CSS tag classes
+
+## Key design notes
+
+### Single-file app → test duplication
+Unit test files duplicate the pure functions (`getFiltered`, `loadState`,
+`saveState`, `calculateStats`) from `index.html` so they can run in isolation.
+Integration tests catch drift between the two copies.
+
+### Why `testEnvironment: "node"` (not jsdom)
+All unit test files use plain mock objects and pure functions — no `window`,
+`document`, or real `localStorage`. Dropping jsdom saves startup overhead.
+
+### Pill counts
+After `loadStreamingData()` resolves, each service pill gets a
+`<span class="pill-count">N</span>` showing how many of the 100 films
+are available on that service.
 
 ## Slash commands
 
