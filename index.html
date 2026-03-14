@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Streaming the Top 100 | NYT Best Movies of the 21st Century</title>
+  <meta name="description" content="Find where to stream the NYT's 100 Best Movies of the 21st Century. Filter by Netflix, Hulu, Prime Video, and more. Track what you've seen and build your watchlist.">
+  <meta property="og:title" content="Streaming the Top 100 | NYT Best Movies of the 21st Century">
+  <meta property="og:description" content="Find where to stream the NYT's 100 Best Movies of the 21st Century. Filter by service, track what you've seen, and build your watchlist.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Streaming the Top 100 | NYT Best Movies of the 21st Century">
+  <meta name="twitter:description" content="Find where to stream the NYT's 100 Best Movies of the 21st Century. Filter by service, track what you've seen, and build your watchlist.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -185,6 +193,12 @@
       background: var(--primary);
       border-color: var(--primary);
       color: white;
+    }
+    .us-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-left: auto;
+      white-space: nowrap;
     }
 
     /* ─── Show Filter Toggles ─── */
@@ -460,6 +474,7 @@
   <button class="pill" data-service="starz">Starz</button>
   <button class="pill" data-service="plutotv">Pluto TV</button>
   <button class="pill" data-service="criterion">Criterion</button>
+  <span class="us-note">🇺🇸 US availability only</span>
 </div>
 
 <div class="show-filters">
@@ -494,6 +509,7 @@
   <p><strong>Disclaimer:</strong> This is an unofficial, independent project. It is not affiliated with, endorsed by, or connected to The New York Times in any way.</p>
   <p>Streaming availability data provided by the <a href="https://www.movieofthenight.com/" style="color: var(--primary);">Streaming Availability API</a> (Movie of the Night) via RapidAPI.</p>
   <p>Data last updated: <span id="data-updated-date">unknown</span>. Availability may change &mdash; check your streaming service to confirm.</p>
+  <p>Found a bug or missing a movie? <a href="https://github.com/BarkleyBG/nyt_movies_streaming/issues" style="color: var(--primary);">Submit feedback on GitHub</a>.</p>
 </footer>
 
 <script>
@@ -816,6 +832,9 @@ document.querySelectorAll(".show-filters .pill").forEach(pill => {
   render();
 })();
 </script>
+
+<!-- Analytics: replace the data-domain value with your site's domain after setting up at https://plausible.io -->
+<script defer data-domain="barkleybg.github.io/nyt_movies_streaming" src="https://plausible.io/js/script.js"></script>
 
 </body>
 </html>
