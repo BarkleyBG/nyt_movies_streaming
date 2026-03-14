@@ -114,4 +114,4 @@ Do not change this key name without a migration path — existing users would lo
 - Do not run `fetch_streaming.py` autonomously — it consumes paid API quota (100 req/day limit).
 - Do not delete or overwrite `streaming_data.json` without user confirmation.
 - Do not add new npm dependencies to `package.json` without asking — the package is intentionally minimal (test-only deps).
-- Do not push to `main` or create PRs without explicit user instruction.
+- Do not push to `master` or create PRs without explicit user instruction.
