@@ -21,8 +21,8 @@ JavaScript functions in `index.html` are **not exported** (no ES modules, no Com
 ### Do not commit `.env`
 The file `.env` contains `RAPIDAPI_KEY` and is gitignored. Never include API keys in committed files.
 
-### Do not commit `streaming_data.json` with real API keys or PII
-`streaming_data.json` is committed (it's static data the app needs), but it should only contain movie metadata and service IDs. The `raw` field includes third-party API responses — do not expand what gets stored there.
+### Do not commit raw API data
+`streaming_data.json` is committed (it's the clean data the app needs) and should only contain service ID arrays and the `_updated` date. Full API responses live in `streaming_data_raw.json`, which is gitignored. Do not commit the raw file or add extra fields to the clean file.
 
 ---
 
@@ -32,7 +32,8 @@ The file `.env` contains `RAPIDAPI_KEY` and is gitignored. Never include API key
 |------|--------|
 | App HTML/CSS/JS | `index.html` |
 | Streaming data fetcher | `fetch_streaming.py` |
-| Fetched data (committed) | `streaming_data.json` |
+| Clean streaming data (committed) | `streaming_data.json` |
+| Full API cache (gitignored) | `streaming_data_raw.json` |
 | JS unit tests | `tests/unit/*.test.js` |
 | Integration tests | `tests/integration/app.spec.js` |
 | Python tests | `tests/python/test_fetch_streaming.py` |
@@ -44,8 +45,8 @@ The file `.env` contains `RAPIDAPI_KEY` and is gitignored. Never include API key
 ## Running the app
 
 ```bash
-python -m http.server 3000
-# → open http://localhost:3000
+python3 -m http.server 3001
+# → open http://localhost:3001
 ```
 
 Or use the Claude Code preview server (configured in `.claude/launch.json`).
@@ -59,9 +60,9 @@ Or use the Claude Code preview server (configured in `.claude/launch.json`).
 npx jest --testPathPattern="tests/unit"
 
 # Python tests
-C:/Python314/python.exe -m pytest tests/python/ -v
+python3 -m pytest tests/python/ -v
 
-# Integration tests (auto-starts HTTP server on port 3000)
+# Integration tests (auto-starts HTTP server on port 3001)
 npx playwright test tests/integration/app.spec.js
 
 # All tests

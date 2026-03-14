@@ -653,10 +653,8 @@ async function loadStreamingData() {
       const count = MOVIES.filter(m => m.streaming.includes(svc)).length;
       pill.innerHTML = pill.textContent.trim() + (count > 0 ? `<span class="pill-count">${count}</span>` : '');
     });
-    console.log("Loaded real streaming data for", Object.keys(data).length, "movies");
   } catch (e) {
     // Fallback: no streaming data available yet (script hasn't been run)
-    console.warn("streaming_data.json not found — run fetch_streaming.py first. Showing no streaming tags.");
     MOVIES.forEach(m => { m.streaming = []; });
   }
 }

@@ -32,7 +32,8 @@ US_SERVICES = {"netflix", "disney", "hulu", "prime", "peacock", "hbo", "apple", 
 # Streaming types that count as "available with subscription or free"
 INCLUDED_TYPES = {"subscription", "free"}
 
-OUTPUT_FILE = "streaming_data.json"
+RAW_FILE = "streaming_data_raw.json"   # full API cache (gitignored)
+OUTPUT_FILE = "streaming_data.json"     # clean, minimal (committed)
 DELAY_BETWEEN_REQUESTS = 0.6  # seconds — be polite to the API
 
 # ─── Movie List (must match index.html) ──────────────────────────────────────
@@ -239,13 +240,13 @@ def extract_streaming(show):
 def main():
     api_key = load_api_key()
 
-    # Load existing data to support resuming interrupted runs
+    # Load existing raw data to support resuming interrupted runs
     existing_data = {}
-    if os.path.exists(OUTPUT_FILE):
+    if os.path.exists(RAW_FILE):
         try:
-            with open(OUTPUT_FILE) as f:
+            with open(RAW_FILE) as f:
                 existing_data = json.load(f)
-            print(f"Loaded {len(existing_data)} existing entries from {OUTPUT_FILE}")
+            print(f"Loaded {len(existing_data)} existing entries from {RAW_FILE}")
         except (json.JSONDecodeError, IOError):
             pass
 
@@ -291,22 +292,36 @@ def main():
         fetched += 1
         print(f"-> {services or 'not streaming'}")
 
-        # Save after each request so progress isn't lost
-        with open(OUTPUT_FILE, "w") as f:
+        # Save raw data after each request so progress isn't lost
+        with open(RAW_FILE, "w") as f:
             json.dump(results, f, indent=2)
 
         # Be polite — don't hammer the API
         if i < total - 1:
             time.sleep(DELAY_BETWEEN_REQUESTS)
 
-    # Add timestamp for the website footer
-    results["_updated"] = datetime.date.today().strftime("%B %d, %Y")
-    with open(OUTPUT_FILE, "w") as f:
+    # Add timestamp
+    updated_date = datetime.date.today().strftime("%B %d, %Y")
+    results["_updated"] = updated_date
+
+    # Save full raw data (gitignored — for caching/debugging)
+    with open(RAW_FILE, "w") as f:
         json.dump(results, f, indent=2)
+
+    # Generate clean, minimal output for the website (committed)
+    clean = {}
+    for key, value in results.items():
+        if key == "_updated":
+            clean["_updated"] = value
+        elif isinstance(value, dict):
+            clean[key] = {"services": value.get("services", [])}
+    with open(OUTPUT_FILE, "w") as f:
+        json.dump(clean, f, indent=2)
 
     print("=" * 60)
     print(f"Done! Fetched: {fetched}, Cached: {skipped}, Total: {total}")
-    print(f"Results saved to {OUTPUT_FILE}")
+    print(f"Raw data saved to {RAW_FILE}")
+    print(f"Clean data saved to {OUTPUT_FILE}")
 
     # Summary
     with_streaming = sum(1 for v in results.values() if v.get("services"))

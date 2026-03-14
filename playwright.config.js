@@ -2,7 +2,7 @@
  * Playwright configuration for NYT Movie Tracker integration tests.
  *
  * Spins up Python's built-in HTTP server before running tests,
- * then tears it down afterward. Tests run against http://localhost:3000.
+ * then tears it down afterward. Tests run against http://localhost:3001.
  */
 const { defineConfig, devices } = require("@playwright/test");
 
@@ -24,7 +24,7 @@ module.exports = defineConfig({
 
   use: {
     // Base URL all page.goto("/") calls resolve against
-    baseURL: "http://localhost:3000",
+    baseURL: "http://localhost:3001",
 
     // Keep a screenshot and trace on failure for debugging
     screenshot: "only-on-failure",
@@ -45,8 +45,8 @@ module.exports = defineConfig({
 
   // Start the Python static file server before all tests
   webServer: {
-    command: "python -m http.server 3000",
-    url: "http://localhost:3000",
+    command: "python3 -m http.server 3001",
+    url: "http://localhost:3001",
     reuseExistingServer: !process.env.CI,
     // Give the server 5 seconds to start
     timeout: 5_000,

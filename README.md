@@ -24,10 +24,10 @@ git clone https://github.com/your-username/nyt-movies.git
 cd nyt-movies
 
 # 2. Serve (any static server works)
-python -m http.server 3000
+python3 -m http.server 3001
 
 # 3. Open
-open http://localhost:3000
+open http://localhost:3001
 ```
 
 Streaming data is already included in `streaming_data.json`. You only need the API key if you want to refresh it.
@@ -54,7 +54,7 @@ echo "RAPIDAPI_KEY=your_key_here" > .env
 python fetch_streaming.py
 ```
 
-The script resumes from where it left off if interrupted (safe to re-run). Progress is saved after every request. Output goes to `streaming_data.json`.
+The script resumes from where it left off if interrupted (safe to re-run). Progress is saved after every request to `streaming_data_raw.json` (gitignored). When complete, it generates a clean `streaming_data.json` containing only service IDs and the query date.
 
 ---
 
@@ -64,7 +64,8 @@ The script resumes from where it left off if interrupted (safe to re-run). Progr
 nyt-movies/
 ├── index.html              # Full app — HTML, CSS, and JS all inline
 ├── fetch_streaming.py      # Fetches streaming data from RapidAPI
-├── streaming_data.json     # Generated output; loaded async by the app
+├── streaming_data.json     # Clean output (services only); loaded by the app
+├── streaming_data_raw.json # Full API cache (gitignored)
 ├── .env                    # RAPIDAPI_KEY (gitignored)
 │
 ├── tests/
@@ -97,7 +98,7 @@ npm install
 npm run test:unit
 
 # Python tests
-C:/Python314/python.exe -m pytest tests/python/ -v
+python3 -m pytest tests/python/ -v
 
 # Integration tests (requires Chromium/Firefox; auto-starts server)
 npx playwright test tests/integration/app.spec.js
@@ -115,7 +116,7 @@ npm run test:all
 - **No build system.** All JavaScript lives in a `<script>` tag inside `index.html`. Functions are not exported — unit tests duplicate pure logic functions, which is the standard pattern for embedded scripts.
 - **No backend.** The app is purely static. `fetch_streaming.py` is a one-time data fetcher, not a server.
 - **localStorage key:** `nyt100_user_data` — stores seen/want/notes per rank.
-- **Streaming data format:** `streaming_data.json` is keyed by rank (`"1"` … `"100"`) plus `"_updated"` (last-fetch date). Each entry has `title`, `year`, `services` (array of service IDs), and `raw` (full API response).
+- **Streaming data format:** `streaming_data.json` is keyed by rank (`"1"` … `"100"`) plus `"_updated"` (last-fetch date). Each entry contains only `services` (array of service IDs). Full API responses are cached locally in `streaming_data_raw.json` (gitignored).
 
 ---
 

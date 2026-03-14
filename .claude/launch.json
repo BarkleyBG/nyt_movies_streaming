@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "nyt-movies",
-      "runtimeExecutable": "C:\\Python314\\python.exe",
+      "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "3001"],
       "port": 3001
     }
