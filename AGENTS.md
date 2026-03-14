@@ -86,7 +86,7 @@ npm run test:all
 
 The tracked services (US, subscription/free only) are:
 
-`netflix` · `disney` · `hulu` · `prime` · `peacock` · `hbo` · `apple` · `paramount` · `tubi` · `starz`
+`netflix` · `disney` · `hulu` · `prime` · `peacock` · `hbo` · `apple` · `paramount` · `tubi` · `starz` · `plutotv` · `criterion`
 
 Service IDs must match between `fetch_streaming.py` (`US_SERVICES`) and `index.html` (CSS classes and badge rendering).
 
