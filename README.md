@@ -51,10 +51,17 @@ echo "RAPIDAPI_KEY=your_key_here" > .env
 ### 3. Run the fetcher
 
 ```bash
+# Fetch all 100 movies and generate clean output (default)
 python fetch_streaming.py
+
+# Fetch raw data only (skip writing streaming_data.json until you're ready)
+python fetch_streaming.py --fetch-only
+
+# Re-generate streaming_data.json from existing raw cache without API calls
+python fetch_streaming.py --clean-only
 ```
 
-The script resumes from where it left off if interrupted (safe to re-run). Progress is saved after every request to `streaming_data_raw.json` (gitignored). When complete, it generates a clean `streaming_data.json` containing only service IDs and the query date.
+The script resumes from where it left off if interrupted (safe to re-run). Progress is saved after every request to `streaming_data_raw.json` (gitignored). When complete, it generates a clean `streaming_data.json` containing service IDs and a per-movie `fetched_at` date.
 
 ---
 
@@ -116,7 +123,7 @@ npm run test:all
 - **No build system.** All JavaScript lives in a `<script>` tag inside `index.html`. Functions are not exported — unit tests duplicate pure logic functions, which is the standard pattern for embedded scripts.
 - **No backend.** The app is purely static. `fetch_streaming.py` is a one-time data fetcher, not a server.
 - **localStorage key:** `nyt100_user_data` — stores seen/want/notes per rank.
-- **Streaming data format:** `streaming_data.json` is keyed by rank (`"1"` … `"100"`) plus `"_updated"` (last-fetch date). Each entry contains only `services` (array of service IDs). Full API responses are cached locally in `streaming_data_raw.json` (gitignored).
+- **Streaming data format:** `streaming_data.json` is keyed by rank (`"1"` … `"100"`) plus `"_updated"` (last-fetch date). Each entry contains `services` (array of service IDs) and `fetched_at` (ISO date the record was last fetched, e.g. `"2026-03-14"`). Full API responses are cached locally in `streaming_data_raw.json` (gitignored).
 
 ---
 

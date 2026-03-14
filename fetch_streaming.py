@@ -11,6 +11,7 @@ Usage:
 Free plan: 100 requests/day — exactly enough for 100 movies.
 """
 
+import argparse
 import datetime
 import json
 import os
@@ -237,9 +238,8 @@ def extract_streaming(show):
 
 # ─── Main ────────────────────────────────────────────────────────────────────
 
-def main():
-    api_key = load_api_key()
-
+def fetch_raw(api_key):
+    """Fetch raw API data for all movies and save to RAW_FILE. Returns results, fetched, skipped."""
     # Load existing raw data to support resuming interrupted runs
     existing_data = {}
     if os.path.exists(RAW_FILE):
@@ -280,6 +280,7 @@ def main():
             "title": movie["title"],
             "year": movie["year"],
             "services": services,
+            "fetched_at": datetime.date.today().isoformat(),
             "raw": {
                 "id": show.get("id") if show else None,
                 "imdbId": show.get("imdbId") if show else None,
@@ -308,32 +309,82 @@ def main():
     with open(RAW_FILE, "w") as f:
         json.dump(results, f, indent=2)
 
+    print("=" * 60)
+    print(f"Done! Fetched: {fetched}, Cached: {skipped}, Total: {total}")
+    print(f"Raw data saved to {RAW_FILE}")
+    return results, fetched, skipped
+
+
+def clean_raw(results=None):
+    """Load raw results (or use provided dict), generate clean summary, and save to OUTPUT_FILE."""
+    if results is None:
+        if not os.path.exists(RAW_FILE):
+            print(f"No raw data found ({RAW_FILE}). Run fetch first.")
+            return None
+        try:
+            with open(RAW_FILE) as f:
+                results = json.load(f)
+        except (json.JSONDecodeError, IOError):
+            print(f"Failed to read {RAW_FILE}")
+            return None
+
     # Generate clean, minimal output for the website (committed)
     clean = {}
     for key, value in results.items():
         if key == "_updated":
             clean["_updated"] = value
         elif isinstance(value, dict):
-            clean[key] = {"services": value.get("services", [])}
+            entry = {"services": value.get("services", [])}
+            if "fetched_at" in value:
+                entry["fetched_at"] = value["fetched_at"]
+            clean[key] = entry
     with open(OUTPUT_FILE, "w") as f:
         json.dump(clean, f, indent=2)
 
-    print("=" * 60)
-    print(f"Done! Fetched: {fetched}, Cached: {skipped}, Total: {total}")
-    print(f"Raw data saved to {RAW_FILE}")
     print(f"Clean data saved to {OUTPUT_FILE}")
 
     # Summary
-    with_streaming = sum(1 for v in results.values() if v.get("services"))
+    total = len(MOVIES)
+    with_streaming = sum(1 for v in results.values() if isinstance(v, dict) and v.get("services"))
     print(f"\nMovies with streaming availability: {with_streaming}/{total}")
     service_counts = {}
     for v in results.values():
+        if not isinstance(v, dict):
+            continue
         for s in v.get("services", []):
             service_counts[s] = service_counts.get(s, 0) + 1
     if service_counts:
         print("Service breakdown:")
         for svc, count in sorted(service_counts.items(), key=lambda x: -x[1]):
             print(f"  {svc:10s}: {count} movies")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Fetch and/or clean streaming availability data")
+    parser.add_argument("--fetch-only", action="store_true", help="Only fetch raw API data and save to streaming_data_raw.json")
+    parser.add_argument("--clean-only", action="store_true", help="Only clean existing raw data into streaming_data.json")
+    args = parser.parse_args()
+
+    if args.fetch_only and args.clean_only:
+        print("Cannot use --fetch-only and --clean-only together.")
+        sys.exit(1)
+
+    # If cleaning only, don't require API key
+    if args.clean_only:
+        clean_raw()
+        return
+
+    # If fetching (or default), ensure API key is loaded
+    if args.fetch_only or not args.clean_only:
+        api_key = load_api_key()
+        results, fetched, skipped = fetch_raw(api_key)
+
+    # If fetch-only requested, stop here
+    if args.fetch_only:
+        return
+
+    # Default: clean using results from fetch, or load from file if results is None
+    clean_raw(results if 'results' in locals() else None)
 
 
 if __name__ == "__main__":
