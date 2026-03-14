@@ -7,7 +7,7 @@ Static single-page app + Python data fetcher. No build system. All JS lives in `
 
 - **Never modularize `index.html`** — no separate `.js` files, no ES modules, no build tools.
 - **Never run `fetch_streaming.py` unprompted** — costs paid API quota (100 req/day free plan).
-- **Never overwrite `streaming_data.json`** without explicit user instruction.
+- **Never overwrite `streaming_data.json` or `streaming_data_raw.json`** without explicit user instruction.
 - **Never add npm dependencies** without asking — `package.json` has test-only deps by design.
 - **Always run tests** after logic changes. See run commands below.
 
@@ -15,9 +15,9 @@ Static single-page app + Python data fetcher. No build system. All JS lives in `
 
 Already configured in `.claude/launch.json`. Start with:
 ```
-preview_start: nyt-movies  (port 3000)
+preview_start: nyt-movies  (port 3001)
 ```
-Or manually: `python -m http.server 3000`
+Or manually: `python3 -m http.server 3001`
 
 ## Test commands
 
@@ -41,7 +41,8 @@ npm run test:all
 |------|------|
 | `index.html` | Entire app |
 | `fetch_streaming.py` | One-shot API fetcher |
-| `streaming_data.json` | Output of fetcher; served statically |
+| `streaming_data.json` | Clean output (services only); served statically |
+| `streaming_data_raw.json` | Full API cache (gitignored) |
 | `tests/unit/` | Jest — pure logic duplicated from index.html |
 | `tests/integration/` | Playwright — full browser E2E |
 | `tests/python/` | pytest — fetcher logic |
