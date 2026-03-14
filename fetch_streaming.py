@@ -280,6 +280,7 @@ def main():
             "title": movie["title"],
             "year": movie["year"],
             "services": services,
+            "fetched_at": datetime.date.today().isoformat(),
             "raw": {
                 "id": show.get("id") if show else None,
                 "imdbId": show.get("imdbId") if show else None,
@@ -314,7 +315,10 @@ def main():
         if key == "_updated":
             clean["_updated"] = value
         elif isinstance(value, dict):
-            clean[key] = {"services": value.get("services", [])}
+            entry = {"services": value.get("services", [])}
+            if "fetched_at" in value:
+                entry["fetched_at"] = value["fetched_at"]
+            clean[key] = entry
     with open(OUTPUT_FILE, "w") as f:
         json.dump(clean, f, indent=2)
 

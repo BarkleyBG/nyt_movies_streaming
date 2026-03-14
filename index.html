@@ -656,6 +656,7 @@ async function loadStreamingData() {
     MOVIES.forEach(m => {
       const entry = data[String(m.rank)];
       m.streaming = entry ? (entry.services || []) : [];
+      m.streamingFetchedAt = entry ? (entry.fetched_at || null) : null;
     });
     // Show last-updated date from the file's metadata or fallback
     if (data._updated) {
@@ -773,7 +774,7 @@ function render() {
         <div class="movie-info">
           <div class="movie-title">${m.title}</div>
           <div class="movie-meta">${m.year} &middot; ${m.director}</div>
-          ${tags ? `<div class="movie-tags" title="Streaming availability as of ${window._streamingDataDate || 'unknown'}">${tags}</div>` : ""}
+          ${tags ? `<div class="movie-tags" title="Streaming availability as of ${m.streamingFetchedAt || window._streamingDataDate || 'unknown'}">${tags}</div>` : ""}
         </div>
         <div class="movie-actions">
           <button class="action-btn ${seenActive}" data-action="seen" data-rank="${m.rank}">
