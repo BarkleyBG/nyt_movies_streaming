@@ -62,7 +62,7 @@ npx jest --testPathPattern="tests/unit"
 # Python tests
 python3 -m pytest tests/python/ -v
 
-# Integration tests (auto-starts HTTP server on port 3000)
+# Integration tests (auto-starts HTTP server on port 3001)
 npx playwright test tests/integration/app.spec.js
 
 # All tests

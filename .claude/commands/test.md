@@ -11,7 +11,7 @@ Runs the full test suite and reports results.
 
 2. Run Python tests:
    ```
-   C:/Python314/python.exe -m pytest tests/python/ -v
+   python3 -m pytest tests/python/ -v
    ```
 
 3. Run integration tests:
