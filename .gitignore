@@ -1,8 +1,9 @@
 # Environment variables (contains API keys)
 .env
 
-# Raw API response cache (contains full API data; not needed for the website)
+# Raw API response caches (contain full API data; not needed for the website)
 streaming_data_raw.json
+movie_metadata_raw.json
 
 # Python
 __pycache__/

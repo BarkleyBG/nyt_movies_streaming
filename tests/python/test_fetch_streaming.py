@@ -5,7 +5,7 @@ Coverage:
   - extract_streaming()     : service extraction from raw API response
   - search_movie()          : HTTP request construction and response parsing (mocked)
   - load_api_key()          : .env / environment variable loading
-  - MOVIES data integrity   : list has 100 entries, unique ranks 1-100, valid years
+  - MOVIES data integrity   : list loads from movies.json with 100 entries, unique ranks 1-100, valid years
 
 All external I/O (HTTP calls, file access) is mocked so tests are fast,
 hermetic, and don't consume API quota.
@@ -287,9 +287,8 @@ class TestSearchMovie(unittest.TestCase):
 
 class TestMovieDataIntegrity(unittest.TestCase):
     """
-    Data integrity checks for the MOVIES list in fetch_streaming.py.
-
-    These tests ensure the Python list stays in sync with the list in index.html
+    Data integrity checks for MOVIES in fetch_streaming.py, which is loaded
+    from the shared movies.json. These tests ensure movies.json is well-formed
     and that no entries are missing, duplicated, or malformed.
     """
 
