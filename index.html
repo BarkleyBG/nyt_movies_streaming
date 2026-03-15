@@ -82,11 +82,36 @@
       z-index: 1;
     }
     header h1 span { color: #60a5fa; }
-    .header-link {
-      color: inherit;
-      text-decoration: none;
+    .header-source {
+      margin-top: 0.5rem;
+      font-size: 0.92rem;
+      color: #93c5fd;
+      position: relative;
+      z-index: 1;
     }
-    .header-link:hover span { text-decoration: underline; text-decoration-color: #60a5fa; }
+    .header-source a {
+      color: white;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: #60a5fa;
+    }
+    .header-source a:hover { color: #bfdbfe; }
+    .nyt-list-btn {
+      display: inline-block;
+      margin-top: 0.65rem;
+      padding: 0.4rem 1rem;
+      background: rgba(37,99,235,0.28);
+      border: 1px solid rgba(96,165,250,0.45);
+      border-radius: 6px;
+      color: #93c5fd;
+      font-size: 0.83rem;
+      font-weight: 500;
+      text-decoration: none;
+      position: relative;
+      z-index: 1;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nyt-list-btn:hover { background: rgba(37,99,235,0.5); color: white; }
     header p {
       margin-top: 0.4rem;
       color: #94a3b8;
@@ -555,6 +580,85 @@
     footer p { margin-bottom: 0.4rem; }
     footer p:last-child { margin-bottom: 0; }
 
+    /* ─── Rank Range Indicator ─── */
+    .rank-range-indicator {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      border-radius: 10px;
+      padding: 0.15rem 0.55rem;
+      margin-left: 0.6rem;
+      display: none;
+      vertical-align: middle;
+    }
+    .rank-range-indicator.visible { display: inline-block; }
+
+    /* ─── Rank Divider ─── */
+    .rank-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0.5rem 0 0.15rem;
+      user-select: none;
+    }
+    .rank-divider .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .rank-divider .divider-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      background: var(--bg);
+      padding: 0.18rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      white-space: nowrap;
+    }
+
+    /* ─── Notes Section ─── */
+    .notes-section {
+      grid-column: 1 / -1;
+      display: none;
+      padding: 0.55rem 0 0.1rem;
+      border-top: 1px dashed #d0dbe7;
+      margin-top: 0.45rem;
+    }
+    .notes-section.visible { display: block; }
+    .notes-textarea {
+      width: 100%;
+      min-height: 68px;
+      max-height: 200px;
+      padding: 0.45rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: var(--text);
+      background: #f8fafc;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .notes-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .notes-textarea::placeholder { color: #94a3b8; }
+    .action-btn.has-notes {
+      border-color: #fbbf24;
+      color: #92400e;
+    }
+    .action-btn.has-notes:hover {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      color: #78350f;
+    }
+
     /* ─── Responsive ─── */
     @media (max-width: 700px) {
       header h1 { font-size: 1.4rem; }
@@ -568,6 +672,7 @@
         grid-column: 1 / -1;
         justify-content: flex-start;
       }
+      .notes-section { grid-column: 1 / -1; }
       .rank-badge { width: 36px; height: 36px; font-size: 0.8rem; }
       .search-input { width: 150px; }
       .back-to-top { bottom: 1.25rem; right: 1.25rem; width: 40px; height: 40px; font-size: 1.1rem; }
@@ -577,9 +682,10 @@
 <body>
 
 <header>
-  <h1><a href="https://www.nytimes.com/interactive/2025/movies/best-movies-21st-century.html" target="_blank" rel="noopener" class="header-link">Where to Stream the <span>New York Times 100 Best Movies</span> of the 21st Century</a></h1>
-  <p>New York Times' Best Movies of the 21st Century &mdash; Track, filter &amp; find where to stream</p>
-  <p class="header-tagline">In 2025, the <em>New York Times</em> polled 500+ filmmakers and critics to crown the 100 greatest films of the 21st century. This site shows you exactly where to stream each one &mdash; filter by service, track what you've seen, and build your watchlist.</p>
+  <h1>Where to Stream the <span>NYT 100 Best Movies</span> of the 21st Century</h1>
+  <p class="header-source">List by the <a href="https://www.nytimes.com/interactive/2025/movies/best-movies-21st-century.html" target="_blank" rel="noopener">New York Times</a> &mdash; streaming availability added by this fan site</p>
+  <p class="header-tagline">In 2025, the New York Times polled 500+ filmmakers and critics to rank the 100 greatest films of the 21st century. Find where to stream each one, track what you&rsquo;ve seen, and build your watchlist.</p>
+  <a href="https://www.nytimes.com/interactive/2025/movies/best-movies-21st-century.html" target="_blank" rel="noopener" class="nyt-list-btn">View the original NYT list &rarr;</a>
   <p class="header-disclaimer">Unofficial fan project &mdash; not affiliated with or endorsed by The New York Times</p>
 </header>
 
@@ -606,6 +712,7 @@
   <div class="filter-panel-inner">
     <button class="panel-toggle-btn" id="panel-toggle" aria-expanded="true" aria-controls="filter-panel-body">
       <span class="toggle-arrow">▼</span> Filters
+      <span class="rank-range-indicator" id="rank-range-indicator"></span>
     </button>
     <div class="filter-panel-body" id="filter-panel-body">
       <div class="controls">
@@ -852,11 +959,18 @@ function saveState(state) {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
 }
 
-let userState = loadState();          // { [rank]: { seen: bool, want: bool } }
+let userState = loadState();          // { [rank]: { seen: bool, want: bool, notes: string } }
 let activeServices = new Set();       // streaming filter (multi-select)
 let activeShow = "all";               // show filter
 let sortMode = "rank";
 let searchQuery = "";
+let openNotes = new Set();            // ranks whose notes panel is open
+let filterAutoCollapsed = false;      // true when filter was hidden by scroll
+let filterUserOverride = false;       // true when user manually expanded while scrolled
+
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
 
 // ─── Rendering ───
 const listEl = document.getElementById("movie-list");
@@ -920,11 +1034,28 @@ function render() {
     return;
   }
 
-  listEl.innerHTML = movies.map((m, i) => {
+  let html = "";
+  movies.forEach((m, i) => {
+    // Rank dividers every 10 when sorted by rank
+    if (sortMode === "rank" && m.rank % 10 === 1 && m.rank > 1) {
+      const groupEnd = Math.min(m.rank + 9, 100);
+      const label = `#${m.rank}\u2013${groupEnd}`;
+      html += `
+      <div class="rank-divider" data-group-start="${m.rank}">
+        <div class="divider-line"></div>
+        <span class="divider-label">${label}</span>
+        <div class="divider-line"></div>
+      </div>`;
+    }
+
     const s = userState[m.rank] || {};
     const seenClass = s.seen ? "is-seen" : "";
     const seenActive = s.seen ? "active-seen" : "";
     const wantActive = s.want ? "active-want" : "";
+    const noteText = s.notes || "";
+    const hasNotes = noteText.trim().length > 0;
+    const notesActive = hasNotes ? "has-notes" : "";
+    const notesOpen = openNotes.has(m.rank);
     const tags = m.streaming.map(svc => {
       const sObj = SERVICES.find(x => x.id === svc);
       return `<span class="stream-tag ${svc}">${sObj.name}</span>`;
@@ -938,7 +1069,7 @@ function render() {
     const rankColor = `rgb(${r},${g},${b})`;
     const delay = Math.min(i * 0.03, 0.6);
 
-    return `
+    html += `
       <div class="movie-card ${seenClass}" data-rank="${m.rank}" style="--rank-color:${rankColor}; animation-delay:${delay}s">
         <div class="rank-badge" style="background:linear-gradient(135deg, ${rankColor}, ${rankColor}dd)">${m.rank}</div>
         <div class="movie-info">
@@ -953,13 +1084,22 @@ function render() {
           <button class="action-btn ${wantActive}" data-action="want" data-rank="${m.rank}">
             <span class="icon">${s.want ? "★" : "☆"}</span> Want to See
           </button>
+          <button class="action-btn ${notesActive}" data-action="notes-toggle" data-rank="${m.rank}" title="${hasNotes ? 'Edit notes' : 'Add notes'}">
+            <span class="icon">&#9998;</span> Notes
+          </button>
+        </div>
+        <div class="notes-section${notesOpen ? ' visible' : ''}" id="notes-${m.rank}">
+          <textarea class="notes-textarea" data-rank="${m.rank}" placeholder="Personal notes\u2026">${escapeHtml(noteText)}</textarea>
         </div>
       </div>`;
-  }).join("");
+  });
+  listEl.innerHTML = html;
 
   // Update progress bar
   document.getElementById("progress-fill").style.width = `${seenCount}%`;
   document.getElementById("progress-label").textContent = `${seenCount} of 100 seen`;
+
+  updateRankIndicator();
 }
 
 // ─── Event Listeners ───
@@ -970,10 +1110,36 @@ listEl.addEventListener("click", e => {
   if (!btn) return;
   const rank = Number(btn.dataset.rank);
   const action = btn.dataset.action;
+  if (action === "notes-toggle") {
+    if (openNotes.has(rank)) {
+      openNotes.delete(rank);
+    } else {
+      openNotes.add(rank);
+    }
+    render();
+    if (openNotes.has(rank)) {
+      const ta = document.querySelector(`.notes-textarea[data-rank="${rank}"]`);
+      if (ta) ta.focus();
+    }
+    return;
+  }
   if (!userState[rank]) userState[rank] = {};
   userState[rank][action] = !userState[rank][action];
   saveState(userState);
   render();
+});
+
+// Notes textarea — save on input without re-rendering
+listEl.addEventListener("input", e => {
+  const ta = e.target.closest(".notes-textarea");
+  if (!ta) return;
+  const rank = Number(ta.dataset.rank);
+  if (!userState[rank]) userState[rank] = {};
+  userState[rank].notes = ta.value;
+  saveState(userState);
+  // Update button style in place
+  const btn = document.querySelector(`.action-btn[data-action="notes-toggle"][data-rank="${rank}"]`);
+  if (btn) btn.classList.toggle("has-notes", ta.value.trim().length > 0);
 });
 
 // Sort
@@ -1032,13 +1198,61 @@ document.getElementById("panel-toggle").addEventListener("click", () => {
   const btn = document.getElementById("panel-toggle");
   const collapsed = panel.classList.toggle("panel-collapsed");
   btn.setAttribute("aria-expanded", String(!collapsed));
+  // If user is manually expanding while scrolled down, respect that choice
+  filterUserOverride = !collapsed;
+  filterAutoCollapsed = false;
 });
+
+// ─── Rank Range Indicator ───
+function updateRankIndicator() {
+  const indicator = document.getElementById("rank-range-indicator");
+  if (!indicator) return;
+  if (sortMode !== "rank" || window.scrollY < 200) {
+    indicator.classList.remove("visible");
+    return;
+  }
+  // Find the first movie card that has scrolled past the top of the viewport
+  let currentRank = 1;
+  const cards = document.querySelectorAll(".movie-card[data-rank]");
+  for (const card of cards) {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < 80) currentRank = Number(card.dataset.rank);
+    else break;
+  }
+  const groupStart = Math.floor((currentRank - 1) / 10) * 10 + 1;
+  const groupEnd = Math.min(groupStart + 9, 100);
+  indicator.textContent = `#${groupStart}\u2013${groupEnd}`;
+  indicator.classList.add("visible");
+}
 
 // ─── Back to Top Button ───
 const backToTopBtn = document.getElementById("back-to-top");
+const COLLAPSE_SCROLL = 280;   // px — auto-collapse filter when past this
+const EXPAND_SCROLL   = 60;    // px — auto-expand when near top
+
 window.addEventListener("scroll", () => {
-  backToTopBtn.classList.toggle("visible", window.scrollY > 400);
+  const scrollY = window.scrollY;
+  const panel = document.getElementById("filter-panel");
+  const toggleBtn = document.getElementById("panel-toggle");
+
+  // Auto-collapse when scrolling down
+  if (scrollY > COLLAPSE_SCROLL && !panel.classList.contains("panel-collapsed") && !filterUserOverride) {
+    panel.classList.add("panel-collapsed");
+    toggleBtn.setAttribute("aria-expanded", "false");
+    filterAutoCollapsed = true;
+  }
+  // Auto-expand when scrolling back to top
+  if (scrollY < EXPAND_SCROLL && filterAutoCollapsed) {
+    panel.classList.remove("panel-collapsed");
+    toggleBtn.setAttribute("aria-expanded", "true");
+    filterAutoCollapsed = false;
+    filterUserOverride = false;
+  }
+
+  backToTopBtn.classList.toggle("visible", scrollY > 400);
+  updateRankIndicator();
 }, { passive: true });
+
 backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
