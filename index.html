@@ -772,7 +772,7 @@ async function loadMoviesData() {
       streaming: [], streamingFetchedAt: null,
       genres: [], overview: "", runtime: null,
       original_language: null, vote_average: null, vote_count: 0,
-      tagline: "", cast: [],
+      tagline: "", certification: null, cast: [],
     }));
   } catch (e) {
     console.error("Failed to load movies.json", e);
@@ -819,6 +819,7 @@ async function loadMetadataData() {
         m.vote_average      = entry.vote_average      || null;
         m.vote_count        = entry.vote_count        || 0;
         m.tagline           = entry.tagline           || "";
+        m.certification     = entry.certification     || null;
         m.cast              = entry.cast              || [];
       }
     });
@@ -986,7 +987,7 @@ function render() {
 
     const runtimeStr = formatRuntime(m.runtime);
     const ratingStr = m.vote_average ? `★\u202f${m.vote_average.toFixed(1)}` : "";
-    const metaParts = [m.year, m.director, runtimeStr, ratingStr].filter(Boolean);
+    const metaParts = [m.year, m.director, runtimeStr, m.certification, ratingStr].filter(Boolean);
     const langTag = (m.original_language && m.original_language !== "en")
       ? `<span class="language-tag">${_langName(m.original_language)}</span>` : "";
     const genreTags = m.genres.map(g => `<span class="genre-tag">${g}</span>`).join("");

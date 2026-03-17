@@ -2,7 +2,7 @@
 fetch_metadata.py
 ─────────────────
 Queries the TMDB (The Movie Database) API for each movie in movies.json
-and saves genres, overview, runtime, language, rating, tagline, and top cast to movie_metadata.json.
+and saves genres, overview, runtime, language, rating, tagline, US certification, and top cast to movie_metadata.json.
 
 Usage:
     1. Copy .env.example to .env and add your TMDB API key
@@ -126,21 +126,47 @@ def search_tmdb(title, year, api_key):
 
 
 def fetch_movie_details(tmdb_id, api_key):
-    """Fetch movie details + credits in a single API call. Returns dict or None."""
+    """Fetch movie details + credits + release_dates in a single API call. Returns dict or None."""
     return tmdb_get(
         f"/movie/{tmdb_id}",
-        {"append_to_response": "credits", "language": "en-US"},
+        {"append_to_response": "credits,release_dates", "language": "en-US"},
         api_key,
     )
 
 
+def _extract_us_certification(release_dates_data):
+    """
+    Extract the US MPAA certification (G, PG, PG-13, R, NC-17) from the
+    release_dates block of a TMDB details response.
+
+    Prefers the theatrical release (type 3). Falls back to the first
+    non-empty certification if no theatrical entry exists. Returns None
+    when the US is absent or all certifications are empty strings.
+    """
+    if not release_dates_data:
+        return None
+    for country in release_dates_data.get("results", []):
+        if country.get("iso_3166_1") != "US":
+            continue
+        dates = country.get("release_dates", [])
+        # Prefer theatrical (type 3)
+        for d in dates:
+            if d.get("type") == 3 and d.get("certification"):
+                return d["certification"]
+        # Fallback: any non-empty certification
+        for d in dates:
+            if d.get("certification"):
+                return d["certification"]
+    return None
+
+
 def extract_metadata(details):
-    """Extract genres, overview, runtime, language, rating, tagline, and cast."""
+    """Extract genres, overview, runtime, language, rating, tagline, certification, and cast."""
     if not details:
         return {
             "genres": [], "overview": "", "runtime": None,
             "original_language": None, "vote_average": None, "vote_count": None,
-            "tagline": "", "cast": [],
+            "tagline": "", "certification": None, "cast": [],
         }
 
     genres = [g["name"] for g in details.get("genres", [])]
@@ -154,6 +180,8 @@ def extract_metadata(details):
     # Treat 0.0 (no votes) as None
     vote_average = round(float(raw_avg), 1) if raw_avg else None
 
+    certification = _extract_us_certification(details.get("release_dates", {}))
+
     cast_raw = details.get("credits", {}).get("cast", [])
     cast = [c["name"] for c in cast_raw[:CAST_LIMIT] if c.get("name")]
 
@@ -161,7 +189,7 @@ def extract_metadata(details):
         "genres": genres, "overview": overview, "runtime": runtime,
         "original_language": original_language,
         "vote_average": vote_average, "vote_count": vote_count,
-        "tagline": tagline, "cast": cast,
+        "tagline": tagline, "certification": certification, "cast": cast,
     }
 
 
@@ -187,7 +215,7 @@ def fetch_raw(api_key, movies):
     skipped = 0
 
     print(f"\nFetching TMDB metadata for {total} movies...")
-    print(f"Fields: genres, overview, runtime, language, rating, tagline, top {CAST_LIMIT} cast")
+    print(f"Fields: genres, overview, runtime, language, rating, tagline, certification, top {CAST_LIMIT} cast")
     print("=" * 60)
 
     for i, movie in enumerate(movies):
@@ -211,7 +239,7 @@ def fetch_raw(api_key, movies):
                 "metadata": {
                     "genres": [], "overview": "", "runtime": None,
                     "original_language": None, "vote_average": None, "vote_count": None,
-                    "tagline": "", "cast": [],
+                    "tagline": "", "certification": None, "cast": [],
                 },
                 "fetched_at": datetime.date.today().isoformat(),
                 "raw": None,
@@ -286,6 +314,7 @@ def clean_raw(results=None, movies=None):
                 "vote_average":       meta.get("vote_average", None),
                 "vote_count":         meta.get("vote_count", None),
                 "tagline":            meta.get("tagline", ""),
+                "certification":      meta.get("certification", None),
                 "cast":               meta.get("cast", []),
             }
             if "fetched_at" in value:

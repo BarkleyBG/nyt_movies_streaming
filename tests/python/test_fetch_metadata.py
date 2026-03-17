@@ -30,10 +30,25 @@ import fetch_metadata  # noqa: E402
 
 # ─── Fixtures ─────────────────────────────────────────────────────────────────
 
+def _make_us_release_dates(certification="R", release_type=3):
+    """Build a minimal release_dates block with a single US theatrical entry."""
+    return {
+        "results": [
+            {
+                "iso_3166_1": "US",
+                "release_dates": [
+                    {"type": release_type, "certification": certification,
+                     "release_date": "2020-01-01T00:00:00.000Z"}
+                ],
+            }
+        ]
+    }
+
+
 def _make_details(genres=None, overview="A test movie.", runtime=120, cast_names=None,
                   original_language="en", vote_average=7.5, vote_count=1000,
-                  tagline="A tagline."):
-    """Build a minimal TMDB details+credits response."""
+                  tagline="A tagline.", certification="R"):
+    """Build a minimal TMDB details+credits+release_dates response."""
     if genres is None:
         genres = [{"id": 28, "name": "Action"}, {"id": 18, "name": "Drama"}]
     if cast_names is None:
@@ -46,6 +61,7 @@ def _make_details(genres=None, overview="A test movie.", runtime=120, cast_names
         "vote_average": vote_average,
         "vote_count": vote_count,
         "tagline": tagline,
+        "release_dates": _make_us_release_dates(certification),
         "credits": {
             "cast": [{"name": n, "order": i} for i, n in enumerate(cast_names)]
         },
@@ -76,6 +92,7 @@ class TestExtractMetadata(unittest.TestCase):
         self.assertIsNone(result["vote_average"])
         self.assertIsNone(result["vote_count"])
         self.assertEqual(result["tagline"], "")
+        self.assertIsNone(result["certification"])
         self.assertEqual(result["cast"], [])
 
     def test_extracts_genre_names(self):
@@ -201,6 +218,105 @@ class TestExtractMetadata(unittest.TestCase):
         """Returns empty string when tagline is None (TMDB uses None for missing taglines)."""
         details = _make_details(tagline=None)
         self.assertEqual(fetch_metadata.extract_metadata(details)["tagline"], "")
+
+    # ── certification (via extract_metadata integration) ──
+
+    def test_extracts_certification(self):
+        """extract_metadata returns US MPAA certification from release_dates block."""
+        details = _make_details(certification="PG-13")
+        self.assertEqual(fetch_metadata.extract_metadata(details)["certification"], "PG-13")
+
+    def test_certification_none_when_release_dates_absent(self):
+        """Returns None when release_dates key is absent from details."""
+        details = _make_details()
+        del details["release_dates"]
+        self.assertIsNone(fetch_metadata.extract_metadata(details)["certification"])
+
+
+# ─── _extract_us_certification() ─────────────────────────────────────────────
+
+class TestExtractUsCertification(unittest.TestCase):
+    """
+    Tests for _extract_us_certification() — parses the nested release_dates
+    structure from TMDB and returns the US MPAA rating string or None.
+    """
+
+    def test_returns_theatrical_certification(self):
+        """Returns certification for a US theatrical (type 3) release."""
+        data = _make_us_release_dates("R", release_type=3)
+        self.assertEqual(fetch_metadata._extract_us_certification(data), "R")
+
+    def test_returns_pg13(self):
+        """Handles multi-character ratings like PG-13."""
+        data = _make_us_release_dates("PG-13", release_type=3)
+        self.assertEqual(fetch_metadata._extract_us_certification(data), "PG-13")
+
+    def test_prefers_theatrical_over_other_types(self):
+        """Prefers type 3 (theatrical) even when other types appear first."""
+        data = {
+            "results": [{
+                "iso_3166_1": "US",
+                "release_dates": [
+                    {"type": 5, "certification": "PG", "release_date": "2020-01-01T00:00:00.000Z"},
+                    {"type": 3, "certification": "R",  "release_date": "2019-06-01T00:00:00.000Z"},
+                ],
+            }]
+        }
+        self.assertEqual(fetch_metadata._extract_us_certification(data), "R")
+
+    def test_fallback_when_no_theatrical_entry(self):
+        """Falls back to first non-empty certification when no type 3 exists."""
+        data = {
+            "results": [{
+                "iso_3166_1": "US",
+                "release_dates": [
+                    {"type": 4, "certification": "PG-13", "release_date": "2020-01-01T00:00:00.000Z"},
+                ],
+            }]
+        }
+        self.assertEqual(fetch_metadata._extract_us_certification(data), "PG-13")
+
+    def test_returns_none_when_no_us_entry(self):
+        """Returns None when there is no US entry (e.g. foreign film)."""
+        data = {
+            "results": [{
+                "iso_3166_1": "KR",
+                "release_dates": [{"type": 3, "certification": "15", "release_date": "2019-01-01T00:00:00.000Z"}],
+            }]
+        }
+        self.assertIsNone(fetch_metadata._extract_us_certification(data))
+
+    def test_returns_none_when_us_certification_is_empty_string(self):
+        """Returns None when the US theatrical entry has an empty certification string."""
+        data = {
+            "results": [{
+                "iso_3166_1": "US",
+                "release_dates": [{"type": 3, "certification": "", "release_date": "2019-01-01T00:00:00.000Z"}],
+            }]
+        }
+        self.assertIsNone(fetch_metadata._extract_us_certification(data))
+
+    def test_returns_none_for_empty_results_list(self):
+        """Returns None when results list is empty."""
+        self.assertIsNone(fetch_metadata._extract_us_certification({"results": []}))
+
+    def test_returns_none_for_none_input(self):
+        """Returns None when called with None."""
+        self.assertIsNone(fetch_metadata._extract_us_certification(None))
+
+    def test_returns_none_for_empty_dict(self):
+        """Returns None when called with an empty dict."""
+        self.assertIsNone(fetch_metadata._extract_us_certification({}))
+
+    def test_ignores_non_us_entries_before_us_entry(self):
+        """Skips non-US entries even if they appear before the US entry."""
+        data = {
+            "results": [
+                {"iso_3166_1": "GB", "release_dates": [{"type": 3, "certification": "15", "release_date": ""}]},
+                {"iso_3166_1": "US", "release_dates": [{"type": 3, "certification": "R",  "release_date": ""}]},
+            ]
+        }
+        self.assertEqual(fetch_metadata._extract_us_certification(data), "R")
 
 
 # ─── search_tmdb() ────────────────────────────────────────────────────────────
