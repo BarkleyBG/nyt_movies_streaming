@@ -464,6 +464,24 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+    .language-tag {
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #145252;
+      background: #ccfbf1;
+      letter-spacing: 0.01em;
+    }
+    .movie-tagline {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 0.15rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     /* Actions */
     .movie-actions {
@@ -642,6 +660,7 @@
             <option value="rank">Rank</option>
             <option value="alpha">A &ndash; Z</option>
             <option value="year">Year Released</option>
+            <option value="rating">TMDB Rating</option>
           </select>
         </div>
         <div class="control-group">
@@ -667,6 +686,12 @@
         <button class="pill" data-service="plutotv">Pluto TV</button>
         <button class="pill" data-service="criterion">Criterion</button>
         <span class="us-note">🇺🇸 US availability only</span>
+      </div>
+
+      <div class="language-filters" id="language-filters" style="display:none">
+        <span class="pill-label">Language</span>
+        <button class="pill active" id="pill-all-langs">All</button>
+        <!-- language pills are added dynamically after metadata loads -->
       </div>
 
       <div class="show-filters">
@@ -745,7 +770,9 @@ async function loadMoviesData() {
     MOVIES = data.map(m => ({
       ...m,
       streaming: [], streamingFetchedAt: null,
-      genres: [], overview: "", runtime: null, cast: [],
+      genres: [], overview: "", runtime: null,
+      original_language: null, vote_average: null, vote_count: 0,
+      tagline: "", cast: [],
     }));
   } catch (e) {
     console.error("Failed to load movies.json", e);
@@ -785,10 +812,14 @@ async function loadMetadataData() {
     MOVIES.forEach(m => {
       const entry = data[String(m.rank)];
       if (entry) {
-        m.genres   = entry.genres   || [];
-        m.overview = entry.overview || "";
-        m.runtime  = entry.runtime  || null;
-        m.cast     = entry.cast     || [];
+        m.genres            = entry.genres            || [];
+        m.overview          = entry.overview          || "";
+        m.runtime           = entry.runtime           || null;
+        m.original_language = entry.original_language || null;
+        m.vote_average      = entry.vote_average      || null;
+        m.vote_count        = entry.vote_count        || 0;
+        m.tagline           = entry.tagline           || "";
+        m.cast              = entry.cast              || [];
       }
     });
   } catch (e) {
@@ -813,6 +844,7 @@ function saveState(state) {
 
 let userState = loadState();          // { [rank]: { seen: bool, want: bool } }
 let activeServices = new Set();       // streaming filter (multi-select)
+let activeLangs = new Set();          // language filter (multi-select)
 let activeShow = "all";               // show filter
 let sortMode = "rank";
 let searchQuery = "";
@@ -840,6 +872,11 @@ function getFiltered() {
     list = list.filter(m => m.streaming.some(s => activeServices.has(s)));
   }
 
+  // Language filter (multi-select)
+  if (activeLangs.size > 0) {
+    list = list.filter(m => m.original_language && activeLangs.has(m.original_language));
+  }
+
   // Show filter
   if (activeShow === "unseen") {
     list = list.filter(m => !userState[m.rank]?.seen);
@@ -854,11 +891,49 @@ function getFiltered() {
     list.sort((a, b) => a.title.localeCompare(b.title));
   } else if (sortMode === "year") {
     list.sort((a, b) => a.year - b.year || a.rank - b.rank);
+  } else if (sortMode === "rating") {
+    list.sort((a, b) => (b.vote_average || 0) - (a.vote_average || 0) || a.rank - b.rank);
   } else {
     list.sort((a, b) => a.rank - b.rank);
   }
 
   return list;
+}
+
+// Language display name via Intl.DisplayNames (all modern browsers)
+const _langDisplay = (() => {
+  try { return new Intl.DisplayNames(["en"], { type: "language" }); } catch { return null; }
+})();
+function _langName(code) {
+  return _langDisplay ? (_langDisplay.of(code) || code) : code;
+}
+
+function setupLanguagePills() {
+  const langs = new Map(); // code → display name
+  MOVIES.forEach(m => {
+    if (m.original_language && !langs.has(m.original_language)) {
+      langs.set(m.original_language, _langName(m.original_language));
+    }
+  });
+  if (langs.size === 0) return;
+
+  const container = document.getElementById("language-filters");
+  // Add a pill per language, sorted alphabetically by display name
+  [...langs.entries()]
+    .sort((a, b) => a[1].localeCompare(b[1]))
+    .forEach(([code, name]) => {
+      const btn = document.createElement("button");
+      btn.className = "pill";
+      btn.dataset.lang = code;
+      const count = MOVIES.filter(m => m.original_language === code).length;
+      btn.innerHTML = name + (count > 0 ? `<span class="pill-count">${count}</span>` : "");
+      container.appendChild(btn);
+    });
+  container.style.display = "";
+}
+
+function updateAllLangsPill() {
+  document.getElementById("pill-all-langs").classList.toggle("active", activeLangs.size === 0);
 }
 
 function formatRuntime(minutes) {
@@ -910,8 +985,13 @@ function render() {
     const delay = Math.min(i * 0.03, 0.6);
 
     const runtimeStr = formatRuntime(m.runtime);
-    const metaParts = [m.year, m.director, runtimeStr].filter(Boolean);
+    const ratingStr = m.vote_average ? `★\u202f${m.vote_average.toFixed(1)}` : "";
+    const metaParts = [m.year, m.director, runtimeStr, ratingStr].filter(Boolean);
+    const langTag = (m.original_language && m.original_language !== "en")
+      ? `<span class="language-tag">${_langName(m.original_language)}</span>` : "";
     const genreTags = m.genres.map(g => `<span class="genre-tag">${g}</span>`).join("");
+    const taglineLine = m.tagline
+      ? `<div class="movie-tagline">${m.tagline}</div>` : "";
     const castLine = m.cast.length > 0
       ? `<div class="movie-cast">With: ${m.cast.join(", ")}</div>` : "";
     const overviewLine = m.overview
@@ -923,7 +1003,8 @@ function render() {
         <div class="movie-info">
           <div class="movie-title">${m.title}</div>
           <div class="movie-meta">${metaParts.join(" &middot; ")}</div>
-          ${genreTags ? `<div class="movie-tags">${genreTags}</div>` : ""}
+          ${taglineLine}
+          ${(langTag || genreTags) ? `<div class="movie-tags">${langTag}${genreTags}</div>` : ""}
           ${castLine}
           ${overviewLine}
           ${tags ? `<div class="movie-tags" title="Streaming availability as of ${m.streamingFetchedAt || window._streamingDataDate || 'unknown'}">${tags}</div>` : ""}
@@ -999,6 +1080,28 @@ document.querySelectorAll(".filter-pills .pill[data-service]").forEach(pill => {
   });
 });
 
+// Language filter pills (event delegation — pills are created dynamically)
+document.getElementById("language-filters").addEventListener("click", e => {
+  const pill = e.target.closest("[data-lang]");
+  if (pill) {
+    const lang = pill.dataset.lang;
+    if (activeLangs.has(lang)) {
+      activeLangs.delete(lang);
+      pill.classList.remove("active");
+    } else {
+      activeLangs.add(lang);
+      pill.classList.add("active");
+    }
+    updateAllLangsPill();
+    render();
+  } else if (e.target.id === "pill-all-langs") {
+    activeLangs.clear();
+    document.querySelectorAll("#language-filters [data-lang]").forEach(p => p.classList.remove("active"));
+    updateAllLangsPill();
+    render();
+  }
+});
+
 // Show filter pills
 document.querySelectorAll(".show-filters .pill").forEach(pill => {
   pill.addEventListener("click", () => {
@@ -1030,6 +1133,7 @@ backToTopBtn.addEventListener("click", () => {
 (async () => {
   await loadMoviesData();
   await Promise.all([loadStreamingData(), loadMetadataData()]);
+  setupLanguagePills();
   render();
 })();
 </script>

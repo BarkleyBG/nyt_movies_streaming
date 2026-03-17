@@ -2,7 +2,7 @@
 fetch_metadata.py
 ─────────────────
 Queries the TMDB (The Movie Database) API for each movie in movies.json
-and saves genres, overview, runtime, and top cast to movie_metadata.json.
+and saves genres, overview, runtime, language, rating, tagline, and top cast to movie_metadata.json.
 
 Usage:
     1. Copy .env.example to .env and add your TMDB API key
@@ -135,20 +135,34 @@ def fetch_movie_details(tmdb_id, api_key):
 
 
 def extract_metadata(details):
-    """Extract clean genres, overview, runtime, and top cast from a TMDB details+credits response."""
+    """Extract genres, overview, runtime, language, rating, tagline, and cast."""
     if not details:
-        return {"genres": [], "overview": "", "runtime": None, "cast": []}
+        return {
+            "genres": [], "overview": "", "runtime": None,
+            "original_language": None, "vote_average": None, "vote_count": None,
+            "tagline": "", "cast": [],
+        }
 
     genres = [g["name"] for g in details.get("genres", [])]
-
     overview = details.get("overview", "") or ""
+    runtime = details.get("runtime") or None
+    original_language = details.get("original_language") or None
+    tagline = details.get("tagline", "") or ""
 
-    runtime = details.get("runtime") or None  # minutes as int, or None if unknown
+    raw_avg = details.get("vote_average")
+    vote_count = details.get("vote_count") or 0
+    # Treat 0.0 (no votes) as None
+    vote_average = round(float(raw_avg), 1) if raw_avg else None
 
     cast_raw = details.get("credits", {}).get("cast", [])
     cast = [c["name"] for c in cast_raw[:CAST_LIMIT] if c.get("name")]
 
-    return {"genres": genres, "overview": overview, "runtime": runtime, "cast": cast}
+    return {
+        "genres": genres, "overview": overview, "runtime": runtime,
+        "original_language": original_language,
+        "vote_average": vote_average, "vote_count": vote_count,
+        "tagline": tagline, "cast": cast,
+    }
 
 
 # ─── Main fetch/clean pipeline ───────────────────────────────────────────────
@@ -173,7 +187,7 @@ def fetch_raw(api_key, movies):
     skipped = 0
 
     print(f"\nFetching TMDB metadata for {total} movies...")
-    print(f"Fields: genres, overview, runtime, top {CAST_LIMIT} cast members")
+    print(f"Fields: genres, overview, runtime, language, rating, tagline, top {CAST_LIMIT} cast")
     print("=" * 60)
 
     for i, movie in enumerate(movies):
@@ -194,7 +208,11 @@ def fetch_raw(api_key, movies):
             results[rank_key] = {
                 "title": movie["title"],
                 "year": movie["year"],
-                "metadata": {"genres": [], "overview": "", "cast": []},
+                "metadata": {
+                    "genres": [], "overview": "", "runtime": None,
+                    "original_language": None, "vote_average": None, "vote_count": None,
+                    "tagline": "", "cast": [],
+                },
                 "fetched_at": datetime.date.today().isoformat(),
                 "raw": None,
             }
@@ -241,7 +259,7 @@ def fetch_raw(api_key, movies):
 def clean_raw(results=None, movies=None):
     """
     Produce the clean movie_metadata.json from raw results.
-    Only genres, overview, cast, and fetched_at are written — no raw API data.
+    Writes genres, overview, runtime, language, rating, tagline, cast, and fetched_at — no raw API data.
     """
     if results is None:
         if not os.path.exists(RAW_FILE):
@@ -261,10 +279,14 @@ def clean_raw(results=None, movies=None):
         elif isinstance(value, dict):
             meta = value.get("metadata", {})
             entry = {
-                "genres":   meta.get("genres", []),
-                "overview": meta.get("overview", ""),
-                "runtime":  meta.get("runtime", None),
-                "cast":     meta.get("cast", []),
+                "genres":             meta.get("genres", []),
+                "overview":           meta.get("overview", ""),
+                "runtime":            meta.get("runtime", None),
+                "original_language":  meta.get("original_language", None),
+                "vote_average":       meta.get("vote_average", None),
+                "vote_count":         meta.get("vote_count", None),
+                "tagline":            meta.get("tagline", ""),
+                "cast":               meta.get("cast", []),
             }
             if "fetched_at" in value:
                 entry["fetched_at"] = value["fetched_at"]

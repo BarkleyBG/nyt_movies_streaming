@@ -30,7 +30,9 @@ import fetch_metadata  # noqa: E402
 
 # ─── Fixtures ─────────────────────────────────────────────────────────────────
 
-def _make_details(genres=None, overview="A test movie.", runtime=120, cast_names=None):
+def _make_details(genres=None, overview="A test movie.", runtime=120, cast_names=None,
+                  original_language="en", vote_average=7.5, vote_count=1000,
+                  tagline="A tagline."):
     """Build a minimal TMDB details+credits response."""
     if genres is None:
         genres = [{"id": 28, "name": "Action"}, {"id": 18, "name": "Drama"}]
@@ -40,6 +42,10 @@ def _make_details(genres=None, overview="A test movie.", runtime=120, cast_names
         "genres": genres,
         "overview": overview,
         "runtime": runtime,
+        "original_language": original_language,
+        "vote_average": vote_average,
+        "vote_count": vote_count,
+        "tagline": tagline,
         "credits": {
             "cast": [{"name": n, "order": i} for i, n in enumerate(cast_names)]
         },
@@ -58,7 +64,7 @@ def _mock_urlopen(response_data):
 # ─── extract_metadata() ───────────────────────────────────────────────────────
 
 class TestExtractMetadata(unittest.TestCase):
-    """Tests for extract_metadata() — pulls genres, overview, runtime, cast."""
+    """Tests for extract_metadata() — pulls genres, overview, runtime, language, rating, tagline, cast."""
 
     def test_none_returns_empty_defaults(self):
         """Returns safe empty defaults when details is None."""
@@ -66,6 +72,10 @@ class TestExtractMetadata(unittest.TestCase):
         self.assertEqual(result["genres"], [])
         self.assertEqual(result["overview"], "")
         self.assertIsNone(result["runtime"])
+        self.assertIsNone(result["original_language"])
+        self.assertIsNone(result["vote_average"])
+        self.assertIsNone(result["vote_count"])
+        self.assertEqual(result["tagline"], "")
         self.assertEqual(result["cast"], [])
 
     def test_extracts_genre_names(self):
@@ -125,6 +135,72 @@ class TestExtractMetadata(unittest.TestCase):
         details = _make_details()
         del details["overview"]
         self.assertEqual(fetch_metadata.extract_metadata(details)["overview"], "")
+
+    # ── original_language ──
+
+    def test_extracts_original_language(self):
+        """Extracts ISO 639-1 language code."""
+        details = _make_details(original_language="ko")
+        self.assertEqual(fetch_metadata.extract_metadata(details)["original_language"], "ko")
+
+    def test_original_language_none_when_missing(self):
+        """Returns None when original_language key is absent."""
+        details = _make_details()
+        del details["original_language"]
+        self.assertIsNone(fetch_metadata.extract_metadata(details)["original_language"])
+
+    def test_original_language_none_when_empty_string(self):
+        """Returns None when original_language is an empty string."""
+        details = _make_details(original_language="")
+        self.assertIsNone(fetch_metadata.extract_metadata(details)["original_language"])
+
+    # ── vote_average / vote_count ──
+
+    def test_extracts_vote_average(self):
+        """Extracts vote_average rounded to 1 decimal place."""
+        details = _make_details(vote_average=8.3456)
+        self.assertAlmostEqual(fetch_metadata.extract_metadata(details)["vote_average"], 8.3, places=1)
+
+    def test_vote_average_none_when_zero(self):
+        """Returns None when vote_average is 0.0 (no ratings yet)."""
+        details = _make_details(vote_average=0.0)
+        self.assertIsNone(fetch_metadata.extract_metadata(details)["vote_average"])
+
+    def test_vote_average_none_when_missing(self):
+        """Returns None when vote_average key is absent."""
+        details = _make_details()
+        del details["vote_average"]
+        self.assertIsNone(fetch_metadata.extract_metadata(details)["vote_average"])
+
+    def test_extracts_vote_count(self):
+        """Extracts vote_count as an integer."""
+        details = _make_details(vote_count=5000)
+        self.assertEqual(fetch_metadata.extract_metadata(details)["vote_count"], 5000)
+
+    def test_vote_count_zero_when_missing(self):
+        """Returns 0 when vote_count key is absent."""
+        details = _make_details()
+        del details["vote_count"]
+        self.assertEqual(fetch_metadata.extract_metadata(details)["vote_count"], 0)
+
+    # ── tagline ──
+
+    def test_extracts_tagline(self):
+        """Extracts tagline string."""
+        details = _make_details(tagline="Be afraid. Be very afraid.")
+        self.assertEqual(fetch_metadata.extract_metadata(details)["tagline"],
+                         "Be afraid. Be very afraid.")
+
+    def test_tagline_empty_when_missing(self):
+        """Returns empty string when tagline key is absent."""
+        details = _make_details()
+        del details["tagline"]
+        self.assertEqual(fetch_metadata.extract_metadata(details)["tagline"], "")
+
+    def test_tagline_empty_when_none(self):
+        """Returns empty string when tagline is None (TMDB uses None for missing taglines)."""
+        details = _make_details(tagline=None)
+        self.assertEqual(fetch_metadata.extract_metadata(details)["tagline"], "")
 
 
 # ─── search_tmdb() ────────────────────────────────────────────────────────────
