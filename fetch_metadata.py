@@ -38,6 +38,16 @@ RAW_FILE    = "movie_metadata_raw.json"
 OUTPUT_FILE = "movie_metadata.json"
 MOVIES_FILE = "movies.json"
 
+# ─── TMDB ID Overrides ────────────────────────────────────────────────────────
+# If TMDB's auto-search fails for a movie (stored as raw: null in the raw file),
+# add rank → TMDB movie ID here to force-fetch that specific title on the next run.
+# Find a movie's TMDB ID from its URL: https://www.themoviedb.org/movie/<ID>
+# Example:  42: 12345   means rank 42 → TMDB ID 12345
+TMDB_ID_OVERRIDES: dict = {
+    # Add entries here for movies that failed auto-search, e.g.:
+    # 13: 497,   # rank 13 → Schindler's List (497)
+}
+
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -161,12 +171,12 @@ def _extract_us_certification(release_dates_data):
 
 
 def extract_metadata(details):
-    """Extract genres, overview, runtime, language, rating, tagline, certification, and cast."""
+    """Extract genres, overview, runtime, language, rating, tagline, certification, cast, and poster_path."""
     if not details:
         return {
             "genres": [], "overview": "", "runtime": None,
             "original_language": None, "vote_average": None, "vote_count": None,
-            "tagline": "", "certification": None, "cast": [],
+            "tagline": "", "certification": None, "cast": [], "poster_path": None,
         }
 
     genres = [g["name"] for g in details.get("genres", [])]
@@ -174,6 +184,7 @@ def extract_metadata(details):
     runtime = details.get("runtime") or None
     original_language = details.get("original_language") or None
     tagline = details.get("tagline", "") or ""
+    poster_path = details.get("poster_path") or None
 
     raw_avg = details.get("vote_average")
     vote_count = details.get("vote_count") or 0
@@ -189,7 +200,8 @@ def extract_metadata(details):
         "genres": genres, "overview": overview, "runtime": runtime,
         "original_language": original_language,
         "vote_average": vote_average, "vote_count": vote_count,
-        "tagline": tagline, "certification": certification, "cast": cast,
+        "tagline": tagline, "certification": certification,
+        "cast": cast, "poster_path": poster_path,
     }
 
 
@@ -220,17 +232,30 @@ def fetch_raw(api_key, movies):
 
     for i, movie in enumerate(movies):
         rank_key = str(movie["rank"])
+        override_id = TMDB_ID_OVERRIDES.get(movie["rank"])
 
         if rank_key in existing_data and rank_key != "_updated":
-            skipped += 1
-            meta = existing_data[rank_key].get("metadata", {})
-            genres = meta.get("genres", [])
-            print(f"[{i+1:3d}/{total}] (cached)  #{movie['rank']:3d} {movie['title']} -> {genres or 'no genres'}")
-            continue
+            cached = existing_data[rank_key]
+            # Skip if cached successfully, or if no override can fix a failed cache entry
+            if override_id is None or cached.get("raw") is not None:
+                skipped += 1
+                meta = cached.get("metadata", {})
+                genres = meta.get("genres", [])
+                print(f"[{i+1:3d}/{total}] (cached)  #{movie['rank']:3d} {movie['title']} -> {genres or 'no genres'}")
+                continue
+            # Override present + raw is None → drop failed entry and re-fetch below
+            del results[rank_key]
+            print(f"[{i+1:3d}/{total}] Override  #{movie['rank']:3d} {movie['title']} (TMDB id={override_id})...", end=" ", flush=True)
+        else:
+            print(f"[{i+1:3d}/{total}] Fetching  #{movie['rank']:3d} {movie['title']} ({movie['year']})...", end=" ", flush=True)
 
-        print(f"[{i+1:3d}/{total}] Fetching #{movie['rank']:3d} {movie['title']} ({movie['year']})...", end=" ", flush=True)
+        if override_id:
+            # Use the override TMDB ID directly — skip search
+            search_result = {"id": override_id, "title": movie["title"],
+                             "release_date": f"{movie['year']}-01-01"}
+        else:
+            search_result = search_tmdb(movie["title"], movie["year"], api_key)
 
-        search_result = search_tmdb(movie["title"], movie["year"], api_key)
         if not search_result:
             print("-> not found on TMDB")
             results[rank_key] = {
@@ -239,7 +264,7 @@ def fetch_raw(api_key, movies):
                 "metadata": {
                     "genres": [], "overview": "", "runtime": None,
                     "original_language": None, "vote_average": None, "vote_count": None,
-                    "tagline": "", "certification": None, "cast": [],
+                    "tagline": "", "certification": None, "cast": [], "poster_path": None,
                 },
                 "fetched_at": datetime.date.today().isoformat(),
                 "raw": None,
@@ -306,7 +331,10 @@ def clean_raw(results=None, movies=None):
             clean["_updated"] = value
         elif isinstance(value, dict):
             meta = value.get("metadata", {})
+            raw = value.get("raw")
+            tmdb_id = raw.get("tmdb_id") if isinstance(raw, dict) else None
             entry = {
+                "tmdb_id":            tmdb_id,
                 "genres":             meta.get("genres", []),
                 "overview":           meta.get("overview", ""),
                 "runtime":            meta.get("runtime", None),
@@ -316,6 +344,7 @@ def clean_raw(results=None, movies=None):
                 "tagline":            meta.get("tagline", ""),
                 "certification":      meta.get("certification", None),
                 "cast":               meta.get("cast", []),
+                "poster_path":        meta.get("poster_path", None),
             }
             if "fetched_at" in value:
                 entry["fetched_at"] = value["fetched_at"]
@@ -325,6 +354,7 @@ def clean_raw(results=None, movies=None):
         json.dump(clean, f, indent=2)
 
     print(f"Clean metadata saved to {OUTPUT_FILE}")
+    return clean
 
     if movies:
         total = len(movies)

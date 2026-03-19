@@ -344,7 +344,7 @@
 
     .movie-card {
       display: grid;
-      grid-template-columns: 52px 1fr auto;
+      grid-template-columns: 52px 60px 1fr auto;
       align-items: center;
       gap: 1rem;
       background: var(--surface);
@@ -483,6 +483,53 @@
       text-overflow: ellipsis;
     }
 
+    /* Poster */
+    .movie-poster {
+      flex-shrink: 0;
+      align-self: start;
+    }
+    .poster-img {
+      width: 60px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+    .poster-placeholder {
+      width: 60px;
+      height: 90px;
+      border-radius: 4px;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+    }
+
+    /* TMDB chip link */
+    .tmdb-chip {
+      display: inline-block;
+      padding: 0.05rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #01b4e4;
+      border: 1px solid #01b4e4;
+      text-decoration: none;
+      vertical-align: middle;
+      line-height: 1.4;
+      white-space: nowrap;
+      transition: background 0.12s, color 0.12s;
+    }
+    .tmdb-chip:hover {
+      background: #01b4e4;
+      color: white;
+    }
+
+    /* TMDB logo in footer */
+    .tmdb-logo {
+      height: 1.1em;
+      vertical-align: middle;
+      margin: 0 0.25em;
+    }
+
     /* Actions */
     .movie-actions {
       display: flex;
@@ -609,6 +656,7 @@
         grid-template-columns: 40px 1fr;
         gap: 0.75rem;
       }
+      .movie-poster { display: none; }
       .movie-actions {
         grid-column: 1 / -1;
         justify-content: flex-start;
@@ -733,10 +781,16 @@
 <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
 <footer>
-  <p><strong>Disclaimer:</strong> This is an unofficial, independent project. It is not affiliated with, endorsed by, or connected to The New York Times in any way.</p>
-  <p>Streaming availability data provided by the <a href="https://www.movieofthenight.com/" style="color: var(--primary);">Streaming Availability API</a> (Movie of the Night) via RapidAPI.</p>
-  <p>Streaming data fetched: <span id="data-updated-date">unknown</span>. Availability may change &mdash; check your streaming service to confirm.</p>
-  <p>Site last updated: March 14, 2026.</p>
+  <p><strong>Disclaimer:</strong> This is an unofficial, independent project. Not affiliated with, endorsed by, or connected to The New York Times in any way.</p>
+  <p>Streaming availability provided by the <a href="https://www.movieofthenight.com/" style="color: var(--primary);">Streaming Availability API</a> (Movie of the Night) via RapidAPI. Data fetched: <span id="data-updated-date">unknown</span>. Availability may change &mdash; check your streaming service to confirm.</p>
+  <p>
+    Movie metadata and poster images provided by
+    <a href="https://www.themoviedb.org" target="_blank" rel="noopener" style="color: var(--primary);">
+      <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg"
+           alt="The Movie Database (TMDB)" class="tmdb-logo">
+    </a>.
+    This product uses the TMDB API but is not endorsed or certified by TMDB.
+  </p>
   <p>Found a bug or missing a movie? <a href="https://github.com/BarkleyBG/nyt_movies_streaming/issues" style="color: var(--primary);">Submit feedback on GitHub</a>.</p>
 </footer>
 
@@ -773,6 +827,7 @@ async function loadMoviesData() {
       genres: [], overview: "", runtime: null,
       original_language: null, vote_average: null, vote_count: 0,
       tagline: "", certification: null, cast: [],
+      tmdb_id: null, poster_path: null,
     }));
   } catch (e) {
     console.error("Failed to load movies.json", e);
@@ -821,6 +876,8 @@ async function loadMetadataData() {
         m.tagline           = entry.tagline           || "";
         m.certification     = entry.certification     || null;
         m.cast              = entry.cast              || [];
+        m.tmdb_id           = entry.tmdb_id           || null;
+        m.poster_path       = entry.poster_path       || null;
       }
     });
   } catch (e) {
@@ -988,6 +1045,9 @@ function render() {
     const runtimeStr = formatRuntime(m.runtime);
     const ratingStr = m.vote_average ? `★\u202f${m.vote_average.toFixed(1)}` : "";
     const metaParts = [m.year, m.director, runtimeStr, m.certification, ratingStr].filter(Boolean);
+    const tmdbChip = m.tmdb_id
+      ? `<a href="https://www.themoviedb.org/movie/${m.tmdb_id}" target="_blank" rel="noopener" class="tmdb-chip">TMDB\u202f↗</a>`
+      : "";
     const langTag = (m.original_language && m.original_language !== "en")
       ? `<span class="language-tag">${_langName(m.original_language)}</span>` : "";
     const genreTags = m.genres.map(g => `<span class="genre-tag">${g}</span>`).join("");
@@ -997,13 +1057,17 @@ function render() {
       ? `<div class="movie-cast">With: ${m.cast.join(", ")}</div>` : "";
     const overviewLine = m.overview
       ? `<div class="movie-overview">${m.overview}</div>` : "";
+    const posterHtml = m.poster_path
+      ? `<img src="https://image.tmdb.org/t/p/w92${m.poster_path}" srcset="https://image.tmdb.org/t/p/w185${m.poster_path} 2x" alt="${m.title} poster" class="poster-img" loading="lazy">`
+      : `<div class="poster-placeholder"></div>`;
 
     return `
       <div class="movie-card ${seenClass}" data-rank="${m.rank}" style="--rank-color:${rankColor}; animation-delay:${delay}s">
         <div class="rank-badge" style="background:linear-gradient(135deg, ${rankColor}, ${rankColor}dd)">${m.rank}</div>
+        <div class="movie-poster">${posterHtml}</div>
         <div class="movie-info">
           <div class="movie-title">${m.title}</div>
-          <div class="movie-meta">${metaParts.join(" &middot; ")}</div>
+          <div class="movie-meta">${metaParts.join(" &middot; ")}${tmdbChip ? "\u2002" + tmdbChip : ""}</div>
           ${taglineLine}
           ${(langTag || genreTags) ? `<div class="movie-tags">${langTag}${genreTags}</div>` : ""}
           ${castLine}

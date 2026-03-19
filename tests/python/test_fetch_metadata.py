@@ -2,10 +2,13 @@
 Unit tests for fetch_metadata.py
 
 Coverage:
-  - extract_metadata()  : genres, overview, runtime, and cast extraction
+  - extract_metadata()  : genres, overview, runtime, poster_path, and cast extraction
+  - _extract_us_certification(): MPAA rating parsing
+  - clean_raw()         : tmdb_id and poster_path in clean output
   - search_tmdb()       : HTTP request construction and response parsing (mocked)
   - load_api_key()      : TMDB_API_KEY loading from env / .env file
   - load_movies()       : reads movies.json correctly
+  - TMDB_ID_OVERRIDES   : override dict exists and is a dict
   - movies.json integrity: 100 entries, unique ranks 1-100, required fields
 
 All external I/O (HTTP calls, file access) is mocked so tests are fast,
@@ -47,7 +50,7 @@ def _make_us_release_dates(certification="R", release_type=3):
 
 def _make_details(genres=None, overview="A test movie.", runtime=120, cast_names=None,
                   original_language="en", vote_average=7.5, vote_count=1000,
-                  tagline="A tagline.", certification="R"):
+                  tagline="A tagline.", certification="R", poster_path="/abc123.jpg"):
     """Build a minimal TMDB details+credits+release_dates response."""
     if genres is None:
         genres = [{"id": 28, "name": "Action"}, {"id": 18, "name": "Drama"}]
@@ -61,6 +64,7 @@ def _make_details(genres=None, overview="A test movie.", runtime=120, cast_names
         "vote_average": vote_average,
         "vote_count": vote_count,
         "tagline": tagline,
+        "poster_path": poster_path,
         "release_dates": _make_us_release_dates(certification),
         "credits": {
             "cast": [{"name": n, "order": i} for i, n in enumerate(cast_names)]
@@ -94,6 +98,7 @@ class TestExtractMetadata(unittest.TestCase):
         self.assertEqual(result["tagline"], "")
         self.assertIsNone(result["certification"])
         self.assertEqual(result["cast"], [])
+        self.assertIsNone(result["poster_path"])
 
     def test_extracts_genre_names(self):
         """Extracts genre name strings from the genres list."""
@@ -231,6 +236,24 @@ class TestExtractMetadata(unittest.TestCase):
         details = _make_details()
         del details["release_dates"]
         self.assertIsNone(fetch_metadata.extract_metadata(details)["certification"])
+
+    # ── poster_path ──
+
+    def test_extracts_poster_path(self):
+        """Extracts poster_path string from details."""
+        details = _make_details(poster_path="/xyz789.jpg")
+        self.assertEqual(fetch_metadata.extract_metadata(details)["poster_path"], "/xyz789.jpg")
+
+    def test_poster_path_none_when_missing(self):
+        """Returns None when poster_path key is absent."""
+        details = _make_details()
+        del details["poster_path"]
+        self.assertIsNone(fetch_metadata.extract_metadata(details)["poster_path"])
+
+    def test_poster_path_none_when_null(self):
+        """Returns None when poster_path is None (TMDB uses null when no poster)."""
+        details = _make_details(poster_path=None)
+        self.assertIsNone(fetch_metadata.extract_metadata(details)["poster_path"])
 
 
 # ─── _extract_us_certification() ─────────────────────────────────────────────
@@ -511,6 +534,101 @@ class TestMoviesJsonIntegrity(unittest.TestCase):
         """Year values must be integers."""
         for movie in self.movies:
             self.assertIsInstance(movie["year"], int)
+
+
+# ─── clean_raw() ──────────────────────────────────────────────────────────────
+
+class TestCleanRaw(unittest.TestCase):
+    """Tests for clean_raw() — tmdb_id and poster_path appear in the clean output."""
+
+    def _make_results(self, tmdb_id=12345, poster_path="/poster.jpg", raw_none=False):
+        """Build a minimal raw-results dict as produced by fetch_raw()."""
+        raw = None if raw_none else {
+            "tmdb_id": tmdb_id,
+            "tmdb_title": "Test Movie",
+            "tmdb_year": "2020",
+        }
+        return {
+            "_updated": "March 19, 2026",
+            "1": {
+                "title": "Test Movie",
+                "year": 2020,
+                "metadata": {
+                    "genres": ["Drama"],
+                    "overview": "A test.",
+                    "runtime": 120,
+                    "original_language": "en",
+                    "vote_average": 7.5,
+                    "vote_count": 1000,
+                    "tagline": "A tagline.",
+                    "certification": "R",
+                    "cast": ["Alice"],
+                    "poster_path": poster_path,
+                },
+                "fetched_at": "2026-03-19",
+                "raw": raw,
+            },
+        }
+
+    def test_includes_tmdb_id_in_output(self):
+        """clean_raw() includes tmdb_id from the raw section."""
+        results = self._make_results(tmdb_id=99999)
+        with patch("builtins.open", mock_open()):
+            clean = fetch_metadata.clean_raw(results=results)
+        self.assertEqual(clean["1"]["tmdb_id"], 99999)
+
+    def test_includes_poster_path_in_output(self):
+        """clean_raw() includes poster_path from the metadata section."""
+        results = self._make_results(poster_path="/test_poster.jpg")
+        with patch("builtins.open", mock_open()):
+            clean = fetch_metadata.clean_raw(results=results)
+        self.assertEqual(clean["1"]["poster_path"], "/test_poster.jpg")
+
+    def test_tmdb_id_none_when_raw_is_null(self):
+        """tmdb_id is None when the raw entry is null (failed search)."""
+        results = self._make_results(raw_none=True)
+        with patch("builtins.open", mock_open()):
+            clean = fetch_metadata.clean_raw(results=results)
+        self.assertIsNone(clean["1"]["tmdb_id"])
+
+    def test_poster_path_none_when_metadata_has_none(self):
+        """poster_path is None when metadata stores None."""
+        results = self._make_results(poster_path=None)
+        with patch("builtins.open", mock_open()):
+            clean = fetch_metadata.clean_raw(results=results)
+        self.assertIsNone(clean["1"]["poster_path"])
+
+    def test_preserves_updated_key(self):
+        """_updated key is preserved in clean output."""
+        results = self._make_results()
+        with patch("builtins.open", mock_open()):
+            clean = fetch_metadata.clean_raw(results=results)
+        self.assertEqual(clean["_updated"], "March 19, 2026")
+
+    def test_returns_clean_dict(self):
+        """clean_raw() returns the clean dict."""
+        results = self._make_results()
+        with patch("builtins.open", mock_open()):
+            result = fetch_metadata.clean_raw(results=results)
+        self.assertIsInstance(result, dict)
+
+
+# ─── TMDB_ID_OVERRIDES ────────────────────────────────────────────────────────
+
+class TestTmdbIdOverrides(unittest.TestCase):
+    """Tests for the TMDB_ID_OVERRIDES mechanism."""
+
+    def test_overrides_dict_is_defined(self):
+        """TMDB_ID_OVERRIDES must exist and be a dict."""
+        self.assertIsInstance(fetch_metadata.TMDB_ID_OVERRIDES, dict)
+
+    def test_overrides_dict_maps_int_to_int(self):
+        """All entries in TMDB_ID_OVERRIDES must map int rank → int TMDB ID."""
+        for rank, tmdb_id in fetch_metadata.TMDB_ID_OVERRIDES.items():
+            with self.subTest(rank=rank):
+                self.assertIsInstance(rank, int)
+                self.assertIsInstance(tmdb_id, int)
+                self.assertGreater(tmdb_id, 0)
 
 
 if __name__ == "__main__":
