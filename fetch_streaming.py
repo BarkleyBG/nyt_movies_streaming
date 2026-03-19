@@ -2,13 +2,16 @@
 fetch_streaming.py
 ──────────────────
 Queries the Streaming Availability API (Movie of the Night) via RapidAPI
-for each of the NYT Top 100 movies and saves results to streaming_data.json.
+for each of the NYT Top 100 movies (and optionally Oscar Best Picture nominees)
+and saves results to streaming_data.json.
 
 Usage:
     1. Copy .env.example to .env and add your RapidAPI key
     2. Run:  python fetch_streaming.py
+    3. For Oscar movies too:  python fetch_streaming.py --include-oscars
 
-Free plan: 100 requests/day — exactly enough for 100 movies.
+Free plan: 100 requests/day — the NYT list alone uses all 100.
+Use --include-oscars only if you have quota remaining or a paid plan.
 """
 
 import argparse
@@ -35,7 +38,13 @@ INCLUDED_TYPES = {"subscription", "free"}
 
 RAW_FILE = "streaming_data_raw.json"   # full API cache (gitignored)
 OUTPUT_FILE = "streaming_data.json"     # clean, minimal (committed)
+OSCAR_FILE = "oscar_data.json"         # Oscar Best Picture data
 DELAY_BETWEEN_REQUESTS = 0.6  # seconds — be polite to the API
+
+
+def movie_key(movie):
+    """Generate a unique key for a movie: title_year (must match index.html movieKey())."""
+    return f"{movie['title']}_{movie['year']}"
 
 # ─── Movie List (must match index.html) ──────────────────────────────────────
 
@@ -57,7 +66,7 @@ MOVIES = [
     {"rank": 15,  "title": "City of God",                                   "year": 2002},
     {"rank": 16,  "title": "Crouching Tiger, Hidden Dragon",                "year": 2000},
     {"rank": 17,  "title": "Brokeback Mountain",                            "year": 2005},
-    {"rank": 18,  "title": "Y Tu Mama Tambien",                             "year": 2001},
+    {"rank": 18,  "title": "Y Tu Mamá También",                             "year": 2001},
     {"rank": 19,  "title": "Zodiac",                                        "year": 2007},
     {"rank": 20,  "title": "The Wolf of Wall Street",                       "year": 2013},
     {"rank": 21,  "title": "The Royal Tenenbaums",                          "year": 2001},
@@ -80,7 +89,7 @@ MOVIES = [
     {"rank": 38,  "title": "Portrait of a Lady on Fire",                    "year": 2019},
     {"rank": 39,  "title": "Lady Bird",                                     "year": 2017},
     {"rank": 40,  "title": "Yi Yi",                                         "year": 2000},
-    {"rank": 41,  "title": "Amelie",                                        "year": 2001},
+    {"rank": 41,  "title": "Amélie",                                        "year": 2001},
     {"rank": 42,  "title": "The Master",                                    "year": 2012},
     {"rank": 43,  "title": "Oldboy",                                        "year": 2003},
     {"rank": 44,  "title": "Once Upon a Time in Hollywood",                 "year": 2019},
@@ -100,13 +109,13 @@ MOVIES = [
     {"rank": 58,  "title": "Uncut Gems",                                    "year": 2019},
     {"rank": 59,  "title": "Toni Erdmann",                                  "year": 2016},
     {"rank": 60,  "title": "Whiplash",                                      "year": 2014},
-    {"rank": 61,  "title": "Kill Bill Vol. 1",                              "year": 2003},
+    {"rank": 61,  "title": "Kill Bill: Vol. 1",                             "year": 2003},
     {"rank": 62,  "title": "Memento",                                       "year": 2000},
     {"rank": 63,  "title": "Little Miss Sunshine",                          "year": 2006},
     {"rank": 64,  "title": "Gone Girl",                                     "year": 2014},
     {"rank": 65,  "title": "Oppenheimer",                                   "year": 2023},
     {"rank": 66,  "title": "Spotlight",                                     "year": 2015},
-    {"rank": 67,  "title": "Tar",                                           "year": 2022},
+    {"rank": 67,  "title": "Tár",                                           "year": 2022},
     {"rank": 68,  "title": "The Hurt Locker",                               "year": 2008},
     {"rank": 69,  "title": "Under the Skin",                                "year": 2013},
     {"rank": 70,  "title": "Let the Right One In",                          "year": 2008},
@@ -238,7 +247,22 @@ def extract_streaming(show):
 
 # ─── Main ────────────────────────────────────────────────────────────────────
 
-def fetch_raw(api_key):
+def load_oscar_movies():
+    """Load Oscar Best Picture nominees from oscar_data.json."""
+    oscar_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), OSCAR_FILE)
+    if not os.path.exists(oscar_path):
+        print(f"Warning: {OSCAR_FILE} not found, skipping Oscar movies")
+        return []
+    try:
+        with open(oscar_path) as f:
+            data = json.load(f)
+        return data.get("movies", [])
+    except (json.JSONDecodeError, IOError):
+        print(f"Warning: Failed to read {OSCAR_FILE}")
+        return []
+
+
+def fetch_raw(api_key, include_oscars=False):
     """Fetch raw API data for all movies and save to RAW_FILE. Returns results, fetched, skipped."""
     # Load existing raw data to support resuming interrupted runs
     existing_data = {}
@@ -251,7 +275,21 @@ def fetch_raw(api_key):
             pass
 
     results = dict(existing_data)
-    total = len(MOVIES)
+
+    # Build deduplicated movie list
+    all_movies = list(MOVIES)
+    seen_keys = {movie_key(m) for m in MOVIES}
+
+    if include_oscars:
+        oscar_movies = load_oscar_movies()
+        for om in oscar_movies:
+            mk = movie_key(om)
+            if mk not in seen_keys:
+                all_movies.append(om)
+                seen_keys.add(mk)
+        print(f"Including Oscar movies: {len(oscar_movies)} total, {len(all_movies) - len(MOVIES)} new")
+
+    total = len(all_movies)
     skipped = 0
     fetched = 0
 
@@ -260,23 +298,23 @@ def fetch_raw(api_key):
     print(f"Region: US | Included types: {', '.join(INCLUDED_TYPES)}")
     print("=" * 60)
 
-    for i, movie in enumerate(MOVIES):
-        rank_key = str(movie["rank"])
+    for i, movie in enumerate(all_movies):
+        mk = movie_key(movie)
 
-        # Skip if we already have data for this movie (not the _updated metadata key)
-        if rank_key in existing_data and rank_key != "_updated":
+        # Skip if we already have data for this movie
+        if mk in existing_data and mk != "_updated":
             skipped += 1
-            services = existing_data[rank_key].get("services", [])
-            print(f"[{i+1:3d}/{total}] (cached)  #{movie['rank']:3d} {movie['title']} -> {services or 'none'}")
+            services = existing_data[mk].get("services", [])
+            print(f"[{i+1:3d}/{total}] (cached)  {movie['title']} ({movie['year']}) -> {services or 'none'}")
             continue
 
-        print(f"[{i+1:3d}/{total}] Fetching #{movie['rank']:3d} {movie['title']} ({movie['year']})...", end=" ")
+        print(f"[{i+1:3d}/{total}] Fetching {movie['title']} ({movie['year']})...", end=" ")
 
         show = search_movie(movie["title"], movie["year"], api_key)
         services = extract_streaming(show)
 
         # Store result with full raw data for future reference
-        results[rank_key] = {
+        results[mk] = {
             "title": movie["title"],
             "year": movie["year"],
             "services": services,
@@ -344,7 +382,7 @@ def clean_raw(results=None):
     print(f"Clean data saved to {OUTPUT_FILE}")
 
     # Summary
-    total = len(MOVIES)
+    total = sum(1 for k, v in results.items() if k != "_updated" and isinstance(v, dict))
     with_streaming = sum(1 for v in results.values() if isinstance(v, dict) and v.get("services"))
     print(f"\nMovies with streaming availability: {with_streaming}/{total}")
     service_counts = {}
@@ -363,6 +401,7 @@ def main():
     parser = argparse.ArgumentParser(description="Fetch and/or clean streaming availability data")
     parser.add_argument("--fetch-only", action="store_true", help="Only fetch raw API data and save to streaming_data_raw.json")
     parser.add_argument("--clean-only", action="store_true", help="Only clean existing raw data into streaming_data.json")
+    parser.add_argument("--include-oscars", action="store_true", help="Also fetch streaming data for Oscar Best Picture nominees")
     args = parser.parse_args()
 
     if args.fetch_only and args.clean_only:
@@ -377,7 +416,7 @@ def main():
     # If fetching (or default), ensure API key is loaded
     if args.fetch_only or not args.clean_only:
         api_key = load_api_key()
-        results, fetched, skipped = fetch_raw(api_key)
+        results, fetched, skipped = fetch_raw(api_key, include_oscars=args.include_oscars)
 
     # If fetch-only requested, stop here
     if args.fetch_only:
