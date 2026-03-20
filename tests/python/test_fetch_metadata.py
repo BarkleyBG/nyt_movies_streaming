@@ -622,11 +622,12 @@ class TestTmdbIdOverrides(unittest.TestCase):
         """TMDB_ID_OVERRIDES must exist and be a dict."""
         self.assertIsInstance(fetch_metadata.TMDB_ID_OVERRIDES, dict)
 
-    def test_overrides_dict_maps_int_to_int(self):
-        """All entries in TMDB_ID_OVERRIDES must map int rank → int TMDB ID."""
-        for rank, tmdb_id in fetch_metadata.TMDB_ID_OVERRIDES.items():
-            with self.subTest(rank=rank):
-                self.assertIsInstance(rank, int)
+    def test_overrides_dict_maps_str_to_int(self):
+        """All entries in TMDB_ID_OVERRIDES must map title_year string → int TMDB ID."""
+        for key, tmdb_id in fetch_metadata.TMDB_ID_OVERRIDES.items():
+            with self.subTest(key=key):
+                self.assertIsInstance(key, str)
+                self.assertIn("_", key, "Key must be in title_year format")
                 self.assertIsInstance(tmdb_id, int)
                 self.assertGreater(tmdb_id, 0)
 

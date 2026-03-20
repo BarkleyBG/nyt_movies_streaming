@@ -2,11 +2,14 @@
 fetch_metadata.py
 ─────────────────
 Queries the TMDB (The Movie Database) API for each movie in movies.json
-and saves genres, overview, runtime, language, rating, tagline, US certification, and top cast to movie_metadata.json.
+(and optionally Oscar Best Picture nominees) and saves genres, overview,
+runtime, language, rating, tagline, US certification, and top cast to
+movie_metadata.json.
 
 Usage:
     1. Copy .env.example to .env and add your TMDB API key
     2. Run:  python fetch_metadata.py
+    3. For Oscar movies too:  python fetch_metadata.py --include-oscars
 
 TMDB API:
     Free tier — no daily cap; rate limit is ~40 requests/10 seconds.
@@ -37,20 +40,23 @@ DELAY_BETWEEN_REQUESTS = 0.3  # seconds — well within TMDB's rate limit
 RAW_FILE    = "movie_metadata_raw.json"
 OUTPUT_FILE = "movie_metadata.json"
 MOVIES_FILE = "movies.json"
+OSCAR_FILE  = "oscar_data.json"
 
 # ─── TMDB ID Overrides ────────────────────────────────────────────────────────
 # If TMDB's auto-search fails for a movie (stored as raw: null in the raw file),
-# add rank → TMDB movie ID here to force-fetch that specific title on the next run.
+# add title_year → TMDB movie ID here to force-fetch that specific title on the next run.
 # Find a movie's TMDB ID from its URL: https://www.themoviedb.org/movie/<ID>
-# Example:  42: 12345   means rank 42 → TMDB ID 12345
 TMDB_ID_OVERRIDES: dict = {
-    # Add entries here for movies that failed auto-search, e.g.:
-    # 13: 497,   # rank 13 → Schindler's List (497)
-    18: 1391, #'https://www.themoviedb.org/movie/1391-y-tu-mama-tambien' ,
-    34: 10681, # 'https://www.themoviedb.org/movie/10681-wall-e'
-    41: 194, # 'https://www.themoviedb.org/movie/194-le-fabuleux-destin-d-amelie-poulain',
-    67: 817758, # 'https://www.themoviedb.org/movie/817758-tar',
+    "Y Tu Mamá También_2001": 1391,
+    "WALL-E_2008": 10681,
+    "Amélie_2001": 194,
+    "Tár_2022": 817758,
 }
+
+
+def movie_key(movie):
+    """Generate a unique key for a movie: title_year (must match index.html movieKey())."""
+    return f"{movie['title']}_{movie['year']}"
 
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -64,6 +70,21 @@ def load_movies():
     except (FileNotFoundError, json.JSONDecodeError) as e:
         print(f"ERROR: Could not load {MOVIES_FILE}: {e}")
         sys.exit(1)
+
+
+def load_oscar_movies():
+    """Load Oscar Best Picture nominees from oscar_data.json."""
+    oscar_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), OSCAR_FILE)
+    if not os.path.exists(oscar_path):
+        print(f"Warning: {OSCAR_FILE} not found, skipping Oscar movies")
+        return []
+    try:
+        with open(oscar_path) as f:
+            data = json.load(f)
+        return data.get("movies", [])
+    except (json.JSONDecodeError, IOError):
+        print(f"Warning: Failed to read {OSCAR_FILE}")
+        return []
 
 
 def load_api_key():
@@ -211,7 +232,7 @@ def extract_metadata(details):
 
 # ─── Main fetch/clean pipeline ───────────────────────────────────────────────
 
-def fetch_raw(api_key, movies):
+def fetch_raw(api_key, all_movies):
     """
     Fetch raw TMDB data for all movies. Skips already-cached entries.
     Returns results dict.
@@ -226,7 +247,7 @@ def fetch_raw(api_key, movies):
             pass
 
     results = dict(existing_data)
-    total = len(movies)
+    total = len(all_movies)
     fetched = 0
     skipped = 0
 
@@ -234,24 +255,24 @@ def fetch_raw(api_key, movies):
     print(f"Fields: genres, overview, runtime, language, rating, tagline, certification, top {CAST_LIMIT} cast")
     print("=" * 60)
 
-    for i, movie in enumerate(movies):
-        rank_key = str(movie["rank"])
-        override_id = TMDB_ID_OVERRIDES.get(movie["rank"])
+    for i, movie in enumerate(all_movies):
+        mk = movie_key(movie)
+        override_id = TMDB_ID_OVERRIDES.get(mk)
 
-        if rank_key in existing_data and rank_key != "_updated":
-            cached = existing_data[rank_key]
+        if mk in existing_data and mk != "_updated":
+            cached = existing_data[mk]
             # Skip if cached successfully, or if no override can fix a failed cache entry
             if override_id is None or cached.get("raw") is not None:
                 skipped += 1
                 meta = cached.get("metadata", {})
                 genres = meta.get("genres", [])
-                print(f"[{i+1:3d}/{total}] (cached)  #{movie['rank']:3d} {movie['title']} -> {genres or 'no genres'}")
+                print(f"[{i+1:3d}/{total}] (cached)  {movie['title']} ({movie['year']}) -> {genres or 'no genres'}")
                 continue
             # Override present + raw is None → drop failed entry and re-fetch below
-            del results[rank_key]
-            print(f"[{i+1:3d}/{total}] Override  #{movie['rank']:3d} {movie['title']} (TMDB id={override_id})...", end=" ", flush=True)
+            del results[mk]
+            print(f"[{i+1:3d}/{total}] Override  {movie['title']} (TMDB id={override_id})...", end=" ", flush=True)
         else:
-            print(f"[{i+1:3d}/{total}] Fetching  #{movie['rank']:3d} {movie['title']} ({movie['year']})...", end=" ", flush=True)
+            print(f"[{i+1:3d}/{total}] Fetching  {movie['title']} ({movie['year']})...", end=" ", flush=True)
 
         if override_id:
             # Use the override TMDB ID directly — skip search
@@ -262,7 +283,7 @@ def fetch_raw(api_key, movies):
 
         if not search_result:
             print("-> not found on TMDB")
-            results[rank_key] = {
+            results[mk] = {
                 "title": movie["title"],
                 "year": movie["year"],
                 "metadata": {
@@ -278,7 +299,7 @@ def fetch_raw(api_key, movies):
             details = fetch_movie_details(tmdb_id, api_key)
             metadata = extract_metadata(details)
 
-            results[rank_key] = {
+            results[mk] = {
                 "title": movie["title"],
                 "year": movie["year"],
                 "metadata": metadata,
@@ -313,7 +334,7 @@ def fetch_raw(api_key, movies):
     return results
 
 
-def clean_raw(results=None, movies=None):
+def clean_raw(results=None, all_movies=None):
     """
     Produce the clean movie_metadata.json from raw results.
     Writes genres, overview, runtime, language, rating, tagline, cast, and fetched_at — no raw API data.
@@ -358,13 +379,12 @@ def clean_raw(results=None, movies=None):
         json.dump(clean, f, indent=2)
 
     print(f"Clean metadata saved to {OUTPUT_FILE}")
-    return clean
 
-    if movies:
-        total = len(movies)
+    if all_movies:
+        total = len(all_movies)
         with_meta = sum(
             1 for k, v in clean.items()
-            if k not in ("_updated",) and isinstance(v, dict) and v.get("genres")
+            if k != "_updated" and isinstance(v, dict) and v.get("genres")
         )
         print(f"\nMovies with metadata: {with_meta}/{total}")
 
@@ -380,6 +400,8 @@ def clean_raw(results=None, movies=None):
             for genre, count in sorted(genre_counts.items(), key=lambda x: -x[1])[:10]:
                 print(f"  {genre:20s}: {count} movies")
 
+    return clean
+
 
 def main():
     parser = argparse.ArgumentParser(description="Fetch and/or clean TMDB movie metadata")
@@ -387,6 +409,8 @@ def main():
                         help="Only fetch raw TMDB data, save to movie_metadata_raw.json")
     parser.add_argument("--clean-only", action="store_true",
                         help="Only clean existing raw data into movie_metadata.json")
+    parser.add_argument("--include-oscars", action="store_true",
+                        help="Also fetch metadata for Oscar Best Picture nominees")
     args = parser.parse_args()
 
     if args.fetch_only and args.clean_only:
@@ -394,18 +418,29 @@ def main():
         sys.exit(1)
 
     movies = load_movies()
+    all_movies = list(movies)
+
+    if args.include_oscars:
+        seen_keys = {movie_key(m) for m in movies}
+        oscar_movies = load_oscar_movies()
+        for om in oscar_movies:
+            mk = movie_key(om)
+            if mk not in seen_keys:
+                all_movies.append(om)
+                seen_keys.add(mk)
+        print(f"Including Oscar movies: {len(oscar_movies)} total, {len(all_movies) - len(movies)} new")
 
     if args.clean_only:
-        clean_raw(movies=movies)
+        clean_raw(all_movies=all_movies)
         return
 
     api_key = load_api_key()
-    results = fetch_raw(api_key, movies)
+    results = fetch_raw(api_key, all_movies)
 
     if args.fetch_only:
         return
 
-    clean_raw(results, movies)
+    clean_raw(results, all_movies)
 
 
 if __name__ == "__main__":

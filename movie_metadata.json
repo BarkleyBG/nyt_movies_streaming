@@ -1,5 +1,5 @@
 {
-  "1": {
+  "Parasite_2019": {
     "tmdb_id": 496243,
     "genres": [
       "Comedy",
@@ -21,7 +21,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "2": {
+  "Mulholland Drive_2001": {
     "tmdb_id": 1018,
     "genres": [
       "Thriller",
@@ -43,7 +43,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "3": {
+  "There Will Be Blood_2007": {
     "tmdb_id": 7345,
     "genres": [
       "Drama"
@@ -63,7 +63,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "4": {
+  "In the Mood for Love_2000": {
     "tmdb_id": 843,
     "genres": [
       "Drama",
@@ -84,7 +84,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "5": {
+  "Moonlight_2016": {
     "tmdb_id": 376867,
     "genres": [
       "Drama"
@@ -104,7 +104,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "6": {
+  "No Country for Old Men_2007": {
     "tmdb_id": 6977,
     "genres": [
       "Crime",
@@ -126,7 +126,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "7": {
+  "Eternal Sunshine of the Spotless Mind_2004": {
     "tmdb_id": 38,
     "genres": [
       "Science Fiction",
@@ -148,7 +148,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "8": {
+  "Get Out_2017": {
     "tmdb_id": 419430,
     "genres": [
       "Mystery",
@@ -170,7 +170,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "9": {
+  "Spirited Away_2001": {
     "tmdb_id": 129,
     "genres": [
       "Animation",
@@ -192,7 +192,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "10": {
+  "The Social Network_2010": {
     "tmdb_id": 37799,
     "genres": [
       "Drama"
@@ -212,7 +212,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "11": {
+  "Mad Max: Fury Road_2015": {
     "tmdb_id": 76341,
     "genres": [
       "Action",
@@ -234,7 +234,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "12": {
+  "The Zone of Interest_2023": {
     "tmdb_id": 467244,
     "genres": [
       "Drama",
@@ -255,7 +255,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "13": {
+  "Children of Men_2006": {
     "tmdb_id": 9693,
     "genres": [
       "Science Fiction",
@@ -276,7 +276,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "14": {
+  "Inglourious Basterds_2009": {
     "tmdb_id": 16869,
     "genres": [
       "Drama",
@@ -298,7 +298,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "15": {
+  "City of God_2002": {
     "tmdb_id": 598,
     "genres": [
       "Drama",
@@ -319,7 +319,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "16": {
+  "Crouching Tiger, Hidden Dragon_2000": {
     "tmdb_id": 146,
     "genres": [
       "Adventure",
@@ -342,7 +342,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "17": {
+  "Brokeback Mountain_2005": {
     "tmdb_id": 142,
     "genres": [
       "Drama",
@@ -363,7 +363,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "19": {
+  "Zodiac_2007": {
     "tmdb_id": 1949,
     "genres": [
       "Crime",
@@ -385,7 +385,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "20": {
+  "The Wolf of Wall Street_2013": {
     "tmdb_id": 106646,
     "genres": [
       "Crime",
@@ -407,7 +407,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "21": {
+  "The Royal Tenenbaums_2001": {
     "tmdb_id": 9428,
     "genres": [
       "Comedy",
@@ -428,7 +428,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "22": {
+  "The Grand Budapest Hotel_2014": {
     "tmdb_id": 120467,
     "genres": [
       "Comedy",
@@ -449,7 +449,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "23": {
+  "Boyhood_2014": {
     "tmdb_id": 85350,
     "genres": [
       "Drama"
@@ -469,7 +469,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "24": {
+  "Her_2013": {
     "tmdb_id": 152601,
     "genres": [
       "Romance",
@@ -491,7 +491,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "25": {
+  "Phantom Thread_2017": {
     "tmdb_id": 400617,
     "genres": [
       "Drama",
@@ -512,7 +512,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "26": {
+  "Anatomy of a Fall_2023": {
     "tmdb_id": 915935,
     "genres": [
       "Thriller",
@@ -534,7 +534,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "27": {
+  "Adaptation_2002": {
     "tmdb_id": 2757,
     "genres": [
       "Comedy",
@@ -556,7 +556,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "28": {
+  "The Dark Knight_2008": {
     "tmdb_id": 155,
     "genres": [
       "Action",
@@ -578,7 +578,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "29": {
+  "Arrival_2016": {
     "tmdb_id": 329865,
     "genres": [
       "Drama",
@@ -600,7 +600,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "30": {
+  "Lost in Translation_2003": {
     "tmdb_id": 153,
     "genres": [
       "Drama",
@@ -622,7 +622,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "31": {
+  "The Departed_2006": {
     "tmdb_id": 1422,
     "genres": [
       "Drama",
@@ -644,7 +644,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "32": {
+  "Bridesmaids_2011": {
     "tmdb_id": 55721,
     "genres": [
       "Comedy",
@@ -665,7 +665,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "33": {
+  "A Separation_2011": {
     "tmdb_id": 307381,
     "genres": [
       "Documentary"
@@ -685,7 +685,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "34": {
+  "WALL-E_2008": {
     "tmdb_id": 1525542,
     "genres": [],
     "overview": "You don't need to look all the way to the end: there isn't one.",
@@ -699,7 +699,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "35": {
+  "A Prophet_2009": {
     "tmdb_id": 21575,
     "genres": [
       "Crime",
@@ -720,7 +720,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "36": {
+  "A Serious Man_2009": {
     "tmdb_id": 12573,
     "genres": [
       "Comedy",
@@ -741,7 +741,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "37": {
+  "Call Me by Your Name_2017": {
     "tmdb_id": 398818,
     "genres": [
       "Romance",
@@ -762,7 +762,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "38": {
+  "Portrait of a Lady on Fire_2019": {
     "tmdb_id": 531428,
     "genres": [
       "Drama",
@@ -783,7 +783,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "39": {
+  "Lady Bird_2017": {
     "tmdb_id": 391713,
     "genres": [
       "Drama",
@@ -804,7 +804,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "40": {
+  "Yi Yi_2000": {
     "tmdb_id": 25538,
     "genres": [
       "Drama"
@@ -824,7 +824,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "42": {
+  "The Master_2012": {
     "tmdb_id": 68722,
     "genres": [
       "Drama"
@@ -844,7 +844,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "43": {
+  "Oldboy_2003": {
     "tmdb_id": 670,
     "genres": [
       "Drama",
@@ -867,7 +867,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "44": {
+  "Once Upon a Time in Hollywood_2019": {
     "tmdb_id": 466272,
     "genres": [
       "Comedy",
@@ -889,7 +889,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "45": {
+  "Moneyball_2011": {
     "tmdb_id": 60308,
     "genres": [
       "Drama"
@@ -909,7 +909,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "46": {
+  "Roma_2018": {
     "tmdb_id": 426426,
     "genres": [
       "Drama"
@@ -929,7 +929,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "47": {
+  "Almost Famous_2000": {
     "tmdb_id": 786,
     "genres": [
       "Drama",
@@ -950,7 +950,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "48": {
+  "The Lives of Others_2006": {
     "tmdb_id": 582,
     "genres": [
       "Drama",
@@ -971,7 +971,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "49": {
+  "Before Sunset_2004": {
     "tmdb_id": 80,
     "genres": [
       "Drama",
@@ -992,7 +992,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "50": {
+  "Up_2009": {
     "tmdb_id": 14160,
     "genres": [
       "Animation",
@@ -1015,7 +1015,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "51": {
+  "12 Years a Slave_2013": {
     "tmdb_id": 76203,
     "genres": [
       "Drama",
@@ -1036,7 +1036,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "52": {
+  "The Favourite_2018": {
     "tmdb_id": 375262,
     "genres": [
       "History",
@@ -1058,7 +1058,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "53": {
+  "Borat_2006": {
     "tmdb_id": 496,
     "genres": [
       "Comedy"
@@ -1078,7 +1078,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "54": {
+  "Pan's Labyrinth_2006": {
     "tmdb_id": 1417,
     "genres": [
       "Fantasy",
@@ -1100,7 +1100,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "55": {
+  "Inception_2010": {
     "tmdb_id": 27205,
     "genres": [
       "Action",
@@ -1122,7 +1122,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "56": {
+  "Punch-Drunk Love_2002": {
     "tmdb_id": 8051,
     "genres": [
       "Romance",
@@ -1144,7 +1144,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "57": {
+  "Best in Show_2000": {
     "tmdb_id": 13785,
     "genres": [
       "Comedy"
@@ -1164,7 +1164,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "58": {
+  "Uncut Gems_2019": {
     "tmdb_id": 473033,
     "genres": [
       "Drama",
@@ -1186,7 +1186,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "59": {
+  "Toni Erdmann_2016": {
     "tmdb_id": 374475,
     "genres": [
       "Comedy",
@@ -1207,7 +1207,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "60": {
+  "Whiplash_2014": {
     "tmdb_id": 244786,
     "genres": [
       "Drama",
@@ -1229,7 +1229,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "61": {
+  "Kill Bill: Vol. 1_2003": {
     "tmdb_id": 24,
     "genres": [
       "Action",
@@ -1250,7 +1250,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "62": {
+  "Memento_2000": {
     "tmdb_id": 77,
     "genres": [
       "Mystery",
@@ -1271,7 +1271,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "63": {
+  "Little Miss Sunshine_2006": {
     "tmdb_id": 773,
     "genres": [
       "Comedy",
@@ -1292,7 +1292,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "64": {
+  "Gone Girl_2014": {
     "tmdb_id": 210577,
     "genres": [
       "Mystery",
@@ -1314,7 +1314,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "65": {
+  "Oppenheimer_2023": {
     "tmdb_id": 872585,
     "genres": [
       "Drama",
@@ -1335,7 +1335,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "66": {
+  "Spotlight_2015": {
     "tmdb_id": 314365,
     "genres": [
       "Drama",
@@ -1356,7 +1356,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "67": {
+  "T\u00e1r_2022": {
     "tmdb_id": 1004076,
     "genres": [],
     "overview": "The artist presents a video work represented in 3D images based on 2D-image data collected by aerial shots of a particular space in Michuhol-Gu, Incheon. This work, A-Su-Ra-Bal-Bal-Ta (2021), juxtaposes the space represented by digital technology with the repeated sound \"Asurabalbalta\", a kind of magic spell derived from a film. Exploring the different meanings created from the gap between what is represented by advanced technology and the aspirations of blind human desires, this work addresses issues found in modern Korean society that relate to space that is both limited and shared.",
@@ -1370,7 +1370,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "68": {
+  "The Hurt Locker_2008": {
     "tmdb_id": 12162,
     "genres": [
       "Drama",
@@ -1392,7 +1392,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "69": {
+  "Under the Skin_2013": {
     "tmdb_id": 698232,
     "genres": [
       "Drama"
@@ -1411,7 +1411,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "70": {
+  "Let the Right One In_2008": {
     "tmdb_id": 13310,
     "genres": [
       "Horror",
@@ -1432,7 +1432,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "71": {
+  "Ocean's Eleven_2001": {
     "tmdb_id": 161,
     "genres": [
       "Thriller",
@@ -1453,7 +1453,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "72": {
+  "Carol_2015": {
     "tmdb_id": 258480,
     "genres": [
       "Romance",
@@ -1474,7 +1474,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "73": {
+  "Ratatouille_2007": {
     "tmdb_id": 2062,
     "genres": [
       "Animation",
@@ -1497,7 +1497,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "74": {
+  "The Florida Project_2017": {
     "tmdb_id": 394117,
     "genres": [
       "Drama"
@@ -1517,7 +1517,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "75": {
+  "Amour_2012": {
     "tmdb_id": 86837,
     "genres": [
       "Drama",
@@ -1538,7 +1538,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "76": {
+  "O Brother, Where Art Thou?_2000": {
     "tmdb_id": 134,
     "genres": [
       "Adventure",
@@ -1560,7 +1560,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "77": {
+  "Everything Everywhere All at Once_2022": {
     "tmdb_id": 545611,
     "genres": [
       "Action",
@@ -1582,7 +1582,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "78": {
+  "Aftersun_2022": {
     "tmdb_id": 965150,
     "genres": [
       "Drama"
@@ -1602,7 +1602,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "79": {
+  "The Tree of Life_2011": {
     "tmdb_id": 8967,
     "genres": [
       "Drama",
@@ -1623,7 +1623,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "80": {
+  "Volver_2006": {
     "tmdb_id": 219,
     "genres": [
       "Comedy",
@@ -1645,7 +1645,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "81": {
+  "Black Swan_2010": {
     "tmdb_id": 44214,
     "genres": [
       "Drama",
@@ -1667,7 +1667,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "82": {
+  "The Act of Killing_2012": {
     "tmdb_id": 123678,
     "genres": [
       "Documentary",
@@ -1688,7 +1688,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "83": {
+  "Inside Llewyn Davis_2013": {
     "tmdb_id": 86829,
     "genres": [
       "Drama",
@@ -1709,7 +1709,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "84": {
+  "Melancholia_2011": {
     "tmdb_id": 62215,
     "genres": [
       "Drama",
@@ -1730,7 +1730,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "85": {
+  "Anchorman: The Legend of Ron Burgundy_2004": {
     "tmdb_id": 8699,
     "genres": [
       "Comedy"
@@ -1750,7 +1750,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "86": {
+  "Past Lives_2023": {
     "tmdb_id": 666277,
     "genres": [
       "Drama",
@@ -1771,7 +1771,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "87": {
+  "The Lord of the Rings: The Fellowship of the Ring_2001": {
     "tmdb_id": 120,
     "genres": [
       "Adventure",
@@ -1793,7 +1793,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "88": {
+  "The Gleaners and I_2000": {
     "tmdb_id": 44379,
     "genres": [
       "Documentary"
@@ -1813,7 +1813,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "89": {
+  "Interstellar_2014": {
     "tmdb_id": 157336,
     "genres": [
       "Adventure",
@@ -1835,7 +1835,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "90": {
+  "Frances Ha_2012": {
     "tmdb_id": 121986,
     "genres": [
       "Comedy",
@@ -1856,7 +1856,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "91": {
+  "Fish Tank_2009": {
     "tmdb_id": 24469,
     "genres": [
       "Drama"
@@ -1876,7 +1876,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "92": {
+  "Gladiator_2000": {
     "tmdb_id": 98,
     "genres": [
       "Action",
@@ -1898,7 +1898,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "93": {
+  "Michael Clayton_2007": {
     "tmdb_id": 4566,
     "genres": [
       "Drama",
@@ -1920,7 +1920,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "94": {
+  "Minority Report_2002": {
     "tmdb_id": 180,
     "genres": [
       "Science Fiction",
@@ -1942,7 +1942,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "95": {
+  "The Worst Person in the World_2021": {
     "tmdb_id": 660120,
     "genres": [
       "Drama",
@@ -1964,7 +1964,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "96": {
+  "Black Panther_2018": {
     "tmdb_id": 284054,
     "genres": [
       "Action",
@@ -1986,7 +1986,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "97": {
+  "Gravity_2013": {
     "tmdb_id": 49047,
     "genres": [
       "Science Fiction",
@@ -2008,7 +2008,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "98": {
+  "Grizzly Man_2005": {
     "tmdb_id": 501,
     "genres": [
       "Documentary"
@@ -2028,7 +2028,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "99": {
+  "Memories of Murder_2003": {
     "tmdb_id": 11423,
     "genres": [
       "Crime",
@@ -2050,7 +2050,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-18"
   },
-  "100": {
+  "Superbad_2007": {
     "tmdb_id": 8363,
     "genres": [
       "Comedy"
@@ -2071,7 +2071,7 @@
     "fetched_at": "2026-03-18"
   },
   "_updated": "March 20, 2026",
-  "18": {
+  "Y Tu Mam\u00e1 Tambi\u00e9n_2001": {
     "tmdb_id": 1391,
     "genres": [],
     "overview": "",
@@ -2085,7 +2085,7 @@
     "poster_path": null,
     "fetched_at": "2026-03-20"
   },
-  "41": {
+  "Am\u00e9lie_2001": {
     "tmdb_id": 194,
     "genres": [
       "Comedy",

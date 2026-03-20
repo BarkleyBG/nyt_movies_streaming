@@ -1096,25 +1096,30 @@ async function loadMetadataData() {
     const resp = await fetch("movie_metadata.json");
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const data = await resp.json();
-    MOVIES.forEach(m => {
-      const entry = data[String(m.rank)];
-      if (entry) {
-        m.genres            = entry.genres            || [];
-        m.overview          = entry.overview          || "";
-        m.runtime           = entry.runtime           || null;
-        m.original_language = entry.original_language || null;
-        m.vote_average      = entry.vote_average      || null;
-        m.vote_count        = entry.vote_count        || 0;
-        m.tagline           = entry.tagline           || "";
-        m.certification     = entry.certification     || null;
-        m.cast              = entry.cast              || [];
-        m.tmdb_id           = entry.tmdb_id           || null;
-        m.poster_path       = entry.poster_path       || null;
-      }
-    });
+    attachMetadata(MOVIES, data);
+    attachMetadata(OSCAR_MOVIES, data);
   } catch (e) {
     // metadata not yet available — silently skip
   }
+}
+
+function attachMetadata(movieList, data) {
+  movieList.forEach(m => {
+    const entry = data[movieKey(m)];
+    if (entry) {
+      m.genres            = entry.genres            || [];
+      m.overview          = entry.overview          || "";
+      m.runtime           = entry.runtime           || null;
+      m.original_language = entry.original_language || null;
+      m.vote_average      = entry.vote_average      || null;
+      m.vote_count        = entry.vote_count        || 0;
+      m.tagline           = entry.tagline           || "";
+      m.certification     = entry.certification     || null;
+      m.cast              = entry.cast              || [];
+      m.tmdb_id           = entry.tmdb_id           || null;
+      m.poster_path       = entry.poster_path       || null;
+    }
+  });
 }
 
 // ─── State ───
@@ -1368,7 +1373,7 @@ function render() {
           </button>
         </div>
         <div class="notes-section${notesOpen ? ' visible' : ''}" id="notes-${key}">
-          <textarea class="notes-textarea" data-key="${key}" placeholder="Personal notes\u2026">${escapeHtml(noteText)}
+          <textarea class="notes-textarea" data-key="${key}" placeholder="Personal notes\u2026">${escapeHtml(noteText)}</textarea>
         </div>
       </div>`;
   });
