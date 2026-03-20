@@ -369,7 +369,7 @@
 
     .movie-card {
       display: grid;
-      grid-template-columns: 52px 1fr auto;
+      grid-template-columns: 52px 60px 1fr auto;
       align-items: center;
       gap: 1rem;
       background: var(--surface);
@@ -462,6 +462,98 @@
     .stream-tag.starz     { background: var(--tag-starz); }
     .stream-tag.plutotv   { background: var(--tag-plutotv); }
     .stream-tag.criterion { background: var(--tag-criterion); }
+    .genre-tag {
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #1e4976;
+      background: #dbeafe;
+      letter-spacing: 0.01em;
+    }
+    .movie-cast {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .movie-overview {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .language-tag {
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #145252;
+      background: #ccfbf1;
+      letter-spacing: 0.01em;
+    }
+    .movie-tagline {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 0.15rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Poster */
+    .movie-poster {
+      flex-shrink: 0;
+      align-self: start;
+    }
+    .poster-img {
+      width: 60px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+    .poster-placeholder {
+      width: 60px;
+      height: 90px;
+      border-radius: 4px;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+    }
+
+    /* TMDB chip link */
+    .tmdb-chip {
+      display: inline-block;
+      padding: 0.05rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #01b4e4;
+      border: 1px solid #01b4e4;
+      text-decoration: none;
+      vertical-align: middle;
+      line-height: 1.4;
+      white-space: nowrap;
+      transition: background 0.12s, color 0.12s;
+    }
+    .tmdb-chip:hover {
+      background: #01b4e4;
+      color: white;
+    }
+
+    /* TMDB logo in footer */
+    .tmdb-logo {
+      height: 1.1em;
+      vertical-align: middle;
+      margin: 0 0.25em;
+    }
 
     /* Actions */
     .movie-actions {
@@ -752,6 +844,7 @@
         grid-template-columns: 40px 1fr;
         gap: 0.75rem;
       }
+      .movie-poster { display: none; }
       .movie-actions {
         grid-column: 1 / -1;
         justify-content: flex-start;
@@ -811,6 +904,7 @@
             <option value="rank">Rank</option>
             <option value="alpha">A &ndash; Z</option>
             <option value="year">Year Released</option>
+            <option value="rating">TMDB Rating</option>
           </select>
         </div>
         <div class="control-group">
@@ -836,6 +930,12 @@
         <button class="pill" data-service="plutotv">Pluto TV</button>
         <button class="pill" data-service="criterion">Criterion</button>
         <span class="us-note">🇺🇸 US availability only</span>
+      </div>
+
+      <div class="language-filters" id="language-filters" style="display:none">
+        <span class="pill-label">Language</span>
+        <button class="pill active" id="pill-all-langs">All</button>
+        <!-- language pills are added dynamically after metadata loads -->
       </div>
 
       <div class="show-filters">
@@ -878,10 +978,16 @@
 <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
 <footer>
-  <p><strong>Disclaimer:</strong> This is an unofficial, independent project. It is not affiliated with, endorsed by, or connected to The New York Times in any way.</p>
-  <p>Streaming availability data provided by the <a href="https://www.movieofthenight.com/" style="color: var(--primary);">Streaming Availability API</a> (Movie of the Night) via RapidAPI.</p>
-  <p>Streaming data fetched: <span id="data-updated-date">unknown</span>. Availability may change &mdash; check your streaming service to confirm.</p>
-  <p>Site last updated: March 14, 2026.</p>
+  <p><strong>Disclaimer:</strong> This is an unofficial, independent project. Not affiliated with, endorsed by, or connected to The New York Times in any way.</p>
+  <p>Streaming availability provided by the <a href="https://www.movieofthenight.com/" style="color: var(--primary);">Streaming Availability API</a> (Movie of the Night) via RapidAPI. Data fetched: <span id="data-updated-date">unknown</span>. Availability may change &mdash; check your streaming service to confirm.</p>
+  <p>
+    Movie metadata and poster images provided by
+    <a href="https://www.themoviedb.org" target="_blank" rel="noopener" style="color: var(--primary);">
+      <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg"
+           alt="The Movie Database (TMDB)" class="tmdb-logo">
+    </a>.
+    This product uses the TMDB API but is not endorsed or certified by TMDB.
+  </p>
   <p>Found a bug or missing a movie? <a href="https://github.com/BarkleyBG/nyt_movies_streaming/issues" style="color: var(--primary);">Submit feedback on GitHub</a>.</p>
 </footer>
 
@@ -889,109 +995,12 @@
 // ─── Movie Key Helper ───
 function movieKey(m) { return m.title + "_" + m.year; }
 
-// ─── Movie Data ───
-const MOVIES = [
-  { rank:1,   title:"Parasite",                                  year:2019, director:"Bong Joon-ho" },
-  { rank:2,   title:"Mulholland Drive",                           year:2001, director:"David Lynch" },
-  { rank:3,   title:"There Will Be Blood",                        year:2007, director:"Paul Thomas Anderson" },
-  { rank:4,   title:"In the Mood for Love",                       year:2000, director:"Wong Kar-wai" },
-  { rank:5,   title:"Moonlight",                                  year:2016, director:"Barry Jenkins" },
-  { rank:6,   title:"No Country for Old Men",                     year:2007, director:"Joel & Ethan Coen" },
-  { rank:7,   title:"Eternal Sunshine of the Spotless Mind",      year:2004, director:"Michel Gondry" },
-  { rank:8,   title:"Get Out",                                    year:2017, director:"Jordan Peele" },
-  { rank:9,   title:"Spirited Away",                              year:2001, director:"Hayao Miyazaki" },
-  { rank:10,  title:"The Social Network",                         year:2010, director:"David Fincher" },
-  { rank:11,  title:"Mad Max: Fury Road",                         year:2015, director:"George Miller" },
-  { rank:12,  title:"The Zone of Interest",                       year:2023, director:"Jonathan Glazer" },
-  { rank:13,  title:"Children of Men",                            year:2006, director:"Alfonso Cuarón" },
-  { rank:14,  title:"Inglourious Basterds",                       year:2009, director:"Quentin Tarantino" },
-  { rank:15,  title:"City of God",                                year:2002, director:"Fernando Meirelles" },
-  { rank:16,  title:"Crouching Tiger, Hidden Dragon",             year:2000, director:"Ang Lee" },
-  { rank:17,  title:"Brokeback Mountain",                         year:2005, director:"Ang Lee" },
-  { rank:18,  title:"Y Tu Mamá También",                          year:2001, director:"Alfonso Cuarón" },
-  { rank:19,  title:"Zodiac",                                     year:2007, director:"David Fincher" },
-  { rank:20,  title:"The Wolf of Wall Street",                    year:2013, director:"Martin Scorsese" },
-  { rank:21,  title:"The Royal Tenenbaums",                       year:2001, director:"Wes Anderson" },
-  { rank:22,  title:"The Grand Budapest Hotel",                   year:2014, director:"Wes Anderson" },
-  { rank:23,  title:"Boyhood",                                    year:2014, director:"Richard Linklater" },
-  { rank:24,  title:"Her",                                        year:2013, director:"Spike Jonze" },
-  { rank:25,  title:"Phantom Thread",                             year:2017, director:"Paul Thomas Anderson" },
-  { rank:26,  title:"Anatomy of a Fall",                          year:2023, director:"Justine Triet" },
-  { rank:27,  title:"Adaptation",                                 year:2002, director:"Spike Jonze" },
-  { rank:28,  title:"The Dark Knight",                            year:2008, director:"Christopher Nolan" },
-  { rank:29,  title:"Arrival",                                    year:2016, director:"Denis Villeneuve" },
-  { rank:30,  title:"Lost in Translation",                        year:2003, director:"Sofia Coppola" },
-  { rank:31,  title:"The Departed",                               year:2006, director:"Martin Scorsese" },
-  { rank:32,  title:"Bridesmaids",                                year:2011, director:"Paul Feig" },
-  { rank:33,  title:"A Separation",                               year:2011, director:"Asghar Farhadi" },
-  { rank:34,  title:"WALL-E",                                     year:2008, director:"Andrew Stanton" },
-  { rank:35,  title:"A Prophet",                                  year:2009, director:"Jacques Audiard" },
-  { rank:36,  title:"A Serious Man",                              year:2009, director:"Joel & Ethan Coen" },
-  { rank:37,  title:"Call Me by Your Name",                       year:2017, director:"Luca Guadagnino" },
-  { rank:38,  title:"Portrait of a Lady on Fire",                 year:2019, director:"Céline Sciamma" },
-  { rank:39,  title:"Lady Bird",                                  year:2017, director:"Greta Gerwig" },
-  { rank:40,  title:"Yi Yi",                                      year:2000, director:"Edward Yang" },
-  { rank:41,  title:"Amélie",                                     year:2001, director:"Jean-Pierre Jeunet" },
-  { rank:42,  title:"The Master",                                 year:2012, director:"Paul Thomas Anderson" },
-  { rank:43,  title:"Oldboy",                                     year:2003, director:"Park Chan-wook" },
-  { rank:44,  title:"Once Upon a Time in Hollywood",              year:2019, director:"Quentin Tarantino" },
-  { rank:45,  title:"Moneyball",                                  year:2011, director:"Bennett Miller" },
-  { rank:46,  title:"Roma",                                       year:2018, director:"Alfonso Cuarón" },
-  { rank:47,  title:"Almost Famous",                              year:2000, director:"Cameron Crowe" },
-  { rank:48,  title:"The Lives of Others",                        year:2006, director:"Florian Henckel von Donnersmarck" },
-  { rank:49,  title:"Before Sunset",                              year:2004, director:"Richard Linklater" },
-  { rank:50,  title:"Up",                                         year:2009, director:"Pete Docter" },
-  { rank:51,  title:"12 Years a Slave",                           year:2013, director:"Steve McQueen" },
-  { rank:52,  title:"The Favourite",                              year:2018, director:"Yorgos Lanthimos" },
-  { rank:53,  title:"Borat",                                      year:2006, director:"Larry Charles" },
-  { rank:54,  title:"Pan's Labyrinth",                            year:2006, director:"Guillermo del Toro" },
-  { rank:55,  title:"Inception",                                  year:2010, director:"Christopher Nolan" },
-  { rank:56,  title:"Punch-Drunk Love",                           year:2002, director:"Paul Thomas Anderson" },
-  { rank:57,  title:"Best in Show",                               year:2000, director:"Christopher Guest" },
-  { rank:58,  title:"Uncut Gems",                                 year:2019, director:"Josh & Benny Safdie" },
-  { rank:59,  title:"Toni Erdmann",                               year:2016, director:"Maren Ade" },
-  { rank:60,  title:"Whiplash",                                   year:2014, director:"Damien Chazelle" },
-  { rank:61,  title:"Kill Bill: Vol. 1",                          year:2003, director:"Quentin Tarantino" },
-  { rank:62,  title:"Memento",                                    year:2000, director:"Christopher Nolan" },
-  { rank:63,  title:"Little Miss Sunshine",                       year:2006, director:"Jonathan Dayton & Valerie Faris" },
-  { rank:64,  title:"Gone Girl",                                  year:2014, director:"David Fincher" },
-  { rank:65,  title:"Oppenheimer",                                year:2023, director:"Christopher Nolan" },
-  { rank:66,  title:"Spotlight",                                  year:2015, director:"Tom McCarthy" },
-  { rank:67,  title:"Tár",                                        year:2022, director:"Todd Field" },
-  { rank:68,  title:"The Hurt Locker",                            year:2008, director:"Kathryn Bigelow" },
-  { rank:69,  title:"Under the Skin",                             year:2013, director:"Jonathan Glazer" },
-  { rank:70,  title:"Let the Right One In",                       year:2008, director:"Tomas Alfredson" },
-  { rank:71,  title:"Ocean's Eleven",                             year:2001, director:"Steven Soderbergh" },
-  { rank:72,  title:"Carol",                                      year:2015, director:"Todd Haynes" },
-  { rank:73,  title:"Ratatouille",                                year:2007, director:"Brad Bird" },
-  { rank:74,  title:"The Florida Project",                        year:2017, director:"Sean Baker" },
-  { rank:75,  title:"Amour",                                      year:2012, director:"Michael Haneke" },
-  { rank:76,  title:"O Brother, Where Art Thou?",                 year:2000, director:"Joel & Ethan Coen" },
-  { rank:77,  title:"Everything Everywhere All at Once",          year:2022, director:"Daniel Kwan & Daniel Scheinert" },
-  { rank:78,  title:"Aftersun",                                   year:2022, director:"Charlotte Wells" },
-  { rank:79,  title:"The Tree of Life",                           year:2011, director:"Terrence Malick" },
-  { rank:80,  title:"Volver",                                     year:2006, director:"Pedro Almodóvar" },
-  { rank:81,  title:"Black Swan",                                 year:2010, director:"Darren Aronofsky" },
-  { rank:82,  title:"The Act of Killing",                         year:2012, director:"Joshua Oppenheimer" },
-  { rank:83,  title:"Inside Llewyn Davis",                        year:2013, director:"Joel & Ethan Coen" },
-  { rank:84,  title:"Melancholia",                                year:2011, director:"Lars von Trier" },
-  { rank:85,  title:"Anchorman: The Legend of Ron Burgundy",      year:2004, director:"Adam McKay" },
-  { rank:86,  title:"Past Lives",                                 year:2023, director:"Celine Song" },
-  { rank:87,  title:"The Lord of the Rings: The Fellowship of the Ring", year:2001, director:"Peter Jackson" },
-  { rank:88,  title:"The Gleaners and I",                         year:2000, director:"Agnès Varda" },
-  { rank:89,  title:"Interstellar",                               year:2014, director:"Christopher Nolan" },
-  { rank:90,  title:"Frances Ha",                                 year:2012, director:"Noah Baumbach" },
-  { rank:91,  title:"Fish Tank",                                  year:2009, director:"Andrea Arnold" },
-  { rank:92,  title:"Gladiator",                                  year:2000, director:"Ridley Scott" },
-  { rank:93,  title:"Michael Clayton",                            year:2007, director:"Tony Gilroy" },
-  { rank:94,  title:"Minority Report",                            year:2002, director:"Steven Spielberg" },
-  { rank:95,  title:"The Worst Person in the World",              year:2021, director:"Joachim Trier" },
-  { rank:96,  title:"Black Panther",                              year:2018, director:"Ryan Coogler" },
-  { rank:97,  title:"Gravity",                                    year:2013, director:"Alfonso Cuarón" },
-  { rank:98,  title:"Grizzly Man",                                year:2005, director:"Werner Herzog" },
-  { rank:99,  title:"Memories of Murder",                         year:2003, director:"Bong Joon-ho" },
-  { rank:100, title:"Superbad",                                   year:2007, director:"Greg Mottola" }
-];
+// ─── Movie Data (loaded from movies.json) ───
+let MOVIES = [];
+
+// ─── Oscar Data (loaded from oscar_data.json) ───
+let OSCAR_MOVIES = [];
+let streamingData = {}; // shared streaming data keyed by title_year
 
 // ─── Streaming Services ───
 const SERVICES = [
@@ -1009,20 +1018,33 @@ const SERVICES = [
   { id: "criterion", name: "Criterion" }
 ];
 
-// ─── Oscar Data (loaded from oscar_data.json) ───
-let OSCAR_MOVIES = []; // populated by loadOscarData()
-let streamingData = {}; // shared streaming data keyed by title_year
+// ─── Data Loaders ───
 
-// Load streaming data from JSON (generated by fetch_streaming.py)
+async function loadMoviesData() {
+  try {
+    const resp = await fetch("movies.json");
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    MOVIES = data.map(m => ({
+      ...m,
+      streaming: [], streamingFetchedAt: null,
+      genres: [], overview: "", runtime: null,
+      original_language: null, vote_average: null, vote_count: 0,
+      tagline: "", certification: null, cast: [],
+      tmdb_id: null, poster_path: null,
+    }));
+  } catch (e) {
+    console.error("Failed to load movies.json", e);
+  }
+}
+
 async function loadStreamingData() {
   try {
     const resp = await fetch("streaming_data.json");
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     streamingData = await resp.json();
-    // Attach streaming info to all loaded movie lists
     attachStreaming(MOVIES);
     attachStreaming(OSCAR_MOVIES);
-    // Show last-updated date
     if (streamingData._updated) {
       document.getElementById("data-updated-date").textContent = streamingData._updated;
       window._streamingDataDate = streamingData._updated;
@@ -1053,7 +1075,6 @@ function updatePillCounts() {
   });
 }
 
-// Load Oscar data from oscar_data.json
 async function loadOscarData() {
   try {
     const resp = await fetch("oscar_data.json");
@@ -1061,41 +1082,43 @@ async function loadOscarData() {
     const data = await resp.json();
     OSCAR_MOVIES = (data.movies || []).map(m => ({
       ...m,
-      streaming: [],
-      streamingFetchedAt: null
+      streaming: [], streamingFetchedAt: null,
     }));
-    document.getElementById("oscar-tab-count").textContent = `(${OSCAR_MOVIES.length})`;
+    const el = document.getElementById("oscar-tab-count");
+    if (el) el.textContent = `(${OSCAR_MOVIES.length})`;
   } catch (e) {
-    OSCAR_MOVIES = [];
+    // Oscar data not available — tab will show empty
+  }
+}
+
+async function loadMetadataData() {
+  try {
+    const resp = await fetch("movie_metadata.json");
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    MOVIES.forEach(m => {
+      const entry = data[String(m.rank)];
+      if (entry) {
+        m.genres            = entry.genres            || [];
+        m.overview          = entry.overview          || "";
+        m.runtime           = entry.runtime           || null;
+        m.original_language = entry.original_language || null;
+        m.vote_average      = entry.vote_average      || null;
+        m.vote_count        = entry.vote_count        || 0;
+        m.tagline           = entry.tagline           || "";
+        m.certification     = entry.certification     || null;
+        m.cast              = entry.cast              || [];
+        m.tmdb_id           = entry.tmdb_id           || null;
+        m.poster_path       = entry.poster_path       || null;
+      }
+    });
+  } catch (e) {
+    // metadata not yet available — silently skip
   }
 }
 
 // ─── State ───
 const STORAGE_KEY = "nyt100_user_data";
-
-function migrateState() {
-  // Migrate from old rank-based keys to title_year keys
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
-    const state = JSON.parse(raw);
-    // Check if any keys are numeric (old format)
-    const numericKeys = Object.keys(state).filter(k => /^\d+$/.test(k));
-    if (numericKeys.length === 0) return; // already migrated or empty
-    const migrated = {};
-    for (const [key, val] of Object.entries(state)) {
-      if (/^\d+$/.test(key)) {
-        const movie = MOVIES.find(m => m.rank === Number(key));
-        if (movie) {
-          migrated[movieKey(movie)] = val;
-        }
-      } else {
-        migrated[key] = val; // already a title_year key
-      }
-    }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
-  } catch(e) {}
-}
 
 function loadState() {
   try {
@@ -1109,11 +1132,9 @@ function saveState(state) {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
 }
 
-// Run migration before loading state
-migrateState();
-
-let userState = loadState();          // { [title_year]: { seen: bool, want: bool, notes: string } }
+let userState = loadState();          // { [movieKey]: { seen: bool, want: bool, notes: string } }
 let activeServices = new Set();       // streaming filter (multi-select)
+let activeLangs = new Set();          // language filter (multi-select)
 let activeShow = "all";               // show filter
 let activeTab = "nyt";                // "nyt" or "oscars"
 let sortMode = "rank";
@@ -1142,13 +1163,20 @@ function getFiltered() {
     list = list.filter(m =>
       m.title.toLowerCase().includes(q) ||
       (m.director && m.director.toLowerCase().includes(q)) ||
-      String(m.year).includes(q)
+      String(m.year).includes(q) ||
+      (m.genres || []).join(" ").toLowerCase().includes(q) ||
+      (m.cast || []).join(" ").toLowerCase().includes(q)
     );
   }
 
   // Streaming filter
   if (activeServices.size > 0) {
     list = list.filter(m => m.streaming && m.streaming.some(s => activeServices.has(s)));
+  }
+
+  // Language filter (multi-select)
+  if (activeLangs.size > 0) {
+    list = list.filter(m => m.original_language && activeLangs.has(m.original_language));
   }
 
   // Show filter
@@ -1167,32 +1195,77 @@ function getFiltered() {
     list.sort((a, b) => a.title.localeCompare(b.title));
   } else if (sortMode === "year") {
     if (activeTab === "oscars") {
-      // Oscar tab: newest first, then alphabetical
       list.sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
     } else {
       list.sort((a, b) => a.year - b.year || a.rank - b.rank);
     }
   } else if (sortMode === "year-asc") {
     list.sort((a, b) => a.year - b.year || a.title.localeCompare(b.title));
+  } else if (sortMode === "rating") {
+    list.sort((a, b) => (b.vote_average || 0) - (a.vote_average || 0) || (a.rank || 0) - (b.rank || 0));
   } else {
-    // rank (NYT default)
     list.sort((a, b) => (a.rank || 0) - (b.rank || 0));
   }
 
   return list;
 }
 
+// Language display name via Intl.DisplayNames (all modern browsers)
+const _langDisplay = (() => {
+  try { return new Intl.DisplayNames(["en"], { type: "language" }); } catch { return null; }
+})();
+function _langName(code) {
+  return _langDisplay ? (_langDisplay.of(code) || code) : code;
+}
+
+function setupLanguagePills() {
+  const langs = new Map(); // code → display name
+  MOVIES.forEach(m => {
+    if (m.original_language && !langs.has(m.original_language)) {
+      langs.set(m.original_language, _langName(m.original_language));
+    }
+  });
+  if (langs.size === 0) return;
+
+  const container = document.getElementById("language-filters");
+  // Add a pill per language, sorted alphabetically by display name
+  [...langs.entries()]
+    .sort((a, b) => a[1].localeCompare(b[1]))
+    .forEach(([code, name]) => {
+      const btn = document.createElement("button");
+      btn.className = "pill";
+      btn.dataset.lang = code;
+      const count = MOVIES.filter(m => m.original_language === code).length;
+      btn.innerHTML = name + (count > 0 ? `<span class="pill-count">${count}</span>` : "");
+      container.appendChild(btn);
+    });
+  container.style.display = "";
+}
+
+function updateAllLangsPill() {
+  document.getElementById("pill-all-langs").classList.toggle("active", activeLangs.size === 0);
+}
+
+function formatRuntime(minutes) {
+  if (!minutes) return "";
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  if (h === 0) return `${m}m`;
+  if (m === 0) return `${h}h`;
+  return `${h}h\u00a0${m}m`;
+}
+
 function render() {
   const movies = getFiltered();
   const allMovies = currentMovies();
-  const totalCount = allMovies.length;
+  const total = allMovies.length;
 
   // Stats
   const seenCount = allMovies.filter(m => userState[movieKey(m)]?.seen).length;
   const wantCount = allMovies.filter(m => userState[movieKey(m)]?.want).length;
   document.getElementById("stat-seen").textContent = seenCount;
   document.getElementById("stat-want").textContent = wantCount;
-  document.getElementById("stat-remaining").textContent = totalCount - seenCount;
+  document.getElementById("stat-remaining").textContent = total - seenCount;
   document.getElementById("stat-showing").textContent = movies.length;
 
   if (movies.length === 0) {
@@ -1238,12 +1311,10 @@ function render() {
     let badgeHtml, rankColor;
 
     if (isOscar) {
-      // Oscar tab: ceremony year badge
       const winnerClass = m.winner ? " is-winner" : "";
       rankColor = m.winner ? "rgb(146,64,14)" : "rgb(30,58,95)";
       badgeHtml = `<div class="ceremony-badge${winnerClass}">${m.ceremony_year}</div>`;
     } else {
-      // NYT tab: rank badge
       const t = (m.rank - 1) / 99;
       const r = Math.round(30 + t * 117);
       const g = Math.round(58 + t * 139);
@@ -1253,13 +1324,36 @@ function render() {
     }
 
     const winnerBadge = (isOscar && m.winner) ? '<span class="winner-badge">Winner</span>' : "";
+    const runtimeStr = formatRuntime(m.runtime);
+    const ratingStr = m.vote_average ? `★\u202f${m.vote_average.toFixed(1)}` : "";
+    const metaParts = [m.year, m.director || '', runtimeStr, m.certification, ratingStr].filter(Boolean);
+    const tmdbChip = m.tmdb_id
+      ? `<a href="https://www.themoviedb.org/movie/${m.tmdb_id}" target="_blank" rel="noopener" class="tmdb-chip">TMDB\u202f↗</a>`
+      : "";
+    const langTag = (m.original_language && m.original_language !== "en")
+      ? `<span class="language-tag">${_langName(m.original_language)}</span>` : "";
+    const genreTags = (m.genres || []).map(g => `<span class="genre-tag">${g}</span>`).join("");
+    const taglineLine = m.tagline
+      ? `<div class="movie-tagline">${m.tagline}</div>` : "";
+    const castLine = (m.cast || []).length > 0
+      ? `<div class="movie-cast">With: ${m.cast.join(", ")}</div>` : "";
+    const overviewLine = m.overview
+      ? `<div class="movie-overview">${m.overview}</div>` : "";
+    const posterHtml = m.poster_path
+      ? `<img src="https://image.tmdb.org/t/p/w92${m.poster_path}" srcset="https://image.tmdb.org/t/p/w185${m.poster_path} 2x" alt="${m.title} poster" class="poster-img" loading="lazy">`
+      : `<div class="poster-placeholder"></div>`;
 
     html += `
       <div class="movie-card ${seenClass}" data-rank="${m.rank || ''}" data-key="${key}" style="--rank-color:${rankColor}; animation-delay:${delay}s">
         ${badgeHtml}
+        <div class="movie-poster">${posterHtml}</div>
         <div class="movie-info">
           <div class="movie-title">${m.title}${winnerBadge}</div>
-          <div class="movie-meta">${m.year} &middot; ${m.director || ''}</div>
+          <div class="movie-meta">${metaParts.join(" &middot; ")}${tmdbChip ? "\u2002" + tmdbChip : ""}</div>
+          ${taglineLine}
+          ${(langTag || genreTags) ? `<div class="movie-tags">${langTag}${genreTags}</div>` : ""}
+          ${castLine}
+          ${overviewLine}
           ${tags ? `<div class="movie-tags" title="Streaming availability as of ${m.streamingFetchedAt || window._streamingDataDate || 'unknown'}">${tags}</div>` : ""}
         </div>
         <div class="movie-actions">
@@ -1274,23 +1368,23 @@ function render() {
           </button>
         </div>
         <div class="notes-section${notesOpen ? ' visible' : ''}" id="notes-${key}">
-          <textarea class="notes-textarea" data-key="${key}" placeholder="Personal notes\u2026">${escapeHtml(noteText)}</textarea>
+          <textarea class="notes-textarea" data-key="${key}" placeholder="Personal notes\u2026">${escapeHtml(noteText)}
         </div>
       </div>`;
   });
   listEl.innerHTML = html;
 
   // Update progress bar
-  const pct = totalCount > 0 ? Math.round((seenCount / totalCount) * 100) : 0;
+  const pct = total > 0 ? (seenCount / total) * 100 : 0;
   document.getElementById("progress-fill").style.width = `${pct}%`;
-  document.getElementById("progress-label").textContent = `${seenCount} of ${totalCount} seen`;
+  document.getElementById("progress-label").textContent = `${seenCount} of ${total} seen`;
 
   if (!isOscar) updateRankIndicator();
 }
 
 // ─── Event Listeners ───
 
-// Movie action buttons (event delegation) — now uses data-key
+// Movie action buttons (event delegation) — uses data-key
 listEl.addEventListener("click", e => {
   const btn = e.target.closest(".action-btn");
   if (!btn) return;
@@ -1367,6 +1461,28 @@ document.querySelectorAll(".filter-pills .pill[data-service]").forEach(pill => {
   });
 });
 
+// Language filter pills (event delegation — pills are created dynamically)
+document.getElementById("language-filters").addEventListener("click", e => {
+  const pill = e.target.closest("[data-lang]");
+  if (pill) {
+    const lang = pill.dataset.lang;
+    if (activeLangs.has(lang)) {
+      activeLangs.delete(lang);
+      pill.classList.remove("active");
+    } else {
+      activeLangs.add(lang);
+      pill.classList.add("active");
+    }
+    updateAllLangsPill();
+    render();
+  } else if (e.target.id === "pill-all-langs") {
+    activeLangs.clear();
+    document.querySelectorAll("#language-filters [data-lang]").forEach(p => p.classList.remove("active"));
+    updateAllLangsPill();
+    render();
+  }
+});
+
 // Show filter pills
 document.querySelectorAll(".show-filters .pill").forEach(pill => {
   pill.addEventListener("click", () => {
@@ -1382,52 +1498,39 @@ function switchTab(tab) {
   if (tab === activeTab) return;
   activeTab = tab;
 
-  // Update tab button styles
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.tab === tab);
   });
 
-  // Toggle body class for Oscar-specific CSS
   document.body.classList.toggle("oscars-active", tab === "oscars");
 
-  // Update sort dropdown options
   const sortSelect = document.getElementById("sort-select");
   if (tab === "oscars") {
     sortSelect.innerHTML = '<option value="year">Year (Newest)</option><option value="alpha">A &ndash; Z</option><option value="year-asc">Year (Oldest)</option>';
     sortMode = "year";
   } else {
-    sortSelect.innerHTML = '<option value="rank">Rank</option><option value="alpha">A &ndash; Z</option><option value="year">Year Released</option>';
+    sortSelect.innerHTML = '<option value="rank">Rank</option><option value="alpha">A &ndash; Z</option><option value="year">Year Released</option><option value="rating">Rating</option>';
     sortMode = "rank";
   }
 
-  // Show/hide Oscar-only filters
   document.querySelectorAll(".oscar-only").forEach(el => {
     el.style.display = tab === "oscars" ? "" : "none";
   });
 
-  // Reset show filter to "all" if currently on winners
   if (activeShow === "winners" && tab !== "oscars") {
     activeShow = "all";
     document.querySelectorAll(".show-filters .pill").forEach(p => p.classList.remove("active"));
     document.querySelector('[data-show="all"]').classList.add("active");
   }
 
-  // Reset search
   searchQuery = "";
   document.getElementById("search-box").value = "";
-
-  // Reset streaming filter
   activeServices.clear();
   document.querySelectorAll(".filter-pills .pill[data-service]").forEach(p => p.classList.remove("active"));
   updateAllServicesPill();
 
-  // Update hash
   window.history.replaceState(null, "", tab === "oscars" ? "#oscars" : "#nyt");
-
-  // Update pill counts for the new tab
   updatePillCounts();
-
-  // Re-render
   render();
 }
 
@@ -1453,6 +1556,7 @@ document.getElementById("panel-toggle").addEventListener("click", () => {
   const btn = document.getElementById("panel-toggle");
   const collapsed = panel.classList.toggle("panel-collapsed");
   btn.setAttribute("aria-expanded", String(!collapsed));
+  // If user is manually expanding while scrolled down, respect that choice
   filterUserOverride = !collapsed;
   filterAutoCollapsed = false;
 });
@@ -1465,6 +1569,7 @@ function updateRankIndicator() {
     indicator.classList.remove("visible");
     return;
   }
+  // Find the first movie card that has scrolled past the top of the viewport
   let currentRank = 1;
   const cards = document.querySelectorAll(".movie-card[data-rank]");
   for (const card of cards) {
@@ -1480,19 +1585,21 @@ function updateRankIndicator() {
 
 // ─── Back to Top Button ───
 const backToTopBtn = document.getElementById("back-to-top");
-const COLLAPSE_SCROLL = 280;
-const EXPAND_SCROLL   = 60;
+const COLLAPSE_SCROLL = 280;   // px — auto-collapse filter when past this
+const EXPAND_SCROLL   = 60;    // px — auto-expand when near top
 
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
   const panel = document.getElementById("filter-panel");
   const toggleBtn = document.getElementById("panel-toggle");
 
+  // Auto-collapse when scrolling down
   if (scrollY > COLLAPSE_SCROLL && !panel.classList.contains("panel-collapsed") && !filterUserOverride) {
     panel.classList.add("panel-collapsed");
     toggleBtn.setAttribute("aria-expanded", "false");
     filterAutoCollapsed = true;
   }
+  // Auto-expand when scrolling back to top
   if (scrollY < EXPAND_SCROLL && filterAutoCollapsed) {
     panel.classList.remove("panel-collapsed");
     toggleBtn.setAttribute("aria-expanded", "true");
@@ -1510,9 +1617,9 @@ backToTopBtn.addEventListener("click", () => {
 
 // ─── Initial render ───
 (async () => {
-  await loadOscarData();
-  await loadStreamingData();
-  // Check hash for initial tab
+  await Promise.all([loadMoviesData(), loadOscarData()]);
+  await Promise.all([loadStreamingData(), loadMetadataData()]);
+  setupLanguagePills();
   const initHash = window.location.hash.replace("#", "");
   if (initHash === "oscars") {
     switchTab("oscars");
