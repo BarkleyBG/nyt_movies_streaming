@@ -1,512 +1,508 @@
 {
   "Parasite_2019": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Mulholland Drive_2001": {
     "services": [
       "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "There Will Be Blood_2007": {
     "services": [
-      "paramount",
-      "plutotv"
+      "paramount"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "In the Mood for Love_2000": {
     "services": [
       "criterion",
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Moonlight_2016": {
     "services": [
       "tubi",
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "No Country for Old Men_2007": {
     "services": [
-      "plutotv",
       "paramount",
       "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Eternal Sunshine of the Spotless Mind_2004": {
     "services": [
       "hulu"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Get Out_2017": {
     "services": [
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Spirited Away_2001": {
     "services": [
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Social Network_2010": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Mad Max: Fury Road_2015": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Zone of Interest_2023": {
     "services": [
       "plutotv"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Children of Men_2006": {
     "services": [
       "criterion"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Inglourious Basterds_2009": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "City of God_2002": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Crouching Tiger, Hidden Dragon_2000": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Brokeback Mountain_2005": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
-  "Y Tu Mamá También_2001": {
+  "Y Tu Mam\u00c3\u00a1 Tambi\u00c3\u00a9n_2001": {
     "services": [
       "netflix"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Zodiac_2007": {
     "services": [
       "paramount"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Wolf of Wall Street_2013": {
     "services": [
-      "plutotv",
-      "starz",
+      "paramount",
       "tubi",
-      "paramount"
+      "starz"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Royal Tenenbaums_2001": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Grand Budapest Hotel_2014": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Boyhood_2014": {
     "services": [
-      "plutotv",
       "criterion",
       "netflix",
       "hulu"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Her_2013": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Phantom Thread_2017": {
     "services": [
       "criterion"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Anatomy of a Fall_2023": {
     "services": [
       "hulu"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Adaptation_2002": {
-    "services": [
-      "plutotv"
-    ],
-    "fetched_at": "2026-03-14"
+    "services": [],
+    "fetched_at": "2026-03-20"
   },
   "The Dark Knight_2008": {
     "services": [
       "tubi",
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Arrival_2016": {
     "services": [
+      "plutotv",
       "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Lost in Translation_2003": {
     "services": [
       "criterion"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Departed_2006": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Bridesmaids_2011": {
     "services": [
       "starz"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "A Separation_2011": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "WALL-E_2008": {
     "services": [
       "disney"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "A Prophet_2009": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "A Serious Man_2009": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Call Me by Your Name_2017": {
     "services": [
       "tubi",
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Portrait of a Lady on Fire_2019": {
     "services": [
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Lady Bird_2017": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Yi Yi_2000": {
     "services": [
       "criterion"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
-  "Amélie_2001": {
-    "services": [],
-    "fetched_at": "2026-03-14"
+  "Am\u00c3\u00a9lie_2001": {
+    "services": [
+      "tubi"
+    ],
+    "fetched_at": "2026-03-20"
   },
   "The Master_2012": {
     "services": [
-      "tubi",
-      "plutotv"
+      "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Oldboy_2003": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Once Upon a Time in Hollywood_2019": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Moneyball_2011": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Roma_2018": {
     "services": [
       "netflix"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Almost Famous_2000": {
     "services": [
-      "paramount",
-      "plutotv"
+      "paramount"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Lives of Others_2006": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Before Sunset_2004": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Up_2009": {
     "services": [
       "disney"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "12 Years a Slave_2013": {
     "services": [
       "hulu",
       "netflix"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Favourite_2018": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Borat_2006": {
     "services": [
       "hulu"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Pan's Labyrinth_2006": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Inception_2010": {
     "services": [
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Punch-Drunk Love_2002": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Best in Show_2000": {
     "services": [
       "netflix"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Uncut Gems_2019": {
     "services": [
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Toni Erdmann_2016": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Whiplash_2014": {
     "services": [
       "netflix"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Kill Bill: Vol. 1_2003": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Memento_2000": {
     "services": [
       "peacock",
       "tubi",
       "hbo",
-      "plutotv"
+      "prime"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Little Miss Sunshine_2006": {
     "services": [
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Gone Girl_2014": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Oppenheimer_2023": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Spotlight_2015": {
     "services": [
       "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
-  "Tár_2022": {
+  "T\u00c3\u00a1r_2022": {
     "services": [
-      "peacock"
+      "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Hurt Locker_2008": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Under the Skin_2013": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Let the Right One In_2008": {
     "services": [
-      "tubi",
-      "plutotv"
+      "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Ocean's Eleven_2001": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Carol_2015": {
     "services": [
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Ratatouille_2007": {
     "services": [
       "hulu",
       "disney"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Florida Project_2017": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Amour_2012": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "O Brother, Where Art Thou?_2000": {
     "services": [
       "hulu"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Everything Everywhere All at Once_2022": {
     "services": [
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Aftersun_2022": {
     "services": [
+      "prime",
       "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Tree of Life_2011": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Volver_2006": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Black Swan_2010": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Act of Killing_2012": {
     "services": [
       "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Inside Llewyn Davis_2013": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Melancholia_2011": {
     "services": [
-      "tubi"
+      "tubi",
+      "prime"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Anchorman: The Legend of Ron Burgundy_2004": {
     "services": [
       "paramount",
       "plutotv"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Past Lives_2023": {
     "services": [
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Lord of the Rings: The Fellowship of the Ring_2001": {
     "services": [
       "hbo"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Gleaners and I_2000": {
     "services": [
       "criterion"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Interstellar_2014": {
     "services": [
       "paramount"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Frances Ha_2012": {
     "services": [
+      "criterion",
       "tubi",
-      "netflix",
-      "criterion"
+      "netflix"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Fish Tank_2009": {
     "services": [
-      "plutotv",
       "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Gladiator_2000": {
     "services": [
+      "paramount",
+      "plutotv",
       "tubi",
-      "peacock",
-      "paramount"
+      "peacock"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Michael Clayton_2007": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Minority Report_2002": {
     "services": [
@@ -514,42 +510,801 @@
       "tubi",
       "paramount"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "The Worst Person in the World_2021": {
     "services": [
       "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Black Panther_2018": {
     "services": [
       "disney",
       "hulu"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Gravity_2013": {
     "services": [],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Grizzly Man_2005": {
     "services": [
+      "prime",
       "tubi",
-      "plutotv",
       "criterion"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Memories of Murder_2003": {
     "services": [
       "tubi"
     ],
-    "fetched_at": "2026-03-14"
+    "fetched_at": "2026-03-20"
   },
   "Superbad_2007": {
-    "services": [],
-    "fetched_at": "2026-03-14"
+    "services": [
+      "prime"
+    ],
+    "fetched_at": "2026-03-20"
   },
-  "_updated": "March 14, 2026"
+  "Chocolat_2000": {
+    "services": [
+      "paramount"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Erin Brockovich_2000": {
+    "services": [
+      "peacock",
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Traffic_2000": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "A Beautiful Mind_2001": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Gosford Park_2001": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "In the Bedroom_2001": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Moulin Rouge!_2001": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Chicago_2002": {
+    "services": [
+      "paramount"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Gangs of New York_2002": {
+    "services": [
+      "starz",
+      "plutotv"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Hours_2002": {
+    "services": [
+      "paramount",
+      "criterion"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Lord of the Rings: The Two Towers_2002": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Pianist_2002": {
+    "services": [
+      "prime",
+      "peacock",
+      "tubi"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Lord of the Rings: The Return of the King_2003": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Master and Commander: The Far Side of the World_2003": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Mystic River_2003": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Seabiscuit_2003": {
+    "services": [
+      "tubi"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Million Dollar Baby_2004": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Aviator_2004": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Finding Neverland_2004": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Ray_2004": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Sideways_2004": {
+    "services": [
+      "disney"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Crash_2004": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Capote_2005": {
+    "services": [
+      "tubi"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Good Night, and Good Luck._2005": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Munich_2005": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Babel_2006": {
+    "services": [
+      "paramount"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Letters from Iwo Jima_2006": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Queen_2006": {
+    "services": [
+      "paramount"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Atonement_2007": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Juno_2007": {
+    "services": [
+      "hulu"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Slumdog Millionaire_2008": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Curious Case of Benjamin Button_2008": {
+    "services": [
+      "paramount"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Frost/Nixon_2008": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Milk_2008": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Reader_2008": {
+    "services": [
+      "tubi",
+      "prime"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Avatar_2009": {
+    "services": [
+      "disney"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Blind Side_2009": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "District 9_2009": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "An Education_2009": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Precious_2009": {
+    "services": [
+      "tubi"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Up in the Air_2009": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The King's Speech_2010": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "127 Hours_2010": {
+    "services": [
+      "hulu"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Fighter_2010": {
+    "services": [
+      "paramount"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Kids Are All Right_2010": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Toy Story 3_2010": {
+    "services": [
+      "disney"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "True Grit_2010": {
+    "services": [
+      "tubi"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Winter's Bone_2010": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Artist_2011": {
+    "services": [
+      "tubi"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Descendants_2011": {
+    "services": [
+      "hulu"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Extremely Loud & Incredibly Close_2011": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Help_2011": {
+    "services": [
+      "tubi",
+      "hulu"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Hugo_2011": {
+    "services": [
+      "paramount"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Midnight in Paris_2011": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "War Horse_2011": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Argo_2012": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Beasts of the Southern Wild_2012": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Django Unchained_2012": {
+    "services": [
+      "hulu",
+      "starz"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Les Mis\u00c3\u00a9rables_2012": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Life of Pi_2012": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Lincoln_2012": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Silver Linings Playbook_2012": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Zero Dark Thirty_2012": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "American Hustle_2013": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Captain Phillips_2013": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Dallas Buyers Club_2013": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Nebraska_2013": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Philomena_2013": {
+    "services": [
+      "tubi"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Birdman or (The Unexpected Virtue of Ignorance)_2014": {
+    "services": [
+      "hulu"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "American Sniper_2014": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Imitation Game_2014": {
+    "services": [
+      "tubi"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Selma_2014": {
+    "services": [
+      "prime",
+      "plutotv"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Theory of Everything_2014": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Big Short_2015": {
+    "services": [
+      "plutotv"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Bridge of Spies_2015": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Brooklyn_2015": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Martian_2015": {
+    "services": [
+      "peacock"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Revenant_2015": {
+    "services": [
+      "hulu"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Room_2015": {
+    "services": [
+      "tubi",
+      "plutotv"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Fences_2016": {
+    "services": [
+      "paramount"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Hacksaw Ridge_2016": {
+    "services": [
+      "hulu"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Hell or High Water_2016": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Hidden Figures_2016": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "La La Land_2016": {
+    "services": [
+      "prime"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Lion_2016": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Manchester by the Sea_2016": {
+    "services": [
+      "prime"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Shape of Water_2017": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Darkest Hour_2017": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Dunkirk_2017": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Post_2017": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Three Billboards Outside Ebbing, Missouri_2017": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Green Book_2018": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "BlacKkKlansman_2018": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Bohemian Rhapsody_2018": {
+    "services": [
+      "prime"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "A Star Is Born_2018": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Vice_2018": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Ford v Ferrari_2019": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Irishman_2019": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Jojo Rabbit_2019": {
+    "services": [
+      "disney"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Joker_2019": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Little Women_2019": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Marriage Story_2019": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "1917_2019": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Nomadland_2020": {
+    "services": [
+      "disney"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Father_2020": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Judas and the Black Messiah_2021": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Mank_2020": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Minari_2020": {
+    "services": [
+      "tubi",
+      "plutotv"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Promising Young Woman_2020": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Sound of Metal_2019": {
+    "services": [
+      "prime"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Trial of the Chicago 7_2020": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "CODA_2021": {
+    "services": [
+      "apple"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Belfast_2021": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Don't Look Up_2021": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Drive My Car_2021": {
+    "services": [
+      "criterion"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Dune_2021": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "King Richard_2021": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Licorice Pizza_2021": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Nightmare Alley_2021": {
+    "services": [
+      "disney",
+      "hulu"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Power of the Dog_2021": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "West Side Story_2021": {
+    "services": [
+      "disney"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "All Quiet on the Western Front_2022": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Avatar: The Way of Water_2022": {
+    "services": [
+      "disney"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Banshees of Inisherin_2022": {
+    "services": [
+      "paramount"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Elvis_2022": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "The Fabelmans_2022": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Top Gun: Maverick_2022": {
+    "services": [
+      "paramount"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Triangle of Sadness_2022": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Women Talking_2022": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "American Fiction_2023": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Barbie_2023": {
+    "services": [
+      "tubi",
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Holdovers_2023": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Killers of the Flower Moon_2023": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Maestro_2023": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Poor Things_2023": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Anora_2024": {
+    "services": [
+      "hulu"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Brutalist_2024": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "A Complete Unknown_2024": {
+    "services": [
+      "hulu"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Conclave_2024": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "Dune: Part Two_2024": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Emilia P\u00c3\u00a9rez_2024": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "I'm Still Here_2024": {
+    "services": [
+      "netflix"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Nickel Boys_2024": {
+    "services": [
+      "prime"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "The Substance_2024": {
+    "services": [
+      "hbo"
+    ],
+    "fetched_at": "2026-03-20"
+  },
+  "Wicked_2024": {
+    "services": [],
+    "fetched_at": "2026-03-20"
+  },
+  "_updated": "March 20, 2026"
 }
