@@ -263,7 +263,12 @@ def load_oscar_movies():
 
 
 def fetch_raw(api_key, include_oscars=False):
-    """Fetch raw API data for all movies and save to RAW_FILE. Returns results, fetched, skipped."""
+    """Fetch raw API data for all movies and save to RAW_FILE.
+
+    Movies are fetched in staleness order: never-fetched first, then oldest
+    fetched_at first. This maximises freshness within the daily quota.
+    Returns results, fetched, refreshed.
+    """
     # Load existing raw data to support resuming interrupted runs
     existing_data = {}
     if os.path.exists(RAW_FILE):
@@ -289,26 +294,38 @@ def fetch_raw(api_key, include_oscars=False):
                 seen_keys.add(mk)
         print(f"Including Oscar movies: {len(oscar_movies)} total, {len(all_movies) - len(MOVIES)} new")
 
-    total = len(all_movies)
-    skipped = 0
-    fetched = 0
+    # Sort by staleness: never-fetched first (date ""), then oldest fetched_at
+    def staleness(movie):
+        mk = movie_key(movie)
+        entry = existing_data.get(mk)
+        if not entry or not isinstance(entry, dict):
+            return ""  # never fetched — sorts first
+        return entry.get("fetched_at", "")
 
-    print(f"\nFetching streaming data for {total} movies...")
+    all_movies.sort(key=staleness)
+
+    total = len(all_movies)
+    fetched = 0
+    refreshed = 0
+    today = datetime.date.today().isoformat()
+
+    print(f"\nFetching streaming data for {total} movies (staleness order)...")
     print(f"API: Streaming Availability (Movie of the Night) via RapidAPI")
     print(f"Region: US | Included types: {', '.join(INCLUDED_TYPES)}")
     print("=" * 60)
 
     for i, movie in enumerate(all_movies):
         mk = movie_key(movie)
+        existing_entry = existing_data.get(mk) if mk != "_updated" else None
+        is_stale = existing_entry and isinstance(existing_entry, dict)
+        old_date = existing_entry.get("fetched_at", "?") if is_stale else None
 
-        # Skip if we already have data for this movie
-        if mk in existing_data and mk != "_updated":
-            skipped += 1
-            services = existing_data[mk].get("services", [])
-            print(f"[{i+1:3d}/{total}] (cached)  {movie['title']} ({movie['year']}) -> {services or 'none'}")
-            continue
+        if is_stale:
+            label = f"(refresh, last {old_date})"
+        else:
+            label = "(new)"
 
-        print(f"[{i+1:3d}/{total}] Fetching {movie['title']} ({movie['year']})...", end=" ")
+        print(f"[{i+1:3d}/{total}] {label}  {movie['title']} ({movie['year']})...", end=" ")
 
         show = search_movie(movie["title"], movie["year"], api_key)
         services = extract_streaming(show)
@@ -318,7 +335,7 @@ def fetch_raw(api_key, include_oscars=False):
             "title": movie["title"],
             "year": movie["year"],
             "services": services,
-            "fetched_at": datetime.date.today().isoformat(),
+            "fetched_at": today,
             "raw": {
                 "id": show.get("id") if show else None,
                 "imdbId": show.get("imdbId") if show else None,
@@ -328,7 +345,10 @@ def fetch_raw(api_key, include_oscars=False):
             } if show else None,
         }
 
-        fetched += 1
+        if is_stale:
+            refreshed += 1
+        else:
+            fetched += 1
         print(f"-> {services or 'not streaming'}")
 
         # Save raw data after each request so progress isn't lost
@@ -348,9 +368,9 @@ def fetch_raw(api_key, include_oscars=False):
         json.dump(results, f, indent=2)
 
     print("=" * 60)
-    print(f"Done! Fetched: {fetched}, Cached: {skipped}, Total: {total}")
+    print(f"Done! New: {fetched}, Refreshed: {refreshed}, Total: {total}")
     print(f"Raw data saved to {RAW_FILE}")
-    return results, fetched, skipped
+    return results, fetched, refreshed
 
 
 def clean_raw(results=None):
