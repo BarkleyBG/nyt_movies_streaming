@@ -1,0 +1,2109 @@
+{
+  "1": {
+    "tmdb_id": 496243,
+    "genres": [
+      "Comedy",
+      "Thriller",
+      "Drama"
+    ],
+    "overview": "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.",
+    "runtime": 133,
+    "original_language": "ko",
+    "vote_average": 8.5,
+    "vote_count": 20285,
+    "tagline": "Act like you own the place.",
+    "certification": "R",
+    "cast": [
+      "Song Kang-ho",
+      "Lee Sun-kyun",
+      "Cho Yeo-jeong"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "2": {
+    "tmdb_id": 1018,
+    "genres": [
+      "Thriller",
+      "Drama",
+      "Mystery"
+    ],
+    "overview": "Blonde Betty Elms has only just arrived in Hollywood to become a movie star when she meets an enigmatic brunette with amnesia. Meanwhile, as the two set off to solve the second woman's identity, filmmaker Adam Kesher runs into ominous trouble while casting his latest project.",
+    "runtime": 147,
+    "original_language": "en",
+    "vote_average": 7.8,
+    "vote_count": 6910,
+    "tagline": "An actress longing to be a star. A woman searching for herself. Both worlds will collide... on Mulholland Drive.",
+    "certification": "R",
+    "cast": [
+      "Naomi Watts",
+      "Laura Harring",
+      "Justin Theroux"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "3": {
+    "tmdb_id": 7345,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "Ruthless silver miner, turned oil prospector, Daniel Plainview, moves to oil-rich California. Using his son to project a trustworthy, family-man image, Plainview cons local landowners into selling him their valuable properties for a pittance. However, local preacher Eli Sunday suspects Plainview's motives and intentions, starting a slow-burning feud that threatens both their lives.",
+    "runtime": 158,
+    "original_language": "en",
+    "vote_average": 8.1,
+    "vote_count": 7293,
+    "tagline": "There will be greed. There will be vengeance.",
+    "certification": "R",
+    "cast": [
+      "Daniel Day-Lewis",
+      "Paul Dano",
+      "Kevin J. O'Connor"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "4": {
+    "tmdb_id": 843,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "overview": "Two neighbors form a strong bond after both suspect extramarital activities of their spouses. However, they agree to keep their bond platonic so as not to commit similar wrongs.",
+    "runtime": 99,
+    "original_language": "cn",
+    "vote_average": 8.1,
+    "vote_count": 3184,
+    "tagline": "Feel the heat, keep the feeling burning, let the sensation explode.",
+    "certification": "PG",
+    "cast": [
+      "Maggie Cheung",
+      "Tony Leung Chiu-wai",
+      "Siu Ping-Lam"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "5": {
+    "tmdb_id": 376867,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "The tender, heartbreaking story of a young man\u2019s struggle to find himself, told across three defining chapters in his life as he experiences the ecstasy, pain, and beauty of falling in love, while grappling with his own sexuality.",
+    "runtime": 111,
+    "original_language": "en",
+    "vote_average": 7.4,
+    "vote_count": 7449,
+    "tagline": "This is the story of a lifetime",
+    "certification": "R",
+    "cast": [
+      "Trevante Rhodes",
+      "Andr\u00e9 Holland",
+      "Janelle Mon\u00e1e"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "6": {
+    "tmdb_id": 6977,
+    "genres": [
+      "Crime",
+      "Thriller",
+      "Western"
+    ],
+    "overview": "Llewelyn Moss stumbles upon dead bodies, $2 million and a hoard of heroin in a Texas desert, but methodical killer Anton Chigurh comes looking for it, with local sheriff Ed Tom Bell hot on his trail. The roles of prey and predator blur as the violent pursuit of money and justice collide.",
+    "runtime": 122,
+    "original_language": "en",
+    "vote_average": 7.9,
+    "vote_count": 13072,
+    "tagline": "There are no clean getaways.",
+    "certification": "R",
+    "cast": [
+      "Javier Bardem",
+      "Tommy Lee Jones",
+      "Josh Brolin"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "7": {
+    "tmdb_id": 38,
+    "genres": [
+      "Science Fiction",
+      "Drama",
+      "Romance"
+    ],
+    "overview": "Joel Barish, heartbroken that his girlfriend underwent a procedure to erase him from her memory, decides to do the same. However, as he watches his memories of her fade away, he realises that he still loves her, and may be too late to correct his mistake.",
+    "runtime": 108,
+    "original_language": "en",
+    "vote_average": 8.1,
+    "vote_count": 16120,
+    "tagline": "You can erase someone from your mind. Getting them out of your heart is another story.",
+    "certification": "R",
+    "cast": [
+      "Jim Carrey",
+      "Kate Winslet",
+      "Kirsten Dunst"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "8": {
+    "tmdb_id": 419430,
+    "genres": [
+      "Mystery",
+      "Thriller",
+      "Horror"
+    ],
+    "overview": "Chris and his girlfriend Rose go upstate to visit her parents for the weekend. At first, Chris reads the family's overly accommodating behavior as nervous attempts to deal with their daughter's interracial relationship, but as the weekend progresses, a series of increasingly disturbing discoveries lead him to a truth that he never could have imagined.",
+    "runtime": 104,
+    "original_language": "en",
+    "vote_average": 7.6,
+    "vote_count": 18650,
+    "tagline": "Just because you're invited, doesn't mean you're welcome.",
+    "certification": "R",
+    "cast": [
+      "Daniel Kaluuya",
+      "Allison Williams",
+      "Catherine Keener"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "9": {
+    "tmdb_id": 129,
+    "genres": [
+      "Animation",
+      "Family",
+      "Fantasy"
+    ],
+    "overview": "A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious transformation, she must call upon the courage she never knew she had to free her family.",
+    "runtime": 125,
+    "original_language": "ja",
+    "vote_average": 8.5,
+    "vote_count": 18067,
+    "tagline": "Beyond the tunnel was a mysterious town.",
+    "certification": "PG",
+    "cast": [
+      "Rumi Hiiragi",
+      "Miyu Irino",
+      "Mari Natsuki"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "10": {
+    "tmdb_id": 37799,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "In 2003, Harvard undergrad and computer programmer Mark Zuckerberg begins work on a new concept that eventually turns into the global social network known as Facebook. Six years later, Mark is one of the youngest billionaires ever, but his unprecedented success leads to both personal and legal complications when he ends up on the receiving end of two lawsuits, one involving his former friend.",
+    "runtime": 121,
+    "original_language": "en",
+    "vote_average": 7.4,
+    "vote_count": 12987,
+    "tagline": "You don't get to 500 million friends without making a few enemies.",
+    "certification": "PG-13",
+    "cast": [
+      "Jesse Eisenberg",
+      "Andrew Garfield",
+      "Armie Hammer"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "11": {
+    "tmdb_id": 76341,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "overview": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order.",
+    "runtime": 121,
+    "original_language": "en",
+    "vote_average": 7.6,
+    "vote_count": 23845,
+    "tagline": "The future belongs to the mad.",
+    "certification": "R",
+    "cast": [
+      "Tom Hardy",
+      "Charlize Theron",
+      "Nicholas Hoult"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "12": {
+    "tmdb_id": 467244,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "overview": "The commandant of Auschwitz, Rudolf H\u00f6ss, and his wife Hedwig, strive to build a dream life for their family in a house and garden next to the camp.",
+    "runtime": 105,
+    "original_language": "en",
+    "vote_average": 7.0,
+    "vote_count": 2515,
+    "tagline": "",
+    "certification": "PG-13",
+    "cast": [
+      "Christian Friedel",
+      "Sandra H\u00fcller",
+      "Johann Karthaus"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "13": {
+    "tmdb_id": 9693,
+    "genres": [
+      "Science Fiction",
+      "Thriller"
+    ],
+    "overview": "In 2027, in a chaotic world in which humans can no longer procreate, a former activist agrees to help transport a miraculously pregnant woman to a sanctuary at sea, where her child's birth may help scientists save the future of humankind.",
+    "runtime": 109,
+    "original_language": "en",
+    "vote_average": 7.6,
+    "vote_count": 7719,
+    "tagline": "The year 2027: the last days of the human race. No child has been born for 18 years. He must protect our only hope.",
+    "certification": "R",
+    "cast": [
+      "Clive Owen",
+      "Clare-Hope Ashitey",
+      "Chiwetel Ejiofor"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "14": {
+    "tmdb_id": 16869,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "War"
+    ],
+    "overview": "In Nazi-occupied France during World War II, a group of Jewish-American soldiers known as \"The Basterds\" are chosen specifically to spread fear throughout the Third Reich by scalping and brutally killing Nazis. The Basterds, lead by Lt. Aldo Raine soon cross paths with a French-Jewish teenage girl who runs a movie theater in Paris which is targeted by the soldiers.",
+    "runtime": 153,
+    "original_language": "en",
+    "vote_average": 8.2,
+    "vote_count": 23885,
+    "tagline": "Once upon a time in Nazi occupied France...",
+    "certification": "R",
+    "cast": [
+      "Brad Pitt",
+      "M\u00e9lanie Laurent",
+      "Christoph Waltz"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "15": {
+    "tmdb_id": 598,
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "overview": "In the poverty-stricken favelas of Rio de Janeiro in the 1970s, two young men choose different paths. Rocket is a budding photographer who documents the increasing drug-related violence of his neighborhood, while Jos\u00e9 \u201cZ\u00e9\u201d Pequeno is an ambitious drug dealer diving into a dangerous life of crime.",
+    "runtime": 129,
+    "original_language": "pt",
+    "vote_average": 8.4,
+    "vote_count": 8060,
+    "tagline": "If you run, the beast catches you; if you stay, the beast eats you.",
+    "certification": "R",
+    "cast": [
+      "Alexandre Rodrigues",
+      "Leandro Firmino",
+      "Phellipe Haagensen"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "16": {
+    "tmdb_id": 146,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Action",
+      "Romance"
+    ],
+    "overview": "Two warriors in pursuit of a stolen sword and a notorious fugitive are led to an impetuous, physically-skilled, teenage nobleman's daughter, who is at a crossroads in her life.",
+    "runtime": 120,
+    "original_language": "zh",
+    "vote_average": 7.4,
+    "vote_count": 3503,
+    "tagline": "A timeless story of strength, secrets and two warriors who would never surrender.",
+    "certification": null,
+    "cast": [
+      "Chow Yun-Fat",
+      "Michelle Yeoh",
+      "Zhang Ziyi"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "17": {
+    "tmdb_id": 142,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "overview": "In 1960s Wyoming, two men develop a strong emotional and sexual relationship that endures as a lifelong connection complicating their lives as they get married and start families of their own.",
+    "runtime": 134,
+    "original_language": "en",
+    "vote_average": 7.8,
+    "vote_count": 7455,
+    "tagline": "Love is a force of nature.",
+    "certification": "R",
+    "cast": [
+      "Heath Ledger",
+      "Jake Gyllenhaal",
+      "Michelle Williams"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "19": {
+    "tmdb_id": 1949,
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "overview": "Over the course of a decade, editors of the San Francisco Chronicle entice themselves in the murders of the Zodiac Killer. However, as time runs its course, interest in the case dwindles in the eyes of the professionals. The Killer stops interacting with the public. However, believing he has the answers, an amateur cartoonist from the initial sightings races against time to prevent what he believes is another murder.",
+    "runtime": 157,
+    "original_language": "en",
+    "vote_average": 7.5,
+    "vote_count": 11395,
+    "tagline": "There's more than one way to lose your life to a killer.",
+    "certification": "R",
+    "cast": [
+      "Jake Gyllenhaal",
+      "Mark Ruffalo",
+      "Anthony Edwards"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "20": {
+    "tmdb_id": 106646,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Comedy"
+    ],
+    "overview": "A New York stockbroker refuses to cooperate in a large securities fraud case involving corruption on Wall Street, corporate banking world and mob infiltration. Based on Jordan Belfort's autobiography.",
+    "runtime": 180,
+    "original_language": "en",
+    "vote_average": 8.0,
+    "vote_count": 25614,
+    "tagline": "Earn. Spend. Party.",
+    "certification": "R",
+    "cast": [
+      "Leonardo DiCaprio",
+      "Jonah Hill",
+      "Margot Robbie"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "21": {
+    "tmdb_id": 9428,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "overview": "Royal Tenenbaum and his wife Etheline had three children and then they separated. All three children are extraordinary --- all geniuses. Virtually all memory of the brilliance of the young Tenenbaums was subsequently erased by two decades of betrayal, failure, and disaster. Most of this was generally considered to be their father's fault. \"The Royal Tenenbaums\" is the story of the family's sudden, unexpected reunion one recent winter.",
+    "runtime": 110,
+    "original_language": "en",
+    "vote_average": 7.5,
+    "vote_count": 4935,
+    "tagline": "Family isn't a word ... It's a sentence.",
+    "certification": "R",
+    "cast": [
+      "Gene Hackman",
+      "Anjelica Huston",
+      "Ben Stiller"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "22": {
+    "tmdb_id": 120467,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "overview": "The Grand Budapest Hotel tells of a legendary concierge at a famous European hotel between the wars and his friendship with a young employee who becomes his trusted prot\u00e9g\u00e9. The story involves the theft and recovery of a priceless Renaissance painting, the battle for an enormous family fortune and the slow and then sudden upheavals that transformed Europe during the first half of the 20th century.",
+    "runtime": 100,
+    "original_language": "en",
+    "vote_average": 8.0,
+    "vote_count": 15869,
+    "tagline": "A murder case of Madam D. with enormous wealth and the most outrageous events surrounding her sudden death!",
+    "certification": "R",
+    "cast": [
+      "Ralph Fiennes",
+      "F. Murray Abraham",
+      "Mathieu Amalric"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "23": {
+    "tmdb_id": 85350,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "The film tells a story of a divorced couple trying to raise their young son. The story follows the boy for twelve years, from first grade at age 6 through 12th grade at age 17-18, and examines his relationship with his parents as he grows.",
+    "runtime": 165,
+    "original_language": "en",
+    "vote_average": 7.5,
+    "vote_count": 5452,
+    "tagline": "12 years in the making.",
+    "certification": "R",
+    "cast": [
+      "Ellar Coltrane",
+      "Patricia Arquette",
+      "Ethan Hawke"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "24": {
+    "tmdb_id": 152601,
+    "genres": [
+      "Romance",
+      "Science Fiction",
+      "Drama"
+    ],
+    "overview": "In the not so distant future, Theodore, a lonely writer, purchases a newly developed operating system designed to meet the user's every need. To Theodore's surprise, a romantic relationship develops between him and his operating system. This unconventional love story blends science fiction and romance in a sweet tale that explores the nature of love and the ways that technology isolates and connects us all.",
+    "runtime": 126,
+    "original_language": "en",
+    "vote_average": 7.8,
+    "vote_count": 15128,
+    "tagline": "A Spike Jonze love story.",
+    "certification": "R",
+    "cast": [
+      "Joaquin Phoenix",
+      "Scarlett Johansson",
+      "Lynn Adrianna"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "25": {
+    "tmdb_id": 400617,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "overview": "In 1950s London, a renowned dressmaker's meticulous lifestyle begins drastically changing as his relationship with his young muse intensifies.",
+    "runtime": 130,
+    "original_language": "en",
+    "vote_average": 7.3,
+    "vote_count": 3740,
+    "tagline": "Whatever you do, do it carefully",
+    "certification": "R",
+    "cast": [
+      "Daniel Day-Lewis",
+      "Vicky Krieps",
+      "Lesley Manville"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "26": {
+    "tmdb_id": 915935,
+    "genres": [
+      "Thriller",
+      "Mystery",
+      "Crime"
+    ],
+    "overview": "A woman is suspected of her husband's murder, and their blind son faces a moral dilemma as the sole witness.",
+    "runtime": 151,
+    "original_language": "fr",
+    "vote_average": 7.5,
+    "vote_count": 3187,
+    "tagline": "Did she do it?",
+    "certification": "R",
+    "cast": [
+      "Sandra H\u00fcller",
+      "Swann Arlaud",
+      "Milo Machado-Graner"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "27": {
+    "tmdb_id": 2757,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Drama"
+    ],
+    "overview": "Charlie Kaufman is a confused L.A. screenwriter overwhelmed by feelings of inadequacy, sexual frustration, self-loathing, and by the screenwriting ambitions of his freeloading twin brother Donald. While struggling to adapt \"The Orchid Thief,\" by Susan Orlean, Kaufman's life spins from pathetic to bizarre. The lives of Kaufman, Orlean's book, become strangely intertwined as each one's search for passion collides with the others'.",
+    "runtime": 115,
+    "original_language": "en",
+    "vote_average": 7.3,
+    "vote_count": 2728,
+    "tagline": "From the creator of Being John Malkovich, comes the story about the creator of Being John Malkovich.",
+    "certification": "R",
+    "cast": [
+      "Nicolas Cage",
+      "Meryl Streep",
+      "Chris Cooper"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "28": {
+    "tmdb_id": 155,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+    "runtime": 152,
+    "original_language": "en",
+    "vote_average": 8.5,
+    "vote_count": 35338,
+    "tagline": "Welcome to a world without rules.",
+    "certification": "PG-13",
+    "cast": [
+      "Christian Bale",
+      "Heath Ledger",
+      "Aaron Eckhart"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "29": {
+    "tmdb_id": 329865,
+    "genres": [
+      "Drama",
+      "Science Fiction",
+      "Mystery"
+    ],
+    "overview": "Taking place after alien crafts land around the world, an expert linguist is recruited by the military to determine whether they come in peace or are a threat.",
+    "runtime": 116,
+    "original_language": "en",
+    "vote_average": 7.6,
+    "vote_count": 19080,
+    "tagline": "Why are they here?",
+    "certification": "PG-13",
+    "cast": [
+      "Amy Adams",
+      "Jeremy Renner",
+      "Forest Whitaker"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "30": {
+    "tmdb_id": 153,
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "overview": "Two lost souls visiting Tokyo -- the young, neglected wife of a photographer and a washed-up movie star shooting a TV commercial -- find an odd solace and pensive freedom to be real in each other's company, away from their lives in America.",
+    "runtime": 102,
+    "original_language": "en",
+    "vote_average": 7.4,
+    "vote_count": 7952,
+    "tagline": "Everyone wants to be found.",
+    "certification": "R",
+    "cast": [
+      "Bill Murray",
+      "Scarlett Johansson",
+      "Giovanni Ribisi"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "31": {
+    "tmdb_id": 1422,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Crime"
+    ],
+    "overview": "To take down South Boston's Irish Mafia, the police send in one of their own to infiltrate the underworld, not realizing the syndicate has done likewise. While an undercover cop curries favor with the mob kingpin, a career criminal rises through the police ranks. But both sides soon discover there's a mole among them.",
+    "runtime": 151,
+    "original_language": "en",
+    "vote_average": 8.2,
+    "vote_count": 15969,
+    "tagline": "Cops or criminals. When you\u2019re facing a loaded gun, what\u2019s the difference?",
+    "certification": "R",
+    "cast": [
+      "Leonardo DiCaprio",
+      "Matt Damon",
+      "Jack Nicholson"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "32": {
+    "tmdb_id": 55721,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "overview": "Annie's life is a mess. But when she finds out her lifetime best friend is engaged, she simply must serve as Lillian's maid of honor. Though lovelorn and broke, Annie bluffs her way through the expensive and bizarre rituals. With one chance to get it perfect, she\u2019ll show Lillian and her bridesmaids just how far you\u2019ll go for someone you love.",
+    "runtime": 125,
+    "original_language": "en",
+    "vote_average": 6.5,
+    "vote_count": 4627,
+    "tagline": "Save the date.",
+    "certification": "R",
+    "cast": [
+      "Kristen Wiig",
+      "Maya Rudolph",
+      "Rose Byrne"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "33": {
+    "tmdb_id": 307381,
+    "genres": [
+      "Documentary"
+    ],
+    "overview": "In March 2012, Iranian movie \"A Separation\" by Asghar Farhadi, won the Oscar Award for the Best Foreign Language Film. For the Iranian people this was more than a cinematic award. When sanctions and threats of war with Iran covered the world headlines, Farhadi talked about Iran's love for peace and the rich culture of the Iranians on the stage when receiving his award. This time the Iranians voice was heard through someone other than the government officials. This documentary shows the reaction of the Iranians to this Oscar award and has a general view on Iran's society of today.",
+    "runtime": 52,
+    "original_language": "fa",
+    "vote_average": 8.5,
+    "vote_count": 11,
+    "tagline": "",
+    "certification": null,
+    "cast": [
+      "Payman Maadi",
+      "Shahab Hosseini",
+      "Leila Hatami"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "34": {
+    "tmdb_id": 1525542,
+    "genres": [],
+    "overview": "You don't need to look all the way to the end: there isn't one.",
+    "runtime": 34,
+    "original_language": "xx",
+    "vote_average": null,
+    "vote_count": 0,
+    "tagline": "",
+    "certification": null,
+    "cast": [],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "35": {
+    "tmdb_id": 21575,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "overview": "Sentenced to six years in prison, Malik El Djebena is alone in the world and can neither read nor write. On his arrival at the prison, he seems younger and more brittle than the others detained there. At once he falls under the sway of a group of Corsicans who enforce their rule in the prison. As the 'missions' go by, he toughens himself and wins the confidence of the Corsican group.",
+    "runtime": 155,
+    "original_language": "fr",
+    "vote_average": 7.6,
+    "vote_count": 1700,
+    "tagline": "Escaping the prison of life.",
+    "certification": "R",
+    "cast": [
+      "Tahar Rahim",
+      "Niels Arestrup",
+      "Adel Bencherif"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "36": {
+    "tmdb_id": 12573,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "overview": "It is 1967, and Larry Gopnik, a physics professor at a quiet Midwestern university, has just been informed by his wife Judith that she is leaving him. She has fallen in love with one of his more pompous acquaintances Sy Ableman.",
+    "runtime": 106,
+    "original_language": "en",
+    "vote_average": 6.7,
+    "vote_count": 2308,
+    "tagline": "Accept mystery.",
+    "certification": "R",
+    "cast": [
+      "Michael Stuhlbarg",
+      "Richard Kind",
+      "Fred Melamed"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "37": {
+    "tmdb_id": 398818,
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "overview": "In the summer of 1983, a 17-year-old Elio spends his days in his family's villa in Italy. One day Oliver, a graduate student, arrives to assist Elio's father, a professor of Greco-Roman culture. Soon, Elio and Oliver discover a summer that will alter their lives forever.",
+    "runtime": 132,
+    "original_language": "en",
+    "vote_average": 8.1,
+    "vote_count": 12638,
+    "tagline": "Is it better to speak or die?",
+    "certification": "R",
+    "cast": [
+      "Armie Hammer",
+      "Timoth\u00e9e Chalamet",
+      "Michael Stuhlbarg"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "38": {
+    "tmdb_id": 531428,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "overview": "On an isolated island in Brittany at the end of the eighteenth century, a female painter is obliged to paint a wedding portrait of a young woman.",
+    "runtime": 121,
+    "original_language": "fr",
+    "vote_average": 8.1,
+    "vote_count": 2879,
+    "tagline": "Don't regret. Remember.",
+    "certification": "R",
+    "cast": [
+      "No\u00e9mie Merlant",
+      "Ad\u00e8le Haenel",
+      "Lu\u00e0na Bajrami"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "39": {
+    "tmdb_id": 391713,
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "overview": "Lady Bird McPherson, a strong willed, deeply opinionated, artistic 17 year old comes of age in Sacramento. Her relationship with her mother and her upbringing are questioned and tested as she plans to head off to college.",
+    "runtime": 94,
+    "original_language": "en",
+    "vote_average": 7.3,
+    "vote_count": 8934,
+    "tagline": "Fly away home.",
+    "certification": "R",
+    "cast": [
+      "Saoirse Ronan",
+      "Laurie Metcalf",
+      "Tracy Letts"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "40": {
+    "tmdb_id": 25538,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "A Taipei family faces personal and moral uncertainty as everyday events test their relationships and sense of purpose.",
+    "runtime": 174,
+    "original_language": "zh",
+    "vote_average": 7.9,
+    "vote_count": 653,
+    "tagline": "We never live the same day twice.",
+    "certification": "NR",
+    "cast": [
+      "Wu Nien-jen",
+      "Issey Ogata",
+      "Elaine Jin Yan-Ling"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "42": {
+    "tmdb_id": 68722,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "Freddie, a volatile, heavy-drinking veteran who suffers from post-traumatic stress disorder, finds some semblance of a family when he stumbles onto the ship of Lancaster Dodd, the charismatic leader of a new \"religion\" he forms after World War II.",
+    "runtime": 137,
+    "original_language": "en",
+    "vote_average": 7.1,
+    "vote_count": 3252,
+    "tagline": "",
+    "certification": "R",
+    "cast": [
+      "Joaquin Phoenix",
+      "Philip Seymour Hoffman",
+      "Amy Adams"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "43": {
+    "tmdb_id": 670,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Mystery",
+      "Action"
+    ],
+    "overview": "With no clue how he came to be imprisoned, drugged and tortured for 15 years, a desperate man seeks revenge on his captors.",
+    "runtime": 120,
+    "original_language": "ko",
+    "vote_average": 8.2,
+    "vote_count": 9653,
+    "tagline": "15 years of imprisonment, five days of vengeance.",
+    "certification": "R",
+    "cast": [
+      "Choi Min-sik",
+      "Yoo Ji-tae",
+      "Kang Hye-jung"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "44": {
+    "tmdb_id": 466272,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Thriller"
+    ],
+    "overview": "Los Angeles, 1969. TV star Rick Dalton, a struggling actor specializing in westerns, and stuntman Cliff Booth, his best friend, try to survive in a constantly changing movie industry. Dalton is the neighbor of the young and promising actress and model Sharon Tate, who has just married the prestigious Polish director Roman Polanski\u2026",
+    "runtime": 162,
+    "original_language": "en",
+    "vote_average": 7.4,
+    "vote_count": 14645,
+    "tagline": "In this town, it can all change\u2026 Like that.",
+    "certification": "R",
+    "cast": [
+      "Leonardo DiCaprio",
+      "Brad Pitt",
+      "Margot Robbie"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "45": {
+    "tmdb_id": 60308,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "The story of Oakland Athletics general manager Billy Beane's successful attempt to put together a baseball team on a budget, by employing computer-generated analysis to draft his players.",
+    "runtime": 134,
+    "original_language": "en",
+    "vote_average": 7.3,
+    "vote_count": 5649,
+    "tagline": "What are you really worth?",
+    "certification": "PG-13",
+    "cast": [
+      "Brad Pitt",
+      "Jonah Hill",
+      "Philip Seymour Hoffman"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "46": {
+    "tmdb_id": 426426,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "In 1970s Mexico City, two domestic workers help a mother of four while her husband is away for an extended period of time.",
+    "runtime": 135,
+    "original_language": "es",
+    "vote_average": 7.6,
+    "vote_count": 4089,
+    "tagline": "There are periods in history that scar societies and moments in life that transform us as individuals.",
+    "certification": "R",
+    "cast": [
+      "Yalitza Aparicio",
+      "Marina de Tavira",
+      "Diego Cortina Autrey"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "47": {
+    "tmdb_id": 786,
+    "genres": [
+      "Drama",
+      "Music"
+    ],
+    "overview": "In 1973, 15-year-old William Miller's unabashed love of music and aspiration to become a rock journalist lands him an assignment from Rolling Stone magazine to interview and tour with the up-and-coming band, Stillwater.",
+    "runtime": 124,
+    "original_language": "en",
+    "vote_average": 7.5,
+    "vote_count": 3049,
+    "tagline": "Experience it. Enjoy it. Just don't fall for it.",
+    "certification": "R",
+    "cast": [
+      "Billy Crudup",
+      "Frances McDormand",
+      "Kate Hudson"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "48": {
+    "tmdb_id": 582,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "overview": "In 1984 East Berlin, dedicated Stasi officer Gerd Wiesler begins spying on a famous playwright and his actress-lover Christa-Maria. Wiesler becomes unexpectedly sympathetic to the couple, and faces conflicting loyalties when his superior takes a liking to Christa-Maria.",
+    "runtime": 137,
+    "original_language": "de",
+    "vote_average": 8.0,
+    "vote_count": 4047,
+    "tagline": "Before the Fall of the Berlin Wall, East Germany's Secret Police Listened to Your Secrets.",
+    "certification": "R",
+    "cast": [
+      "Martina Gedeck",
+      "Ulrich M\u00fche",
+      "Sebastian Koch"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "49": {
+    "tmdb_id": 80,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "overview": "Nine years later, Jesse travels across Europe giving readings from a book he wrote about the night he spent in Vienna with Celine. After his reading in Paris, Celine finds him, and they spend part of the day together before Jesse has to again leave for a flight. They are both in relationships now, and Jesse has a son, but as their strong feelings for each other start to return, both confess a longing for more.",
+    "runtime": 80,
+    "original_language": "en",
+    "vote_average": 7.8,
+    "vote_count": 3730,
+    "tagline": "What if you had a second chance with the one that got away?",
+    "certification": "R",
+    "cast": [
+      "Ethan Hawke",
+      "Julie Delpy",
+      "Vernon Dobtcheff"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "50": {
+    "tmdb_id": 14160,
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Family",
+      "Adventure"
+    ],
+    "overview": "Carl Fredricksen spent his entire life dreaming of exploring the globe and experiencing life to its fullest. But at age 78, life seems to have passed him by, until a twist of fate (and a persistent 8-year old Wilderness Explorer named Russell) gives him a new lease on life.",
+    "runtime": 96,
+    "original_language": "en",
+    "vote_average": 8.0,
+    "vote_count": 21430,
+    "tagline": "Change is in the air.",
+    "certification": "PG",
+    "cast": [
+      "Ed Asner",
+      "Christopher Plummer",
+      "Jordan Nagai"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "51": {
+    "tmdb_id": 76203,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "overview": "In the pre-Civil War United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery. Facing cruelty as well as unexpected kindnesses Solomon struggles not only to stay alive, but to retain his dignity. In the twelfth year of his unforgettable odyssey, Solomon\u2019s chance meeting with a Canadian abolitionist will forever alter his life.",
+    "runtime": 134,
+    "original_language": "en",
+    "vote_average": 7.9,
+    "vote_count": 11872,
+    "tagline": "The extraordinary true story of Solomon Northup.",
+    "certification": "R",
+    "cast": [
+      "Chiwetel Ejiofor",
+      "Michael Fassbender",
+      "Lupita Nyong'o"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "52": {
+    "tmdb_id": 375262,
+    "genres": [
+      "History",
+      "Comedy",
+      "Drama"
+    ],
+    "overview": "England, early 18th century. The close relationship between Queen Anne and Sarah Churchill is threatened by the arrival of Sarah's cousin, Abigail Hill, resulting in a bitter rivalry between the two cousins to be the Queen's favourite.",
+    "runtime": 120,
+    "original_language": "en",
+    "vote_average": 7.5,
+    "vote_count": 5847,
+    "tagline": "",
+    "certification": "R",
+    "cast": [
+      "Emma Stone",
+      "Olivia Colman",
+      "Rachel Weisz"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "53": {
+    "tmdb_id": 496,
+    "genres": [
+      "Comedy"
+    ],
+    "overview": "Kazakh journalist Borat Sagdiyev travels to America to make a documentary. As he zigzags across the nation, Borat meets real people in real situations with hysterical consequences. His backwards behavior generates strong reactions around him exposing prejudices and hypocrisies in American culture.",
+    "runtime": 84,
+    "original_language": "en",
+    "vote_average": 6.8,
+    "vote_count": 5871,
+    "tagline": "Come to Kazakhstan, it's nice!",
+    "certification": "R",
+    "cast": [
+      "Sacha Baron Cohen",
+      "Ken Davitian",
+      "Luenell"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "54": {
+    "tmdb_id": 1417,
+    "genres": [
+      "Fantasy",
+      "Drama",
+      "War"
+    ],
+    "overview": "In post\u2013civil war Spain, 10-year-old Ofelia moves with her pregnant mother to live under the control of her cruel stepfather. Drawn into a mysterious labyrinth, she meets a faun who reveals that she may be a lost princess from an underground kingdom. To return to her true father, she must complete a series of surreal and perilous tasks that blur the line between reality and fantasy.",
+    "runtime": 118,
+    "original_language": "es",
+    "vote_average": 7.8,
+    "vote_count": 11312,
+    "tagline": "Innocence has a power evil cannot imagine.",
+    "certification": "R",
+    "cast": [
+      "Ivana Baquero",
+      "Sergi L\u00f3pez",
+      "Maribel Verd\u00fa"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "55": {
+    "tmdb_id": 27205,
+    "genres": [
+      "Action",
+      "Science Fiction",
+      "Adventure"
+    ],
+    "overview": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
+    "runtime": 148,
+    "original_language": "en",
+    "vote_average": 8.4,
+    "vote_count": 38852,
+    "tagline": "Your mind is the scene of the crime.",
+    "certification": "PG-13",
+    "cast": [
+      "Leonardo DiCaprio",
+      "Joseph Gordon-Levitt",
+      "Ken Watanabe"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "56": {
+    "tmdb_id": 8051,
+    "genres": [
+      "Romance",
+      "Drama",
+      "Comedy"
+    ],
+    "overview": "A socially awkward and volatile small business owner meets the love of his life after being threatened by a gang of scammers.",
+    "runtime": 96,
+    "original_language": "en",
+    "vote_average": 7.1,
+    "vote_count": 2674,
+    "tagline": "I have a love in my life. It makes me stronger than anything you can imagine.",
+    "certification": "R",
+    "cast": [
+      "Adam Sandler",
+      "Emily Watson",
+      "Philip Seymour Hoffman"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "57": {
+    "tmdb_id": 13785,
+    "genres": [
+      "Comedy"
+    ],
+    "overview": "The tension is palpable, the excitement is mounting and the heady scent of competition is in the air as hundreds of eager contestants from across America prepare to take part in what is undoubtedly one of the greatest events of their lives -- the Mayflower Dog Show. The canine contestants and their owners are as wondrously diverse as the great country that has bred them.",
+    "runtime": 90,
+    "original_language": "en",
+    "vote_average": 6.9,
+    "vote_count": 652,
+    "tagline": "Some pets deserve a little more respect than others.",
+    "certification": "PG-13",
+    "cast": [
+      "Bob Balaban",
+      "Jennifer Coolidge",
+      "Christopher Guest"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "58": {
+    "tmdb_id": 473033,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Crime"
+    ],
+    "overview": "A charismatic New York City jeweler always on the lookout for the next big score makes a series of high-stakes bets that could lead to the windfall of a lifetime. Howard must perform a precarious high-wire act, balancing business, family, and encroaching adversaries on all sides in his relentless pursuit of the ultimate win.",
+    "runtime": 136,
+    "original_language": "en",
+    "vote_average": 7.2,
+    "vote_count": 5278,
+    "tagline": "This is how I win.",
+    "certification": "R",
+    "cast": [
+      "Adam Sandler",
+      "LaKeith Stanfield",
+      "Julia Fox"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "59": {
+    "tmdb_id": 374475,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "overview": "Convinced that his daughter has forgotten how to laugh, a father shows up unannounced while she's living abroad and bombards her with outrageous jokes.",
+    "runtime": 162,
+    "original_language": "de",
+    "vote_average": 7.0,
+    "vote_count": 1080,
+    "tagline": "Life is just passing by...",
+    "certification": null,
+    "cast": [
+      "Sandra H\u00fcller",
+      "Peter Simonischek",
+      "Michael Wittenborn"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "60": {
+    "tmdb_id": 244786,
+    "genres": [
+      "Drama",
+      "Music",
+      "Thriller"
+    ],
+    "overview": "Under the direction of a ruthless instructor, a talented young drummer begins to pursue perfection at any cost, even his humanity.",
+    "runtime": 107,
+    "original_language": "en",
+    "vote_average": 8.4,
+    "vote_count": 16405,
+    "tagline": "The road to greatness can take you to the edge.",
+    "certification": "R",
+    "cast": [
+      "Miles Teller",
+      "J.K. Simmons",
+      "Paul Reiser"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "61": {
+    "tmdb_id": 24,
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "overview": "An assassin is shot by her ruthless employer, Bill, and other members of their assassination circle \u2013 but she lives to plot her vengeance.",
+    "runtime": 111,
+    "original_language": "en",
+    "vote_average": 8.0,
+    "vote_count": 18678,
+    "tagline": "Here comes the bride.",
+    "certification": "R",
+    "cast": [
+      "Uma Thurman",
+      "Lucy Liu",
+      "Vivica A. Fox"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "62": {
+    "tmdb_id": 77,
+    "genres": [
+      "Mystery",
+      "Thriller"
+    ],
+    "overview": "Leonard Shelby is tracking down the man who raped and murdered his wife. The difficulty of locating his wife's killer, however, is compounded by the fact that he suffers from a rare, untreatable form of short-term memory loss. Although he can recall details of life before his accident, Leonard cannot remember what happened fifteen minutes ago, where he's going, or why.",
+    "runtime": 113,
+    "original_language": "en",
+    "vote_average": 8.2,
+    "vote_count": 15999,
+    "tagline": "Some memories are best forgotten.",
+    "certification": "R",
+    "cast": [
+      "Guy Pearce",
+      "Carrie-Anne Moss",
+      "Joe Pantoliano"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "63": {
+    "tmdb_id": 773,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "overview": "A family loaded with quirky, colorful characters piles into an old van and road trips to California for little Olive to compete in a beauty pageant.",
+    "runtime": 102,
+    "original_language": "en",
+    "vote_average": 7.7,
+    "vote_count": 7726,
+    "tagline": "A family on the verge of a breakdown.",
+    "certification": "R",
+    "cast": [
+      "Greg Kinnear",
+      "Toni Collette",
+      "Steve Carell"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "64": {
+    "tmdb_id": 210577,
+    "genres": [
+      "Mystery",
+      "Thriller",
+      "Drama"
+    ],
+    "overview": "With his wife's disappearance having become the focus of an intense media circus, a man sees the spotlight turned on him when it's suspected that he may not be innocent.",
+    "runtime": 149,
+    "original_language": "en",
+    "vote_average": 7.9,
+    "vote_count": 19743,
+    "tagline": "You don't know what you've got 'til it's...",
+    "certification": "R",
+    "cast": [
+      "Ben Affleck",
+      "Rosamund Pike",
+      "Neil Patrick Harris"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "65": {
+    "tmdb_id": 872585,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "overview": "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
+    "runtime": 181,
+    "original_language": "en",
+    "vote_average": 8.0,
+    "vote_count": 11484,
+    "tagline": "The world forever changes.",
+    "certification": "R",
+    "cast": [
+      "Cillian Murphy",
+      "Emily Blunt",
+      "Matt Damon"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "66": {
+    "tmdb_id": 314365,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "overview": "The true story of how the Boston Globe uncovered the massive scandal of child molestation and cover-up within the local Catholic Archdiocese, shaking the entire Catholic Church to its core.",
+    "runtime": 129,
+    "original_language": "en",
+    "vote_average": 7.8,
+    "vote_count": 8693,
+    "tagline": "Break the story. Break the silence.",
+    "certification": "R",
+    "cast": [
+      "Mark Ruffalo",
+      "Michael Keaton",
+      "Rachel McAdams"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "67": {
+    "tmdb_id": 1004076,
+    "genres": [],
+    "overview": "The artist presents a video work represented in 3D images based on 2D-image data collected by aerial shots of a particular space in Michuhol-Gu, Incheon. This work, A-Su-Ra-Bal-Bal-Ta (2021), juxtaposes the space represented by digital technology with the repeated sound \"Asurabalbalta\", a kind of magic spell derived from a film. Exploring the different meanings created from the gap between what is represented by advanced technology and the aspirations of blind human desires, this work addresses issues found in modern Korean society that relate to space that is both limited and shared.",
+    "runtime": 11,
+    "original_language": "ko",
+    "vote_average": null,
+    "vote_count": 0,
+    "tagline": "",
+    "certification": null,
+    "cast": [],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "68": {
+    "tmdb_id": 12162,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "War"
+    ],
+    "overview": "During the Iraq War, a Sergeant recently assigned to an army bomb squad is put at odds with his squad mates due to his maverick way of handling his work.",
+    "runtime": 131,
+    "original_language": "en",
+    "vote_average": 7.3,
+    "vote_count": 6070,
+    "tagline": "You don't have to be a hero to do this job. But it helps.",
+    "certification": "R",
+    "cast": [
+      "Jeremy Renner",
+      "Anthony Mackie",
+      "Brian Geraghty"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "69": {
+    "tmdb_id": 698232,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "Man and Woman are reunited after a long time. Sorrow and desire cannot break the silence. But that's okay: when words don't come, it's the body that speaks.",
+    "runtime": 19,
+    "original_language": "pt",
+    "vote_average": 5.9,
+    "vote_count": 11,
+    "tagline": "",
+    "certification": null,
+    "cast": [
+      "Rita Carelli",
+      "Mariano Mattos Martins"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "70": {
+    "tmdb_id": 13310,
+    "genres": [
+      "Horror",
+      "Drama"
+    ],
+    "overview": "When Oskar, a sensitive, bullied 12-year-old boy, meets his new neighbor, the mysterious and moody Eli, they strike up a friendship. Initially reserved with each other, Oskar and Eli slowly form a close bond, but it soon becomes apparent that she is no ordinary young girl.",
+    "runtime": 115,
+    "original_language": "sv",
+    "vote_average": 7.5,
+    "vote_count": 3209,
+    "tagline": "Eli is 12 years old. She's been 12 for over 200 years, and she just moved in next door.",
+    "certification": "R",
+    "cast": [
+      "K\u00e5re Hedebrant",
+      "Lina Leandersson",
+      "Per Ragnar"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "71": {
+    "tmdb_id": 161,
+    "genres": [
+      "Thriller",
+      "Crime"
+    ],
+    "overview": "Less than 24 hours into his parole, charismatic thief Danny Ocean is already rolling out his next plan: In one night, Danny's hand-picked crew of specialists will attempt to steal more than $150 million from three Las Vegas casinos. But to score the cash, Danny risks his chances of reconciling with ex-wife, Tess.",
+    "runtime": 116,
+    "original_language": "en",
+    "vote_average": 7.5,
+    "vote_count": 12385,
+    "tagline": "Are you in or out?",
+    "certification": "PG-13",
+    "cast": [
+      "George Clooney",
+      "Brad Pitt",
+      "Andy Garcia"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "72": {
+    "tmdb_id": 258480,
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "overview": "In 1950s New York, a department-store clerk who dreams of a better life falls for an older, married woman.",
+    "runtime": 118,
+    "original_language": "en",
+    "vote_average": 7.5,
+    "vote_count": 3923,
+    "tagline": "Some people change your life forever.",
+    "certification": "R",
+    "cast": [
+      "Cate Blanchett",
+      "Rooney Mara",
+      "Kyle Chandler"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "73": {
+    "tmdb_id": 2062,
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Family",
+      "Fantasy"
+    ],
+    "overview": "Remy, a rat living in Paris, possesses a palate far more refined than that of his fellow comrades. He dreams of becoming a chef, determined to create culinary masterpieces rather than scavenge for scraps. When fate deposits him in the sewers beneath one of Paris\u2019s most famous restaurants, he finds himself ideally placed to fulfill his dream. Forming an unusual alliance with a bumbling young kitchen worker, Remy begins a daring culinary double life. Together, they must outwit the scheming Head Chef Skinner, evade Remy\u2019s disapproving colony, and impress renowned food critic Anton Ego, who strikes fear in the hearts of chefs all throughout France.",
+    "runtime": 111,
+    "original_language": "en",
+    "vote_average": 7.8,
+    "vote_count": 18268,
+    "tagline": "He's dying to become a chef.",
+    "certification": "G",
+    "cast": [
+      "Patton Oswalt",
+      "Ian Holm",
+      "Lou Romano"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "74": {
+    "tmdb_id": 394117,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "The story of a precocious six year-old and her ragtag group of friends whose summer break is filled with childhood wonder, possibility and a sense of adventure while the adults around them struggle with hard times.",
+    "runtime": 112,
+    "original_language": "en",
+    "vote_average": 7.4,
+    "vote_count": 3048,
+    "tagline": "Find your kingdom.",
+    "certification": "R",
+    "cast": [
+      "Brooklynn Prince",
+      "Bria Vinaite",
+      "Willem Dafoe"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "75": {
+    "tmdb_id": 86837,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "overview": "Georges and Anne are in their eighties. They are cultivated, retired music teachers. Their daughter, who is also a musician, lives abroad with her family. One day, Anne has a stroke, and the couple's bond of love is severely tested.",
+    "runtime": 127,
+    "original_language": "fr",
+    "vote_average": 7.8,
+    "vote_count": 1757,
+    "tagline": "",
+    "certification": "PG-13",
+    "cast": [
+      "Jean-Louis Trintignant",
+      "Emmanuelle Riva",
+      "Isabelle Huppert"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "76": {
+    "tmdb_id": 134,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Crime"
+    ],
+    "overview": "In the deep south during the 1930s, three escaped convicts search for hidden treasure while a relentless lawman pursues them.",
+    "runtime": 107,
+    "original_language": "en",
+    "vote_average": 7.3,
+    "vote_count": 4519,
+    "tagline": "They have a plan, but not a clue.",
+    "certification": "PG-13",
+    "cast": [
+      "George Clooney",
+      "John Turturro",
+      "Tim Blake Nelson"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "77": {
+    "tmdb_id": 545611,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "overview": "An aging Chinese immigrant is swept up in an insane adventure, where she alone can save what's important to her by connecting with the lives she could have led in other universes.",
+    "runtime": 140,
+    "original_language": "en",
+    "vote_average": 7.7,
+    "vote_count": 7751,
+    "tagline": "The universe is so much bigger than you realize.",
+    "certification": "R",
+    "cast": [
+      "Michelle Yeoh",
+      "Stephanie Hsu",
+      "Ke Huy Quan"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "78": {
+    "tmdb_id": 965150,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "Sophie reflects on the shared joy and private melancholy of a holiday she took with her father twenty years earlier. Memories fill the gaps between camcorder footages as she tries to reconcile the father she knew with the troubled man she didn't.",
+    "runtime": 101,
+    "original_language": "en",
+    "vote_average": 7.7,
+    "vote_count": 1770,
+    "tagline": "Memory burns.",
+    "certification": "R",
+    "cast": [
+      "Paul Mescal",
+      "Frankie Corio",
+      "Brooklyn Toulson"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "79": {
+    "tmdb_id": 8967,
+    "genres": [
+      "Drama",
+      "Fantasy"
+    ],
+    "overview": "The impressionistic story of a Texas family in the 1950s. The film follows the life journey of the eldest son, Jack, through the innocence of childhood to his disillusioned adult years as he tries to reconcile a complicated relationship with his father. Jack finds himself a lost soul in the modern world, seeking answers to the origins and meaning of life while questioning the existence of faith.",
+    "runtime": 139,
+    "original_language": "en",
+    "vote_average": 6.7,
+    "vote_count": 3295,
+    "tagline": "Nothing stands still.",
+    "certification": "PG-13",
+    "cast": [
+      "Brad Pitt",
+      "Jessica Chastain",
+      "Hunter McCracken"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "80": {
+    "tmdb_id": 219,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "overview": "Three generations of women deal with family secrets while surviving the east wind, fire, insanity, superstition, lies and even death.",
+    "runtime": 121,
+    "original_language": "es",
+    "vote_average": 7.5,
+    "vote_count": 1877,
+    "tagline": "Return.",
+    "certification": "R",
+    "cast": [
+      "Pen\u00e9lope Cruz",
+      "Carmen Maura",
+      "Lola Due\u00f1as"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "81": {
+    "tmdb_id": 44214,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Horror"
+    ],
+    "overview": "A committed dancer struggles to maintain her sanity after winning the lead role in a production of Tchaikovsky's \"Swan Lake\".",
+    "runtime": 108,
+    "original_language": "en",
+    "vote_average": 7.7,
+    "vote_count": 15386,
+    "tagline": "The only person standing in your way is you.",
+    "certification": "R",
+    "cast": [
+      "Natalie Portman",
+      "Mila Kunis",
+      "Vincent Cassel"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "82": {
+    "tmdb_id": 123678,
+    "genres": [
+      "Documentary",
+      "History"
+    ],
+    "overview": "In this chilling and groundbreaking documentary, former Indonesian death squad leaders reenact their real-life mass killings in the style of various film genres. As they recreate their past atrocities, the line between reality and performance blurs, exposing the lingering impact of Indonesia's 1965-66 anti-communist purge and the unsettling psychology of its perpetrators.",
+    "runtime": 159,
+    "original_language": "da",
+    "vote_average": 7.7,
+    "vote_count": 745,
+    "tagline": "A story of killers who win and the society they build.",
+    "certification": "NR",
+    "cast": [
+      "Anwar Congo",
+      "Herman Koto",
+      "Syamsul Arifin"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "83": {
+    "tmdb_id": 86829,
+    "genres": [
+      "Drama",
+      "Music"
+    ],
+    "overview": "In Greenwich Village in the early 1960s, gifted but volatile folk musician Llewyn Davis struggles with money, relationships, and his uncertain future.",
+    "runtime": 105,
+    "original_language": "en",
+    "vote_average": 7.2,
+    "vote_count": 2890,
+    "tagline": "",
+    "certification": "R",
+    "cast": [
+      "Oscar Isaac",
+      "Carey Mulligan",
+      "Justin Timberlake"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "84": {
+    "tmdb_id": 62215,
+    "genres": [
+      "Drama",
+      "Science Fiction"
+    ],
+    "overview": "Two sisters find their already strained relationship challenged as a mysterious new planet threatens to collide with Earth.",
+    "runtime": 136,
+    "original_language": "en",
+    "vote_average": 7.2,
+    "vote_count": 3768,
+    "tagline": "It will change everything.",
+    "certification": "R",
+    "cast": [
+      "Kirsten Dunst",
+      "Charlotte Gainsbourg",
+      "Kiefer Sutherland"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "85": {
+    "tmdb_id": 8699,
+    "genres": [
+      "Comedy"
+    ],
+    "overview": "It's the 1970s and San Diego anchorman Ron Burgundy is the top dog in local TV, but that's all about to change when ambitious reporter Veronica Corningstone arrives as a new employee at his station.",
+    "runtime": 95,
+    "original_language": "en",
+    "vote_average": 6.7,
+    "vote_count": 4511,
+    "tagline": "They bring you the news so you don't have to get it yourself.",
+    "certification": "PG-13",
+    "cast": [
+      "Will Ferrell",
+      "Christina Applegate",
+      "Paul Rudd"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "86": {
+    "tmdb_id": 666277,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "overview": "After decades apart, childhood friends Nora and Hae Sung are reunited in New York for one fateful weekend as they confront notions of destiny, love, and the choices that make a life.",
+    "runtime": 106,
+    "original_language": "en",
+    "vote_average": 7.7,
+    "vote_count": 2227,
+    "tagline": "",
+    "certification": "PG-13",
+    "cast": [
+      "Greta Lee",
+      "Teo Yoo",
+      "John Magaro"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "87": {
+    "tmdb_id": 120,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Action"
+    ],
+    "overview": "Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.",
+    "runtime": 179,
+    "original_language": "en",
+    "vote_average": 8.4,
+    "vote_count": 27166,
+    "tagline": "One ring to rule them all.",
+    "certification": "PG-13",
+    "cast": [
+      "Elijah Wood",
+      "Ian McKellen",
+      "Viggo Mortensen"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "88": {
+    "tmdb_id": 44379,
+    "genres": [
+      "Documentary"
+    ],
+    "overview": "Varda focuses her eye on gleaners: those who scour already-reaped fields for the odd potato or turnip. Her investigation leads from forgotten corners of the French countryside to off-hours at the green markets of Paris, following those who insist on finding a use for that which society has cast off, whether out of necessity or activism.",
+    "runtime": 82,
+    "original_language": "fr",
+    "vote_average": 7.6,
+    "vote_count": 216,
+    "tagline": "",
+    "certification": "NR",
+    "cast": [
+      "Bodan Litnanski",
+      "Agn\u00e8s Varda",
+      "Fran\u00e7ois Wertheimer"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "89": {
+    "tmdb_id": 157336,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Science Fiction"
+    ],
+    "overview": "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+    "runtime": 169,
+    "original_language": "en",
+    "vote_average": 8.5,
+    "vote_count": 39144,
+    "tagline": "Mankind was born on Earth. It was never meant to die here.",
+    "certification": "PG-13",
+    "cast": [
+      "Matthew McConaughey",
+      "Anne Hathaway",
+      "Michael Caine"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "90": {
+    "tmdb_id": 121986,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "overview": "An aspiring dancer moves to New York City and becomes caught up in a whirlwind of flighty fair-weather friends, diminishing fortunes and career setbacks.",
+    "runtime": 86,
+    "original_language": "en",
+    "vote_average": 7.3,
+    "vote_count": 1799,
+    "tagline": "I'm not messy, I'm busy.",
+    "certification": "R",
+    "cast": [
+      "Greta Gerwig",
+      "Mickey Sumner",
+      "Michael Zegen"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "91": {
+    "tmdb_id": 24469,
+    "genres": [
+      "Drama"
+    ],
+    "overview": "Fifteen-year-old Mia is in a constant state of war with her family and the world around her. When she meets her party-girl mother\u2019s charming new boyfriend Connor, she is amazed to find he returns her attention, and believes he might help her start to make sense of her life.",
+    "runtime": 123,
+    "original_language": "en",
+    "vote_average": 6.9,
+    "vote_count": 923,
+    "tagline": "Live, love and give as good as you get.",
+    "certification": "NR",
+    "cast": [
+      "Katie Jarvis",
+      "Michael Fassbender",
+      "Kierston Wareing"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "92": {
+    "tmdb_id": 98,
+    "genres": [
+      "Action",
+      "Drama",
+      "Adventure"
+    ],
+    "overview": "After the death of Emperor Marcus Aurelius, his devious son takes power and demotes Maximus, one of Rome's most capable generals who Marcus preferred. Eventually, Maximus is forced to become a gladiator and battle to the death against other men for the amusement of paying audiences.",
+    "runtime": 155,
+    "original_language": "en",
+    "vote_average": 8.2,
+    "vote_count": 20617,
+    "tagline": "What we do in life echoes in eternity.",
+    "certification": "R",
+    "cast": [
+      "Russell Crowe",
+      "Joaquin Phoenix",
+      "Connie Nielsen"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "93": {
+    "tmdb_id": 4566,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Crime"
+    ],
+    "overview": "A law firm brings in its \"fixer\" to remedy the situation after a lawyer has a breakdown while representing a chemical company that he knows is guilty in a multi-billion dollar class action suit.",
+    "runtime": 120,
+    "original_language": "en",
+    "vote_average": 6.8,
+    "vote_count": 1937,
+    "tagline": "The truth can be adjusted.",
+    "certification": "R",
+    "cast": [
+      "George Clooney",
+      "Tom Wilkinson",
+      "Tilda Swinton"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "94": {
+    "tmdb_id": 180,
+    "genres": [
+      "Science Fiction",
+      "Action",
+      "Thriller"
+    ],
+    "overview": "John Anderton is a top 'Precrime' cop in the late-21st century, when technology can predict crimes before they're committed. But Anderton becomes the quarry when another investigator targets him for a murder charge.",
+    "runtime": 145,
+    "original_language": "en",
+    "vote_average": 7.3,
+    "vote_count": 9461,
+    "tagline": "Everybody runs.",
+    "certification": "PG-13",
+    "cast": [
+      "Tom Cruise",
+      "Samantha Morton",
+      "Colin Farrell"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "95": {
+    "tmdb_id": 660120,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Comedy"
+    ],
+    "overview": "The chronicles of four years in the life of Julie, a young woman who navigates the troubled waters of her love life and struggles to find her career path, leading her to take a realistic look at who she really is.",
+    "runtime": 128,
+    "original_language": "no",
+    "vote_average": 7.4,
+    "vote_count": 1778,
+    "tagline": "",
+    "certification": "R",
+    "cast": [
+      "Renate Reinsve",
+      "Anders Danielsen Lie",
+      "Herbert Nordrum"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "96": {
+    "tmdb_id": 284054,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "overview": "King T'Challa returns home to the reclusive, technologically advanced African nation of Wakanda to serve as his country's new leader. However, T'Challa soon finds that he is challenged for the throne by factions within his own country as well as without. Using powers reserved to Wakandan kings, T'Challa assumes the Black Panther mantle to join with ex-girlfriend Nakia, the queen-mother, his princess-kid sister, members of the Dora Milaje (the Wakandan 'special forces') and an American secret agent, to prevent Wakanda from being dragged into a world war.",
+    "runtime": 135,
+    "original_language": "en",
+    "vote_average": 7.4,
+    "vote_count": 23266,
+    "tagline": "Long live the king.",
+    "certification": "PG-13",
+    "cast": [
+      "Chadwick Boseman",
+      "Michael B. Jordan",
+      "Lupita Nyong'o"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "97": {
+    "tmdb_id": 49047,
+    "genres": [
+      "Science Fiction",
+      "Thriller",
+      "Drama"
+    ],
+    "overview": "Dr. Ryan Stone, a brilliant medical engineer, is on her first Shuttle mission, with veteran astronaut Matt Kowalski in command of his last flight before retiring. But on a seemingly routine spacewalk, disaster strikes. The Shuttle is destroyed, leaving Stone and Kowalski completely alone-tethered to nothing but each other and spiraling out into the blackness of space. The deafening silence tells them they have lost any link to Earth and any chance for rescue. As fear turns to panic, every gulp of air eats away at what little oxygen is left. But the only way home may be to go further out into the terrifying expanse of space.",
+    "runtime": 91,
+    "original_language": "en",
+    "vote_average": 7.2,
+    "vote_count": 16159,
+    "tagline": "Don't let go.",
+    "certification": "PG-13",
+    "cast": [
+      "Sandra Bullock",
+      "George Clooney",
+      "Ed Harris"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "98": {
+    "tmdb_id": 501,
+    "genres": [
+      "Documentary"
+    ],
+    "overview": "Follows the story of \"Grizzly Man\" Timothy Treadwell and what the thirteen summers in a National Park in Alaska were like in his attempt to protect the grizzly bears. The film is full of unique images and a look into the spirit of a man who sacrificed himself for nature.",
+    "runtime": 103,
+    "original_language": "en",
+    "vote_average": 7.5,
+    "vote_count": 938,
+    "tagline": "In nature, there are boundaries. One man spent the last thirteen years of his life crossing them.",
+    "certification": "R",
+    "cast": [
+      "Warren Queeney",
+      "Willy Fulton",
+      "Sam Egli"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "99": {
+    "tmdb_id": 11423,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "overview": "A sadistic serial rapist and murderer of young women terrorizes a small province in 1980s South Korea. To prevent further crimes, three increasingly desperate detectives with conflicting methods race against time to unravel the violent mind of the killer in a futile effort to solve the case.",
+    "runtime": 131,
+    "original_language": "ko",
+    "vote_average": 8.1,
+    "vote_count": 4460,
+    "tagline": "The worst of them will stay with you... forever.",
+    "certification": null,
+    "cast": [
+      "Song Kang-ho",
+      "Kim Sang-kyung",
+      "Kim Roi-ha"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "100": {
+    "tmdb_id": 8363,
+    "genres": [
+      "Comedy"
+    ],
+    "overview": "Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes awry.",
+    "runtime": 113,
+    "original_language": "en",
+    "vote_average": 7.3,
+    "vote_count": 7938,
+    "tagline": "Come and get some!",
+    "certification": "R",
+    "cast": [
+      "Jonah Hill",
+      "Michael Cera",
+      "Christopher Mintz-Plasse"
+    ],
+    "poster_path": null,
+    "fetched_at": "2026-03-18"
+  },
+  "_updated": "March 20, 2026",
+  "18": {
+    "tmdb_id": 1391,
+    "genres": [],
+    "overview": "",
+    "runtime": null,
+    "original_language": null,
+    "vote_average": null,
+    "vote_count": null,
+    "tagline": "",
+    "certification": null,
+    "cast": [],
+    "poster_path": null,
+    "fetched_at": "2026-03-20"
+  },
+  "41": {
+    "tmdb_id": 194,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "overview": "At a tiny Parisian caf\u00e9, the adorable yet painfully shy Am\u00e9lie accidentally discovers a gift for helping others. Soon Amelie is spending her days as a matchmaker, guardian angel, and all-around do-gooder. But when she bumps into a handsome stranger, will she find the courage to become the star of her very own love story?",
+    "runtime": 122,
+    "original_language": "fr",
+    "vote_average": 7.9,
+    "vote_count": 12268,
+    "tagline": "She\u2019ll change your life.",
+    "certification": "R",
+    "cast": [
+      "Audrey Tautou",
+      "Mathieu Kassovitz",
+      "Rufus"
+    ],
+    "poster_path": "/nSxDa3M9aMvGVLoItzWTepQ5h5d.jpg",
+    "fetched_at": "2026-03-20"
+  }
+}
