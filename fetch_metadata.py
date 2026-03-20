@@ -46,6 +46,10 @@ MOVIES_FILE = "movies.json"
 TMDB_ID_OVERRIDES: dict = {
     # Add entries here for movies that failed auto-search, e.g.:
     # 13: 497,   # rank 13 → Schindler's List (497)
+    18: 1391, #'https://www.themoviedb.org/movie/1391-y-tu-mama-tambien' ,
+    34: 10681, # 'https://www.themoviedb.org/movie/10681-wall-e'
+    41: 194, # 'https://www.themoviedb.org/movie/194-le-fabuleux-destin-d-amelie-poulain',
+    67: 817758, # 'https://www.themoviedb.org/movie/817758-tar',
 }
 
 
