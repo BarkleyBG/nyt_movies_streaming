@@ -9,7 +9,7 @@ movie_metadata.json.
 Usage:
     1. Copy .env.example to .env and add your TMDB API key
     2. Run:  python fetch_metadata.py
-    3. For Oscar movies too:  python fetch_metadata.py --include-oscars
+    3. Without Oscars:  python fetch_metadata.py --no-oscars
 
 TMDB API:
     Free tier — no daily cap; rate limit is ~40 requests/10 seconds.
@@ -409,8 +409,8 @@ def main():
                         help="Only fetch raw TMDB data, save to movie_metadata_raw.json")
     parser.add_argument("--clean-only", action="store_true",
                         help="Only clean existing raw data into movie_metadata.json")
-    parser.add_argument("--include-oscars", action="store_true",
-                        help="Also fetch metadata for Oscar Best Picture nominees")
+    parser.add_argument("--no-oscars", action="store_true",
+                        help="Skip Oscar Best Picture nominees (included by default)")
     args = parser.parse_args()
 
     if args.fetch_only and args.clean_only:
@@ -420,7 +420,7 @@ def main():
     movies = load_movies()
     all_movies = list(movies)
 
-    if args.include_oscars:
+    if not args.no_oscars:
         seen_keys = {movie_key(m) for m in movies}
         oscar_movies = load_oscar_movies()
         for om in oscar_movies:

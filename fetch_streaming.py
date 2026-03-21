@@ -8,12 +8,13 @@ and saves results to streaming_data.json.
 Usage:
     1. Copy .env.example to .env and add your RapidAPI key
     2. Run:  python fetch_streaming.py
-    3. For Oscar movies too:  python fetch_streaming.py --include-oscars
+    3. Without Oscars:  python fetch_streaming.py --no-oscars
 
 Free plan: 100 requests/day.
 Use --limit N to cap API calls per run (useful when the list exceeds 100
 movies — run on consecutive days to cover the full list incrementally).
 Movies are fetched in staleness order: never-fetched first, then oldest first.
+Oscar Best Picture nominees are included by default.
 """
 
 import argparse
@@ -346,7 +347,7 @@ def main():
     parser = argparse.ArgumentParser(description="Fetch and/or clean streaming availability data")
     parser.add_argument("--fetch-only", action="store_true", help="Only fetch raw API data and save to streaming_data_raw.json")
     parser.add_argument("--clean-only", action="store_true", help="Only clean existing raw data into streaming_data.json")
-    parser.add_argument("--include-oscars", action="store_true", help="Also fetch streaming data for Oscar Best Picture nominees")
+    parser.add_argument("--no-oscars", action="store_true", help="Skip Oscar Best Picture nominees (included by default)")
     parser.add_argument("--limit", type=int, default=None, metavar="N",
                         help="Cap API calls per run (for free-tier batching across days)")
     args = parser.parse_args()
@@ -363,7 +364,7 @@ def main():
     # If fetching (or default), ensure API key is loaded
     if args.fetch_only or not args.clean_only:
         api_key = load_api_key()
-        results, fetched, refreshed = fetch_raw(api_key, include_oscars=args.include_oscars, limit=args.limit)
+        results, fetched, refreshed = fetch_raw(api_key, include_oscars=not args.no_oscars, limit=args.limit)
 
     # If fetch-only requested, stop here
     if args.fetch_only:
