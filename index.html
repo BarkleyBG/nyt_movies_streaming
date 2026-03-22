@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Where to Stream the New York Times 100 Best Movies of the 21st Century</title>
-  <meta name="description" content="Find where to stream the New York Times' 100 Best Movies of the 21st Century. Filter by Netflix, Hulu, Prime Video, and more. Track what you've seen and build your watchlist.">
-  <meta property="og:title" content="Where to Stream the New York Times 100 Best Movies of the 21st Century">
-  <meta property="og:description" content="Find where to stream the New York Times' 100 Best Movies of the 21st Century. Filter by service, track what you've seen, and build your watchlist.">
+  <title>Where to Stream Your Favorite Movies</title>
+  <meta name="description" content="Find where to stream movies from the NYT 100 Best list and Oscar Best Picture nominees. Filter by Netflix, Hulu, Prime Video, and more. Track what you've seen and build your watchlist.">
+  <meta property="og:title" content="Where to Stream Your Favorite Movies">
+  <meta property="og:description" content="Find where to stream movies from the NYT 100 Best list and Oscar Best Picture nominees. Filter by service, track what you've seen, and build your watchlist.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Where to Stream the New York Times 100 Best Movies of the 21st Century">
-  <meta name="twitter:description" content="Find where to stream the New York Times' 100 Best Movies of the 21st Century. Filter by service, track what you've seen, and build your watchlist.">
+  <meta name="twitter:title" content="Where to Stream Your Favorite Movies">
+  <meta name="twitter:description" content="Find where to stream movies from the NYT 100 Best list and Oscar Best Picture nominees. Filter by service, track what you've seen, and build your watchlist.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
     <!-- Privacy-friendly analytics by Plausible -->
   <script async src="https://plausible.io/js/pa-T_VrUgi5cuKnLCtLgE0_0.js"></script>
@@ -831,9 +831,52 @@
       background: linear-gradient(135deg, #64748b, #94a3b8);
     }
 
-    /* Oscar tab sort: hide rank-specific UI */
+    /* ─── Ceremony Year Divider ─── */
+    .ceremony-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0.5rem 0 0.15rem;
+      user-select: none;
+    }
+    .ceremony-divider .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .ceremony-divider .divider-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      background: var(--bg);
+      padding: 0.18rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      white-space: nowrap;
+    }
+
+    /* Ceremony year indicator (sticky, like rank indicator) */
+    .ceremony-year-indicator {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      border-radius: 10px;
+      padding: 0.15rem 0.55rem;
+      margin-left: 0.6rem;
+      display: none;
+      vertical-align: middle;
+    }
+    .ceremony-year-indicator.visible { display: inline-block; }
+
+    /* Oscar tab: hide rank-specific UI */
     .oscars-active .rank-divider { display: none !important; }
     .oscars-active .rank-range-indicator { display: none !important; }
+    /* NYT tab: hide oscar-specific UI */
+    body:not(.oscars-active) .ceremony-divider { display: none !important; }
+    body:not(.oscars-active) .ceremony-year-indicator { display: none !important; }
 
     /* ─── Responsive ─── */
     @media (max-width: 700px) {
@@ -859,11 +902,19 @@
 <body>
 
 <header>
-  <h1>Where to Stream the <span>New York Times 100 Best Movies</span> of the 21st Century</h1>
-  <p class="header-source">List by the <a href="https://www.nytimes.com/interactive/2025/movies/best-movies-21st-century.html" target="_blank" rel="noopener">New York Times</a> &mdash; streaming availability added by this fan site</p>
-  <p class="header-tagline">In 2025, the New York Times polled 500+ filmmakers and critics to rank the 100 greatest films of the 21st century. Find where to stream each one, track what you&rsquo;ve seen, and build your watchlist.</p>
-  <a href="https://www.nytimes.com/interactive/2025/movies/best-movies-21st-century.html" target="_blank" rel="noopener" class="nyt-list-btn">View the original NYT list &rarr;</a>
-  <p class="header-disclaimer">Unofficial fan project &mdash; not affiliated with or endorsed by The New York Times</p>
+  <h1>Where to Stream <span>Your Favorite Movies</span></h1>
+  <div id="header-nyt" class="tab-header">
+    <p class="header-source">List by the <a href="https://www.nytimes.com/interactive/2025/movies/best-movies-21st-century.html" target="_blank" rel="noopener">New York Times</a> &mdash; streaming availability added by this fan site</p>
+    <p class="header-tagline">In 2025, the New York Times polled 500+ filmmakers and critics to rank the 100 greatest films of the 21st century. Find where to stream each one, track what you&rsquo;ve seen, and build your watchlist.</p>
+    <a href="https://www.nytimes.com/interactive/2025/movies/best-movies-21st-century.html" target="_blank" rel="noopener" class="nyt-list-btn">View the original NYT list &rarr;</a>
+    <p class="header-disclaimer">Unofficial fan project &mdash; not affiliated with or endorsed by The New York Times</p>
+  </div>
+  <div id="header-oscars" class="tab-header" style="display:none">
+    <p class="header-source">Every <a href="https://www.oscars.org/oscars/ceremonies" target="_blank" rel="noopener">Academy Award</a> Best Picture nominee since 2000 &mdash; streaming availability added by this fan site</p>
+    <p class="header-tagline">Track where to stream every Best Picture nominee and winner from the 73rd Academy Awards (2001) through the most recent ceremony. Mark what you&rsquo;ve seen and build your watchlist.</p>
+    <a href="https://www.oscars.org/oscars/ceremonies" target="_blank" rel="noopener" class="nyt-list-btn">View Oscar ceremonies at oscars.org &rarr;</a>
+    <p class="header-disclaimer">Unofficial fan project &mdash; not affiliated with or endorsed by the Academy of Motion Picture Arts and Sciences</p>
+  </div>
 </header>
 
 <div class="tab-bar" id="tab-bar">
@@ -895,6 +946,7 @@
     <button class="panel-toggle-btn" id="panel-toggle" aria-expanded="true" aria-controls="filter-panel-body">
       <span class="toggle-arrow">▼</span> Filters
       <span class="rank-range-indicator" id="rank-range-indicator"></span>
+      <span class="ceremony-year-indicator" id="ceremony-year-indicator"></span>
     </button>
     <div class="filter-panel-body" id="filter-panel-body">
       <div class="controls">
@@ -957,20 +1009,28 @@
 
 <div class="movie-list" id="movie-list"></div>
 
-<div class="info-section">
+<div class="info-section" id="about-nyt">
   <h2>About This Site</h2>
   <p>This site helps you find where to stream the movies from The New York Times' "Best Movies of the 21st Century" list. Filter by streaming service, track which films you've seen, and build your watchlist &mdash; all in one place.</p>
+  <p style="margin-top: 0.5rem;">Switch to the <strong>Oscar Best Picture</strong> tab to browse every Academy Award Best Picture nominee since 2000.</p>
+</div>
+
+<div class="info-section" id="about-oscars" style="display:none">
+  <h2>About This Site</h2>
+  <p>This site helps you find where to stream every Academy Award Best Picture nominee from the 21st century. Browse nominees and winners by ceremony year, filter by streaming service, and track your progress.</p>
+  <p style="margin-top: 0.5rem;">Switch to the <strong>NYT Top 100</strong> tab to browse the New York Times' 100 Best Movies of the 21st Century.</p>
 </div>
 
 <div class="info-section">
   <h2>How to Use</h2>
   <ul>
+    <li><strong>Switch tabs:</strong> Use the tab bar to toggle between the NYT Top 100 list and Oscar Best Picture nominees.</li>
     <li><strong>Filter by service:</strong> Click one or more streaming service pills (Netflix, Hulu, etc.) to see movies available on those platforms. Click <em>All</em> to clear the selection.</li>
     <li><strong>Mark as seen:</strong> Click "Seen" on any movie to track your progress. Click again to undo.</li>
     <li><strong>Want to see:</strong> Click "Want to See" to build your personal watchlist.</li>
     <li><strong>Search:</strong> Type a title, director, or year into the search box to narrow results.</li>
-    <li><strong>Sort:</strong> Use the dropdown to sort by rank, title, or release year.</li>
-    <li><strong>Show filters:</strong> Toggle between All, Unseen Only, Want to See, or Already Seen.</li>
+    <li><strong>Sort:</strong> Use the dropdown to sort by rank, title, year, or rating.</li>
+    <li><strong>Show filters:</strong> Toggle between All, Unseen Only, Want to See, Already Seen, or Winners Only (Oscar tab).</li>
   </ul>
   <p style="margin-top: 0.5rem;">Your seen/watchlist data is saved locally in your browser and will persist between visits.</p>
 </div>
@@ -978,7 +1038,8 @@
 <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
 <footer>
-  <p><strong>Disclaimer:</strong> This is an unofficial, independent project. Not affiliated with, endorsed by, or connected to The New York Times in any way.</p>
+  <p><strong>Disclaimer:</strong> This is an unofficial, independent project. Not affiliated with, endorsed by, or connected to The New York Times or the Academy of Motion Picture Arts and Sciences in any way. "Oscar" and "Academy Award" are registered trademarks of the Academy of Motion Picture Arts and Sciences.</p>
+  <p>The NYT 100 Best Movies list was published by The New York Times in 2025. Oscar Best Picture nominee and winner data is sourced from publicly available Academy Awards records.</p>
   <p>Streaming availability provided by the <a href="https://www.movieofthenight.com/" style="color: var(--primary);">Streaming Availability API</a> (Movie of the Night) via RapidAPI. Data fetched: <span id="data-updated-date">unknown</span>. Availability may change &mdash; check your streaming service to confirm.</p>
   <p>
     Movie metadata and poster images provided by
@@ -1284,6 +1345,7 @@ function render() {
 
   const isOscar = activeTab === "oscars";
   let html = "";
+  let lastCeremonyYear = null;
   movies.forEach((m, i) => {
     const key = movieKey(m);
 
@@ -1295,6 +1357,18 @@ function render() {
       <div class="rank-divider" data-group-start="${m.rank}">
         <div class="divider-line"></div>
         <span class="divider-label">${label}</span>
+        <div class="divider-line"></div>
+      </div>`;
+    }
+
+    // Ceremony year dividers (Oscar tab, sorted by year)
+    if (isOscar && (sortMode === "year" || sortMode === "year-asc") && m.ceremony_year !== lastCeremonyYear) {
+      lastCeremonyYear = m.ceremony_year;
+      const ordinal = m.ceremony_year ? `${m.ceremony_year} Ceremony` : "";
+      html += `
+      <div class="ceremony-divider" data-ceremony-year="${m.ceremony_year}">
+        <div class="divider-line"></div>
+        <span class="divider-label">${ordinal}</span>
         <div class="divider-line"></div>
       </div>`;
     }
@@ -1385,6 +1459,7 @@ function render() {
   document.getElementById("progress-label").textContent = `${seenCount} of ${total} seen`;
 
   if (!isOscar) updateRankIndicator();
+  if (isOscar) updateCeremonyIndicator();
 }
 
 // ─── Event Listeners ───
@@ -1509,6 +1584,12 @@ function switchTab(tab) {
 
   document.body.classList.toggle("oscars-active", tab === "oscars");
 
+  // Toggle tab-specific headers and about sections
+  document.getElementById("header-nyt").style.display = tab === "nyt" ? "" : "none";
+  document.getElementById("header-oscars").style.display = tab === "oscars" ? "" : "none";
+  document.getElementById("about-nyt").style.display = tab === "nyt" ? "" : "none";
+  document.getElementById("about-oscars").style.display = tab === "oscars" ? "" : "none";
+
   const sortSelect = document.getElementById("sort-select");
   if (tab === "oscars") {
     sortSelect.innerHTML = '<option value="year">Year (Newest)</option><option value="alpha">A &ndash; Z</option><option value="year-asc">Year (Oldest)</option>';
@@ -1614,7 +1695,31 @@ window.addEventListener("scroll", () => {
 
   backToTopBtn.classList.toggle("visible", scrollY > 400);
   if (activeTab === "nyt") updateRankIndicator();
+  if (activeTab === "oscars") updateCeremonyIndicator();
 }, { passive: true });
+
+function updateCeremonyIndicator() {
+  const indicator = document.getElementById("ceremony-year-indicator");
+  if (!indicator) return;
+  if (activeTab !== "oscars" || (sortMode !== "year" && sortMode !== "year-asc") || window.scrollY < 200) {
+    indicator.classList.remove("visible");
+    return;
+  }
+  // Find the ceremony divider that has scrolled past the top of the viewport
+  let currentYear = "";
+  const dividers = document.querySelectorAll(".ceremony-divider[data-ceremony-year]");
+  for (const div of dividers) {
+    const rect = div.getBoundingClientRect();
+    if (rect.top < 80) currentYear = div.dataset.ceremonyYear;
+    else break;
+  }
+  if (currentYear) {
+    indicator.textContent = `${currentYear} Ceremony`;
+    indicator.classList.add("visible");
+  } else {
+    indicator.classList.remove("visible");
+  }
+}
 
 backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
