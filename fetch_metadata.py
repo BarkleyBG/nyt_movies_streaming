@@ -381,16 +381,65 @@ def clean_raw(results=None, movies=None):
                 print(f"  {genre:20s}: {count} movies")
 
 
+def fetch_posters(api_key):
+    """
+    Fetch missing poster_path values for movies already in movie_metadata.json.
+    Uses existing tmdb_id values — no search step needed.
+    Updates movie_metadata.json in-place.
+    """
+    if not os.path.exists(OUTPUT_FILE):
+        print(f"ERROR: {OUTPUT_FILE} not found. Run a full fetch first.")
+        sys.exit(1)
+
+    with open(OUTPUT_FILE) as f:
+        data = json.load(f)
+
+    missing = [
+        (rank, entry) for rank, entry in data.items()
+        if rank != "_updated" and isinstance(entry, dict)
+        and entry.get("tmdb_id") and not entry.get("poster_path")
+    ]
+
+    total = len(missing)
+    if total == 0:
+        print("All movies already have poster_path — nothing to do.")
+        return
+
+    print(f"Fetching poster_path for {total} movies...")
+    updated = 0
+
+    for i, (rank, entry) in enumerate(missing):
+        tmdb_id = entry["tmdb_id"]
+        print(f"[{i+1:3d}/{total}] #{rank:>3} tmdb_id={tmdb_id}...", end=" ", flush=True)
+        details = tmdb_get(f"/movie/{tmdb_id}", {"language": "en-US"}, api_key)
+        if details and details.get("poster_path"):
+            data[rank]["poster_path"] = details["poster_path"]
+            print(f"-> {details['poster_path']}")
+            updated += 1
+        else:
+            print("-> no poster found")
+
+        if i < total - 1:
+            time.sleep(DELAY_BETWEEN_REQUESTS)
+
+    with open(OUTPUT_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+    print(f"\nUpdated {updated}/{total} movies with poster_path. Saved to {OUTPUT_FILE}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Fetch and/or clean TMDB movie metadata")
     parser.add_argument("--fetch-only", action="store_true",
                         help="Only fetch raw TMDB data, save to movie_metadata_raw.json")
     parser.add_argument("--clean-only", action="store_true",
                         help="Only clean existing raw data into movie_metadata.json")
+    parser.add_argument("--posters-only", action="store_true",
+                        help="Only fetch missing poster_path values into movie_metadata.json")
     args = parser.parse_args()
 
-    if args.fetch_only and args.clean_only:
-        print("Cannot use --fetch-only and --clean-only together.")
+    if sum([args.fetch_only, args.clean_only, args.posters_only]) > 1:
+        print("Cannot combine --fetch-only, --clean-only, or --posters-only.")
         sys.exit(1)
 
     movies = load_movies()
@@ -400,6 +449,11 @@ def main():
         return
 
     api_key = load_api_key()
+
+    if args.posters_only:
+        fetch_posters(api_key)
+        return
+
     results = fetch_raw(api_key, movies)
 
     if args.fetch_only:
